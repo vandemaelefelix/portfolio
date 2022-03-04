@@ -1,0 +1,52 @@
+.outerCircle {
+    box-sizing: border-box;
+    position: absolute;
+    width: 6rem;
+    height: 6rem;
+
+    background: transparent;
+    border-radius: 100%;
+    border: 0.1rem solid var(--accent-color);
+    transform: scale(1) translate(-50%, -50%);
+    transform-origin: top left;
+
+    pointer-events: none;
+
+    transition-property: background-color, transform, opacity;
+    transition-duration: 0.25s;
+    transition-timing-function: ease;
+}
+
+.outerCircle.click {
+}
+
+.outerCircle.faded {
+    transform: scale(0) translate(-50%, -50%);
+    opacity: 0;
+}
+
+.innerCircle {
+    position: absolute;
+    height: 1rem;
+    width: 1rem;
+
+    background: var(--accent-color);
+    border-radius: 100%;
+    transform: scale(1) translate(-50%, -50%);
+    opacity: 1;
+
+    pointer-events: none;
+
+    transition-property: background-color, border, transform, opacity;
+    transition-duration: 0.125s;
+    transition-timing-function: ease;
+}
+
+.innerCircle.click {
+    transform: scale(2) translate(-25%, -25%);
+}
+
+.innerCircle.faded {
+    transform: scale(0);
+    opacity: 0;
+}

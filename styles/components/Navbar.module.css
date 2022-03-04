@@ -1,0 +1,47 @@
+.nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 4rem;
+    display: flex;
+    gap: 1.5rem;
+    justify-content: space-between;
+    align-items: center;
+
+    border-bottom: 0.115rem solid var(--accent-color);
+    padding: 0 1rem;
+
+    transition: border-color var(--theme-transition) ease-in-out;
+}
+
+.nav .logo {
+    width: 2rem;
+    height: 2rem;
+    fill: var(--accent-color);
+
+    transition: fill var(--theme-transition) ease-in-out;
+    cursor: pointer;
+}
+
+.nav .name {
+    flex-grow: 1;
+    color: var(--accent-color);
+    font-size: 2.5rem;
+    text-align: center;
+
+    font-family: ITCBenguiat, 'Times New Roman', Times, serif;
+    text-transform: uppercase;
+    cursor: pointer;
+    user-select: none;
+}
+
+.nav .menuIcon {
+    cursor: pointer;
+}
+
+@media (min-width: 600px) {
+    .nav .name {
+        text-align: left;
+    }
+}
