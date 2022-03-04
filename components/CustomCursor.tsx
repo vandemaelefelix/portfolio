@@ -107,12 +107,13 @@ export default function CustomCursor({ fade, dotSpeed, circleSpeed }: Props) {
         if (e.type === 'touchmove' || e.type === 'touchdown') {
             handleClickUp();
             // e.preventDefault();
-            const touch = e.changedTouches[0];
+
+            const touch = (e as TouchEvent).changedTouches[0];
             mousePos.x = touch.pageX;
             mousePos.y = touch.pageY;
         } else {
-            mousePos.x = e.pageX;
-            mousePos.y = e.pageY;
+            mousePos.x = (e as PointerEvent).pageX;
+            mousePos.y = (e as PointerEvent).pageY;
         }
     };
 
