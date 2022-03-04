@@ -1,11 +1,25 @@
 :root {
-    --main-color: darkblue;
+    --main-color: hsl(60, 33%, 91%);
+    --accent-color: hsl(222, 79%, 21%);
+
+    --theme-transition: 0.3s;
 }
 
 [data-theme='coral'] {
-    --main-color: coral;
+    --main-color: hsl(130, 69%, 23%);
+    --accent-color: hsl(61, 80%, 63%);
 }
 
+/* Fonts */
+@font-face {
+    font-family: ITCBenguiat;
+    src: url('../public/fonts/ITCBenguiat/BenguiatStd-Book.otf');
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+}
+
+/* Resetting styles */
 html,
 body {
     padding: 0;
@@ -23,6 +37,7 @@ a {
     box-sizing: border-box;
 }
 
+/* Grain Effect */
 html {
     background-color: var(--main-color);
     transition: background-color 0.3s ease-in-out;
@@ -30,11 +45,13 @@ html {
 
 html:after {
     animation: grain 8s steps(10) infinite;
+    /* background-image: url('https://st2.depositphotos.com/13264288/46754/v/950/depositphotos_467546888-stock-illustration-abstract-vector-background-white-noise.jpg?forcejpeg=true'); */
     background-image: url('../public/images/grain-background.jpg');
+    /* background-size: 20%; */
     content: '';
     height: 300%;
     left: -50%;
-    opacity: 0.2;
+    opacity: 0.3;
     position: fixed;
     top: -110%;
     width: 300%;
