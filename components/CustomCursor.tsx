@@ -10,9 +10,10 @@ interface Props {
     fade: boolean;
     dotSpeed: number;
     circleSpeed: number;
+    isVisible: boolean;
 }
 
-export default function CustomCursor({ fade, dotSpeed, circleSpeed }: Props) {
+export default function CustomCursor({ fade, dotSpeed, circleSpeed, isVisible }: Props) {
     const circlePos: Coordinates = { x: 0, y: 0 };
     const dotPos: Coordinates = { x: 0, y: 0 };
     const mousePos: Coordinates = { x: 0, y: 0 };
@@ -147,6 +148,14 @@ export default function CustomCursor({ fade, dotSpeed, circleSpeed }: Props) {
             document.removeEventListener('scroll', scrollHandler);
         };
     }, []);
+
+    useEffect(() => {
+        if (isVisible) {
+            fadeInMouse();
+        } else {
+            fadeOutMouse();
+        }
+    }, [isVisible]);
 
     return (
         <>

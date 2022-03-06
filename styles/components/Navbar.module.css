@@ -13,6 +13,8 @@
     padding: 0 1rem;
 
     transition: border-color var(--theme-transition) ease-in-out;
+
+    overflow: hidden;
 }
 
 .nav .logo {
