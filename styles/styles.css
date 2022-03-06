@@ -3,6 +3,7 @@
     --accent-color: hsl(222, 79%, 21%);
 
     --theme-transition: 0.3s;
+    --main-font: ITCBenguiat, 'Times New Roman', Times, serif;
 }
 
 [data-theme='coral'] {

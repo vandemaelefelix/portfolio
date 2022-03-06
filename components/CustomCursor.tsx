@@ -16,6 +16,7 @@ export default function CustomCursor({ fade, dotSpeed, circleSpeed }: Props) {
     const circlePos: Coordinates = { x: 0, y: 0 };
     const dotPos: Coordinates = { x: 0, y: 0 };
     const mousePos: Coordinates = { x: 0, y: 0 };
+    let prevScrollPosition: number = 0;
     let isMoving: boolean = false;
     let timeout: any;
 
@@ -50,18 +51,10 @@ export default function CustomCursor({ fade, dotSpeed, circleSpeed }: Props) {
     const fadeOutMouse = () => {
         if (dot === null || circle === null) return;
         setIsFaded(true);
-        // dot.style.opacity = '0';
-        // dot.style.transform = 'scale(0) translate(-50%, -50%)';
-        // circle.style.opacity = '0';
-        // circle.style.transform = 'scale(0) translate(-50%, -50%)';
     };
     const fadeInMouse = () => {
         if (dot === null || circle === null) return;
         setIsFaded(false);
-        // dot.style.opacity = '1';
-        // dot.style.transform = 'scale(1) translate(-50%, -50%)';
-        // circle.style.opacity = '1';
-        // circle.style.transform = 'scale(1) translate(-50%, -50%)';
     };
 
     const followMouse = (): void => {
@@ -117,13 +110,25 @@ export default function CustomCursor({ fade, dotSpeed, circleSpeed }: Props) {
         }
     };
 
+    const scrollGetMouse = () => {
+        if (window.scrollY > prevScrollPosition) {
+            mousePos.y += window.scrollY - prevScrollPosition;
+        } else if (window.scrollY < prevScrollPosition) {
+            mousePos.y -= prevScrollPosition - window.scrollY;
+        }
+
+        prevScrollPosition = window.scrollY;
+    };
+
     const mouseMoveHandler = (e: TouchEvent | MouseEvent) => getMouse(e);
     const clickUpHandler = (e: TouchEvent | PointerEvent) => handleClickUp();
     const clickDownHandler = (e: TouchEvent | PointerEvent) => handleClickDown();
+    const scrollHandler = () => scrollGetMouse();
 
     useEffect(() => {
-        document.removeEventListener('touchmove', mouseMoveHandler);
+        document.addEventListener('touchmove', mouseMoveHandler);
         document.addEventListener('mousemove', mouseMoveHandler);
+        document.addEventListener('scroll', scrollHandler);
 
         document.addEventListener('touchend', clickUpHandler);
         document.addEventListener('pointerdown', clickDownHandler);
@@ -138,6 +143,8 @@ export default function CustomCursor({ fade, dotSpeed, circleSpeed }: Props) {
 
             document.removeEventListener('touchmove', mouseMoveHandler);
             document.removeEventListener('mousemove', mouseMoveHandler);
+
+            document.removeEventListener('scroll', scrollHandler);
         };
     }, []);
 

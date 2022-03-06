@@ -34,6 +34,8 @@
     text-transform: uppercase;
     cursor: pointer;
     user-select: none;
+
+    transition: color var(--theme-transition) ease-in-out;
 }
 
 .nav .menuIcon {

@@ -1,1 +1,262 @@
+.content {
+    width: 100vw;
+}
 
+/* --------------------- */
+/* ----- SECTION 1 ----- */
+/* --------------------- */
+
+.section1 {
+    width: 100%;
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 6rem;
+    overflow: hidden;
+}
+.imageContainer {
+    position: relative;
+    height: 40%;
+    width: min(30rem, 70%);
+    margin: 0 auto;
+    order: 2;
+    margin-bottom: 5rem;
+}
+
+.imageWrapper {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    opacity: 0.5;
+}
+
+.image {
+    filter: grayscale(1);
+    transition: filter var(--theme-transition) ease-in-out;
+    object-fit: cover;
+    object-position: 42% 50%;
+
+    user-drag: none;
+    -webkit-user-drag: none;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
+.imageOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: var(--accent-color);
+    opacity: 0.2;
+    z-index: 10;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+
+    transition: opacity var(--theme-transition) ease-in-out, background-color var(--theme-transition) ease-in-out;
+}
+.imageContainer:hover .image {
+    filter: grayscale(0);
+}
+.imageContainer:hover .imageOverlay {
+    opacity: 0;
+    /* display: none; */
+}
+
+.imageContainer:hover .imageWrapper {
+    opacity: 1;
+}
+
+.imageIcon {
+    position: absolute;
+    z-index: 20;
+    fill: var(--accent-color);
+    transition: fill var(--theme-transition) ease-in-out;
+}
+
+.imageIcon.top {
+    top: -2.5rem;
+    right: -2.5rem;
+    width: 5rem;
+    height: 5rem;
+}
+.imageIcon.bottom {
+    bottom: -4rem;
+    left: -4rem;
+    width: 8rem;
+    height: 8rem;
+}
+
+.titleHello {
+    font-family: var(--main-font);
+    color: var(--accent-color);
+    font-size: 5rem;
+    order: 1;
+    transition: color var(--theme-transition) ease-in-out;
+    align-self: flex-start;
+    margin-left: 3rem;
+    margin-bottom: -10%;
+    z-index: 10;
+}
+.titleName {
+    font-family: var(--main-font);
+    color: var(--accent-color);
+    font-size: 8rem;
+    transition: color var(--theme-transition) ease-in-out;
+    z-index: 10;
+}
+.titleSub {
+    font-family: var(--main-font);
+    color: var(--accent-color);
+    font-size: 1.5rem;
+    transition: color var(--theme-transition) ease-in-out;
+}
+.titleSub span {
+    width: 1rem;
+    transform: translateY(2px);
+    display: inline-block;
+}
+.titleSub span svg {
+    fill: var(--accent-color);
+    transition: fill var(--theme-transition) ease-in-out;
+}
+
+.titleWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    order: 3;
+}
+
+.scrollDown {
+    width: 100vw;
+    order: 4;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 3rem;
+    flex-grow: 1;
+}
+
+.scrollDown p {
+    color: var(--accent-color);
+    font-family: var(--main-font);
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+.scrollDownIcon {
+    width: 1rem;
+    animation: arrowBounce 2s linear infinite;
+    fill: var(--accent-color);
+}
+
+.section2 {
+    width: 100vw;
+    height: 100vh;
+    background: var(--accent-color);
+}
+
+@media only screen and (min-width: 600px) {
+    .titleName {
+        font-size: 12rem;
+    }
+    .titleHello {
+        margin-left: 10rem;
+    }
+}
+
+@media only screen and (min-width: 1000px) {
+    .section1 {
+        padding: 0 4rem;
+    }
+
+    .section1 {
+        flex-direction: row;
+        justify-content: space-around;
+        gap: 2rem;
+    }
+    .imageContainer {
+        order: 3;
+        flex-grow: 1;
+        flex-basis: 0;
+    }
+
+    .imageWrapper {
+        width: 10rem;
+    }
+
+    .titleHello {
+        order: 1;
+        flex-grow: 1;
+        flex-basis: 0;
+        display: flex;
+        align-items: flex-end;
+        justify-content: flex-end;
+        margin: 10rem 0;
+    }
+    .titleHello p {
+        margin-right: -2rem;
+    }
+    .titleName {
+        font-size: 12rem;
+    }
+    .titleSub {
+        font-size: 2rem;
+    }
+    .titleSub span {
+        width: 1.5rem;
+    }
+    .titleSub span svg {
+    }
+
+    .titleWrapper {
+        order: 2;
+        width: 50%;
+    }
+
+    .scrollDown {
+        bottom: 0;
+        position: absolute;
+        width: 100%;
+    }
+}
+
+@media only screen and (min-width: 1250px) {
+    .titleName {
+        font-size: 15rem;
+    }
+    .titleSub {
+        font-size: 3rem;
+    }
+    .titleSub span {
+        width: 2rem;
+    }
+    .titleWrapper {
+        width: 60%;
+    }
+}
+
+@media only screen and (min-width: 1400px) {
+    .titleWrapper {
+        width: 50%;
+    }
+}
+
+@keyframes arrowBounce {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(0.5rem);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}

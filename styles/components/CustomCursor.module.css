@@ -1,8 +1,8 @@
 .outerCircle {
     box-sizing: border-box;
     position: absolute;
-    width: 6rem;
-    height: 6rem;
+    width: 4rem;
+    height: 4rem;
 
     background: transparent;
     border-radius: 100%;
@@ -15,6 +15,7 @@
     transition-property: background-color, transform, opacity;
     transition-duration: 0.25s;
     transition-timing-function: ease;
+    z-index: 100;
 }
 
 .outerCircle.click {
@@ -40,6 +41,7 @@
     transition-property: background-color, border, transform, opacity;
     transition-duration: 0.125s;
     transition-timing-function: ease;
+    z-index: 150;
 }
 
 .innerCircle.click {
