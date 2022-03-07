@@ -9,6 +9,7 @@ import useIsMobile from '../hooks/useIsMobile';
 import styles from '../styles/pages/Home.module.css';
 import Image from 'next/image';
 import homeImage from '../public/images/image.jpg';
+import technologies from '../public/images/technologies/technologies';
 
 const Home: NextPage = () => {
     const [isCursorVisible, setIsCursorVisible] = useState(true);
@@ -119,7 +120,7 @@ const Home: NextPage = () => {
                         </svg>
                     </div>
 
-                    <div className={styles.scrollDown}>
+                    <div data-mouse="scroll" className={styles.scrollDown}>
                         <p>scroll down</p>
                         <svg className={styles.scrollDownIcon} viewBox="0 0 20.55 12.458">
                             <path
@@ -132,7 +133,22 @@ const Home: NextPage = () => {
                     </div>
                 </section>
                 <section className={styles.section2}>
-                    <div onMouseMove={handleMouseMove} className={styles.spotlightWrapper}></div>
+                    <div data-mouse="hide" onMouseMove={handleMouseMove} className={styles.spotlightWrapper}>
+                        {technologies.map((tech: any, index: number) => {
+                            // if (index > 6) return;
+                            return (
+                                <div className={styles.techImage} key={tech.name}>
+                                    <Image
+                                        src={`/images/technologies/${tech.path}`}
+                                        alt={tech.name}
+                                        width={'50px'}
+                                        height={'50px'}
+                                        layout={'fixed'}
+                                    ></Image>
+                                </div>
+                            );
+                        })}
+                    </div>
                     <div ref={spotlight} className={styles.section2Overlay}></div>
                     {/* <div className={styles.spotLight}></div> */}
                 </section>

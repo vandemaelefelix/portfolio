@@ -4,6 +4,8 @@
 
     --theme-transition: 0.3s;
     --main-font: ITCBenguiat, 'Times New Roman', Times, serif;
+    --spotlight-size: 5%;
+    --spotlight-size2: calc(var(--spotlight-size) * 1.5);
 }
 
 [data-theme='coral'] {
