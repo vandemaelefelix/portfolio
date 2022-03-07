@@ -29,8 +29,8 @@ const Home: NextPage = () => {
 
         if (spotlight.current === null) return;
         // spotlight.current.style.left = calc(e.clientX + 'px');
-        spotlight.current.style.left = `${x}px`;
-        spotlight.current.style.top = `${y}px`;
+        (spotlight.current as HTMLElement).style.left = `${x}px`;
+        (spotlight.current as HTMLElement).style.top = `${y}px`;
     };
 
     return (
