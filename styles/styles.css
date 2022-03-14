@@ -8,9 +8,27 @@
     --spotlight-size2: calc(var(--spotlight-size) * 1.5);
 }
 
-[data-theme='coral'] {
+[data-theme='1'] {
     --main-color: hsl(130, 69%, 23%);
     --accent-color: hsl(61, 80%, 63%);
+}
+
+[data-theme='2'] {
+    --main-color: #78dec7;
+    --accent-color: #d62ad0;
+}
+[data-theme='3'] {
+    --main-color: #eba83a;
+    --accent-color: #bb371a;
+}
+
+[data-theme='4'] {
+    --main-color: #24a19c;
+    --accent-color: #faeee7;
+}
+[data-theme='5'] {
+    --main-color: #000000;
+    --accent-color: #00ff0d;
 }
 
 /* Fonts */

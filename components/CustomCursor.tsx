@@ -129,14 +129,14 @@ export default function CustomCursor({ fade, dotSpeed, circleSpeed, isVisible }:
                         setIsScroll(false);
                         break;
                     case 'scroll':
-                        console.log('scroll mouse');
+                        // console.log('scroll mouse');
                         setIsScroll(true);
                         fadeOutMouse();
                         break;
 
                     default:
                         setIsScroll(false);
-                        console.log('default mouse');
+                        // console.log('default mouse');
                         fadeInMouse();
                         break;
                 }
