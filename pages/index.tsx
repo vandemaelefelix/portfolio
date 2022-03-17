@@ -9,9 +9,9 @@ import useIsMobile from '../hooks/useIsMobile';
 import styles from '../styles/pages/Home.module.css';
 import Image from 'next/image';
 import homeImage from '../public/images/image.jpg';
-import technologies from '../public/images/technologies/technologies';
 import Spotlight from '../components/Spotlight';
 import ColorPicker from '../components/ColorPicker';
+import { gsap } from 'gsap';
 
 const Home: NextPage = () => {
     const [isCursorVisible, setIsCursorVisible] = useState(true);
@@ -19,6 +19,17 @@ const Home: NextPage = () => {
     // const { theme, setTheme, themes } = useTheme();
     const parent = useRef(null);
     const isMobile = useIsMobile();
+
+    // const iconRef = useRef(null);
+
+    // useEffect(() => {
+    //     while (iconRef === null) {
+    //         setTimeout(() => {}, 200);
+    //     }
+    //     gsap.to(iconRef.current, { rotation: '+=360' });
+
+    //     return () => {};
+    // }, []);
 
     return (
         <div ref={parent}>
@@ -33,7 +44,7 @@ const Home: NextPage = () => {
                 <link rel="icon" href="" />
             </Head>
 
-            <Navbar></Navbar>
+            <Navbar parent={parent}></Navbar>
 
             <main className={styles.content}>
                 <section className={styles.section1}>
