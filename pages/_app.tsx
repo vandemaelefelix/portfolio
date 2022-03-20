@@ -9,7 +9,11 @@ gsap.registerPlugin(ScrollTrigger);
 
 function MyApp({ Component, pageProps }: AppProps) {
     return (
-        <ThemeProvider defaultTheme="default" enableSystem={false} themes={['default', 'coral']}>
+        <ThemeProvider
+            defaultTheme="beige"
+            enableSystem={false}
+            themes={['beige', 'green', 'lightblue', 'yellow', 'palegreen', 'black']}
+        >
             <Component {...pageProps} />
         </ThemeProvider>
     );

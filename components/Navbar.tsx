@@ -17,14 +17,14 @@ export default function Navbar({ parent }: any) {
             .timeline({
                 scrollTrigger: {
                     trigger: parent.current,
-                    scrub: 0.2,
+                    scrub: 0,
                     start: 'top top',
                     end: '+=10000',
                 },
             })
             .to(iconRef.current, {
                 rotation: 360 * 20,
-                duration: 1,
+                // duration: ,
                 ease: 'none',
             });
 

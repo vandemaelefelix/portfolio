@@ -135,7 +135,7 @@ const Home: NextPage = () => {
                 <Spotlight></Spotlight>
             </main>
 
-            {/* <ColorPicker></ColorPicker> */}
+            <ColorPicker></ColorPicker>
         </div>
     );
 };
