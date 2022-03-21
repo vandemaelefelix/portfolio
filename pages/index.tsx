@@ -9,7 +9,9 @@ import useIsMobile from '../hooks/useIsMobile';
 import styles from '../styles/pages/Home.module.css';
 import Image from 'next/image';
 import homeImage from '../public/images/image.jpg';
-import technologies from '../public/images/technologies/technologies';
+import Spotlight from '../components/Spotlight';
+import ColorPicker from '../components/ColorPicker';
+import { gsap } from 'gsap';
 
 const Home: NextPage = () => {
     const [isCursorVisible, setIsCursorVisible] = useState(true);
@@ -18,20 +20,16 @@ const Home: NextPage = () => {
     const parent = useRef(null);
     const isMobile = useIsMobile();
 
-    const spotlight = useRef(null);
-    const handleMouseMove = (e: any) => {
-        // console.log(e.clientY);
-        // console.log(e.offsetY);
-        const rect = e.target.getBoundingClientRect();
-        const x = e.clientX - rect.left; //x position within the element.
-        const y = e.clientY - rect.top;
-        // console.log(spotlight.current);
+    // const iconRef = useRef(null);
 
-        if (spotlight.current === null) return;
-        // spotlight.current.style.left = calc(e.clientX + 'px');
-        (spotlight.current as HTMLElement).style.left = `${x}px`;
-        (spotlight.current as HTMLElement).style.top = `${y}px`;
-    };
+    // useEffect(() => {
+    //     while (iconRef === null) {
+    //         setTimeout(() => {}, 200);
+    //     }
+    //     gsap.to(iconRef.current, { rotation: '+=360' });
+
+    //     return () => {};
+    // }, []);
 
     return (
         <div ref={parent}>
@@ -46,7 +44,7 @@ const Home: NextPage = () => {
                 <link rel="icon" href="" />
             </Head>
 
-            <Navbar></Navbar>
+            <Navbar parent={parent}></Navbar>
 
             <main className={styles.content}>
                 <section className={styles.section1}>
@@ -99,9 +97,10 @@ const Home: NextPage = () => {
                                 src={homeImage}
                                 layout={'fill'}
                                 className={`
-                            ${styles.image}
-                            ${styles.top}
-                            `}
+                                    ${styles.image}
+                                    ${styles.top}
+                                `}
+                                placeholder={'blur'}
                             ></Image>
                         </div>
 
@@ -132,27 +131,11 @@ const Home: NextPage = () => {
                         </svg>
                     </div>
                 </section>
-                <section className={styles.section2}>
-                    <div data-mouse="hide" onMouseMove={handleMouseMove} className={styles.spotlightWrapper}>
-                        {technologies.map((tech: any, index: number) => {
-                            // if (index > 6) return;
-                            return (
-                                <div className={styles.techImage} key={tech.name}>
-                                    <Image
-                                        src={`/images/technologies/${tech.path}`}
-                                        alt={tech.name}
-                                        width={'50px'}
-                                        height={'50px'}
-                                        layout={'fixed'}
-                                    ></Image>
-                                </div>
-                            );
-                        })}
-                    </div>
-                    <div ref={spotlight} className={styles.section2Overlay}></div>
-                    {/* <div className={styles.spotLight}></div> */}
-                </section>
+
+                <Spotlight></Spotlight>
             </main>
+
+            <ColorPicker></ColorPicker>
         </div>
     );
 };
