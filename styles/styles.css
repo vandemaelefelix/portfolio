@@ -6,11 +6,34 @@
     --main-font: ITCBenguiat, 'Times New Roman', Times, serif;
     --spotlight-size: 5%;
     --spotlight-size2: calc(var(--spotlight-size) * 1.5);
+    --spotlight-text-position: 10%;
 }
 
-[data-theme='coral'] {
+[data-theme='green'] {
     --main-color: hsl(130, 69%, 23%);
     --accent-color: hsl(61, 80%, 63%);
+}
+
+[data-theme='lightblue'] {
+    --main-color: hsl(166, 61%, 67%);
+    --accent-color: hsl(302, 68%, 50%);
+}
+[data-theme='yellow'] {
+    --main-color: hsl(37, 82%, 57%);
+    --accent-color: hsl(11, 76%, 42%);
+}
+
+[data-theme='palegreen'] {
+    --main-color: hsl(178, 63%, 39%);
+    --accent-color: hsl(22, 66%, 94%);
+}
+/* [data-theme='black'] {
+    --main-color: hsl(273, 100%, 50%);
+    --accent-color: hsl(22, 100%, 50%);
+} */
+[data-theme='black'] {
+    --main-color: hsl(0, 0%, 0%);
+    --accent-color: hsl(123, 100%, 50%);
 }
 
 /* Fonts */
