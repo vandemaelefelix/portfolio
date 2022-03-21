@@ -2,6 +2,7 @@ import { useTheme } from 'next-themes';
 import { useEffect, useLayoutEffect, useState } from 'react';
 import useIsMobile from '../hooks/useIsMobile';
 import styles from '../styles/components/Colorpicker.module.css';
+
 interface Theme {
     name: string;
     mainColor: string;
