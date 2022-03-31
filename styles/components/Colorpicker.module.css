@@ -10,6 +10,7 @@
     border-bottom-left-radius: 50px;
     width: 2rem;
     transition: width var(--color-picker-transition) ease-in-out;
+    z-index: 100;
 }
 .colorpicker.show {
     width: 17rem;
@@ -25,6 +26,10 @@
     transition: transform var(--color-picker-transition) ease-in-out,
         pointer-events var(--color-picker-transition) var(--color-picker-transition) ease-in-out;
     z-index: -1;
+    pointer-events: none;
+}
+
+.colorsContainer.closing {
     pointer-events: none;
 }
 

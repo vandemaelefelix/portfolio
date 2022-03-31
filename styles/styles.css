@@ -8,6 +8,8 @@
     --spotlight-size: 5%;
     --spotlight-size2: calc(var(--spotlight-size) * 1.5);
     --spotlight-text-position: 10%;
+    --image-overlay-opacity: 0.2;
+    --arrow-length: 0;
 }
 
 [data-theme='green'] {
