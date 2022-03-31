@@ -59,12 +59,11 @@
 }
 
 .menuContent li {
+    text-transform: capitalize;
     cursor: pointer;
     display: block;
     font-family: var(--main-font);
     color: var(--main-color);
-    /* font-size: 10rem; */
-    /* opacity: 0; */
     font-size: 2rem;
     padding: 3rem 0;
     border-bottom: 2px solid var(--main-color);
@@ -73,6 +72,9 @@
     justify-content: center;
     width: 100%;
     text-align: center;
+    user-select: none;
+
+    transform: rotateX(0deg);
 }
 
 .menuContent li:last-of-type {
@@ -113,14 +115,11 @@
     justify-content: center;
     opacity: 0;
     z-index: 10;
+    user-select: none;
 }
 
 .menu.show .menuIcon {
     opacity: 1;
-}
-
-.menuIcon.active > span {
-    /* transform: scale(1.25) translateX(0); */
 }
 
 .menuIcon > span {

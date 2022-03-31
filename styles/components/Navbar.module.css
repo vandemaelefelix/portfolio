@@ -5,7 +5,7 @@
     width: 100vw;
     height: 4rem;
     display: flex;
-    gap: 1.5rem;
+    /* gap: 1.5rem; */
     justify-content: space-between;
     align-items: center;
 
@@ -15,9 +15,11 @@
     transition: border-color var(--theme-transition) ease-in-out;
 
     overflow: hidden;
+    z-index: 50;
 }
 
 .nav .logo {
+    order: 2;
     width: 2rem;
     height: 2rem;
     fill: var(--accent-color);
@@ -25,14 +27,33 @@
     transition: fill var(--theme-transition) ease-in-out;
     cursor: pointer;
 }
+.nav .logoContainer {
+    will-change: transform;
+    transform: rotate(0);
+    transition: transform 0.5s ease-in-out;
+}
+.nav .logoContainer:hover {
+    transform: rotate(180deg);
+}
+
+.nav .nameContainer {
+    flex-grow: 1;
+    order: 1;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 .nav .name {
+    width: fit-content;
+    order: 1;
     flex-grow: 1;
     color: var(--accent-color);
     font-size: 2.5rem;
     text-align: center;
 
-    font-family: ITCBenguiat, 'Times New Roman', Times, serif;
+    font-family: var(--main-font);
     text-transform: uppercase;
     cursor: pointer;
     user-select: none;
@@ -40,15 +61,13 @@
     transition: color var(--theme-transition) ease-in-out;
 }
 
-.nav .menuIcon {
-    cursor: pointer;
-}
-
 .menuIcon {
+    order: 3;
+    cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 200;
+    user-select: none;
 }
 
 .menuIcon > span {
@@ -85,5 +104,15 @@
 @media (min-width: 600px) {
     .nav .name {
         text-align: left;
+    }
+
+    .nameContainer {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+    }
+
+    .name {
+        padding-left: 1.5rem;
     }
 }

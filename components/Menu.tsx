@@ -20,8 +20,10 @@ const Menu = forwardRef((props, ref) => {
     const closeMenu = () => {
         if (!isOpening) {
             setIsOpening(true);
-            setIsOpen(false);
-            enableScroll();
+            setTimeout(() => {
+                setIsOpen(false);
+                enableScroll();
+            }, 10);
             setTimeout(() => {
                 setIsOpening(false);
             }, 10);
@@ -30,6 +32,7 @@ const Menu = forwardRef((props, ref) => {
 
     const goTo = (page: string) => {
         console.log(page);
+        closeMenu();
     };
 
     useImperativeHandle(ref, () => ({
@@ -74,6 +77,7 @@ const Menu = forwardRef((props, ref) => {
                             }}
                             key={page}
                             data-mouse="inverted"
+                            className={`${isOpening ? styles.closing : ''}`}
                         >
                             {'  '}
                             <span>
@@ -91,7 +95,7 @@ const Menu = forwardRef((props, ref) => {
                                 </svg>
                             </span>
                             {'  '}
-                            {page}
+                            <p>{page}</p>
                             {'  '}
                             <span>
                                 <svg viewBox="0 0 37.833 37.833">
