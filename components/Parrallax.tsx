@@ -71,7 +71,7 @@ export default function Parrallax({ container, parrallaxRefs }: any) {
 
                     if (speed && speed > 0) {
                         element.style.transition = checkTransitions(getComputedStyle(element).transition);
-                        const scale = 0.1;
+                        const scale = 1;
                         // const scale = item.options.speed;
 
                         let x = null,
