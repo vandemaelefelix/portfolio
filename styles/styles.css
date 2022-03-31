@@ -3,6 +3,7 @@
     --accent-color: hsl(222, 79%, 21%);
 
     --theme-transition: 0.3s;
+    --color-picker-transition: 0.75s;
     --main-font: ITCBenguiat, 'Times New Roman', Times, serif;
     --spotlight-size: 5%;
     --spotlight-size2: calc(var(--spotlight-size) * 1.5);
@@ -27,14 +28,14 @@
     --main-color: hsl(178, 63%, 39%);
     --accent-color: hsl(22, 66%, 94%);
 }
-/* [data-theme='black'] {
+[data-theme='black'] {
     --main-color: hsl(273, 100%, 50%);
     --accent-color: hsl(22, 100%, 50%);
-} */
-[data-theme='black'] {
+}
+/* [data-theme='black'] {
     --main-color: hsl(0, 0%, 0%);
     --accent-color: hsl(123, 100%, 50%);
-}
+} */
 
 /* Fonts */
 @font-face {
@@ -83,6 +84,7 @@ html:after {
     top: -110%;
     width: 300%;
     pointer-events: none;
+    z-index: 200;
 }
 
 @keyframes grain {

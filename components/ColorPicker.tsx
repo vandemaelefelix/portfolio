@@ -155,6 +155,7 @@ export default function ColorPicker() {
                             style={{
                                 backgroundColor: getTheme(currentTheme).mainColor,
                                 borderColor: getTheme(currentTheme).accentColor,
+                                pointerEvents: isClosing ? 'none' : 'all',
                             }}
                             className={styles.colorCircle}
                         >

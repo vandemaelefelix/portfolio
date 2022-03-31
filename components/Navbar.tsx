@@ -1,11 +1,13 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import styles from '../styles/components/Navbar.module.css';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
 
-export default function Navbar({ parent }: any) {
+export default function Navbar({ parent, toggleMenu }: any) {
     const moveToTop = () => {};
+    const [menuIsOpen, setMenuIsOpen] = useState(false);
+
     const iconRef = useRef(null);
 
     useEffect(() => {
@@ -24,7 +26,6 @@ export default function Navbar({ parent }: any) {
             })
             .to(iconRef.current, {
                 rotation: 360 * 20,
-                // duration: ,
                 ease: 'none',
             });
 
@@ -44,7 +45,19 @@ export default function Navbar({ parent }: any) {
                 Felix
             </h1>
 
-            <div className={styles.menuIcon}>menu</div>
+            <div
+                onClick={() => {
+                    toggleMenu();
+                    setMenuIsOpen(!menuIsOpen);
+                }}
+                className={`${styles.menuIcon} ${menuIsOpen ? styles.active : ''}`}
+                data-mouse="hide"
+            >
+                <p data-mouse="hide" className={styles.menuIconText}>
+                    menu
+                </p>
+                <span data-mouse="hide" className={styles.menuIconDot}></span>
+            </div>
         </nav>
     );
 }

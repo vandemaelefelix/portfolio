@@ -25,6 +25,9 @@
     transform: scale(0) translate(-50%, -50%);
     opacity: 0;
 }
+.outerCircle.inverted {
+    border-color: var(--main-color);
+}
 
 .innerCircle {
     position: absolute;
@@ -51,6 +54,9 @@
 .innerCircle.faded {
     transform: scale(0);
     opacity: 0;
+}
+.innerCircle.inverted {
+    background-color: var(--main-color);
 }
 
 .scrollMouse {
