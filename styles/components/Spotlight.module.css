@@ -9,6 +9,7 @@
     position: relative;
     overflow: hidden;
     /* padding: 5rem; */
+    transition: background-color var(--theme-transition) ease-in-out;
 }
 .section2.dark {
     background-image: url('../../public/images/background_dark.png');
@@ -45,7 +46,7 @@
     align-items: center;
     flex-wrap: wrap;
 
-    transition: mask-image 5s ease-in-out;
+    transition: background var(--theme-transition) ease-in-out;
 }
 
 .hide {

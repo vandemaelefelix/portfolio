@@ -1,7 +1,7 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import { useTheme } from 'next-themes';
-import { useEffect, useRef, useState } from 'react';
+import React, { MutableRefObject, useEffect, useRef, useState } from 'react';
 import Navbar from '../components/Navbar';
 import CustomCursor from '../components/CustomCursor';
 import useIsMobile from '../hooks/useIsMobile';
@@ -12,24 +12,24 @@ import homeImage from '../public/images/image.jpg';
 import Spotlight from '../components/Spotlight';
 import ColorPicker from '../components/ColorPicker';
 import { gsap } from 'gsap';
+import Menu from '../components/Menu';
+
+interface MenuHandle {
+    openMenu: () => void;
+}
 
 const Home: NextPage = () => {
     const [isCursorVisible, setIsCursorVisible] = useState(true);
 
-    // const { theme, setTheme, themes } = useTheme();
-    const parent = useRef(null);
+    const parent = useRef<HTMLDivElement>(null);
     const isMobile = useIsMobile();
+    const menuRef = useRef<MenuHandle>(null);
 
-    // const iconRef = useRef(null);
-
-    // useEffect(() => {
-    //     while (iconRef === null) {
-    //         setTimeout(() => {}, 200);
-    //     }
-    //     gsap.to(iconRef.current, { rotation: '+=360' });
-
-    //     return () => {};
-    // }, []);
+    const toggleMenu = () => {
+        if (menuRef.current) {
+            menuRef.current.openMenu();
+        }
+    };
 
     return (
         <div ref={parent}>
@@ -44,7 +44,9 @@ const Home: NextPage = () => {
                 <link rel="icon" href="" />
             </Head>
 
-            <Navbar parent={parent}></Navbar>
+            <Navbar toggleMenu={toggleMenu} parent={parent}></Navbar>
+
+            <Menu ref={menuRef}></Menu>
 
             <main className={styles.content}>
                 <section className={styles.section1}>

@@ -9,7 +9,7 @@
     border-top-left-radius: 50px;
     border-bottom-left-radius: 50px;
     width: 2rem;
-    transition: width 0.75s ease-in-out;
+    transition: width var(--color-picker-transition) ease-in-out;
 }
 .colorpicker.show {
     width: 17rem;
@@ -22,7 +22,8 @@
     gap: 1rem;
     transform: translateX(calc(-100% - 3rem));
     overflow: hidden;
-    transition: transform 0.75s ease-in-out, pointer-events 0.75s 0.75s ease-in-out;
+    transition: transform var(--color-picker-transition) ease-in-out,
+        pointer-events var(--color-picker-transition) var(--color-picker-transition) ease-in-out;
     z-index: -1;
     pointer-events: none;
 }
