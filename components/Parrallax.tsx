@@ -71,14 +71,14 @@ export default function Parrallax({ container, parrallaxRefs }: any) {
 
                     if (speed && speed > 0) {
                         element.style.transition = checkTransitions(getComputedStyle(element).transition);
-                        const scale = 1;
+                        const scale = 0.1;
                         // const scale = item.options.speed;
 
                         let x = null,
                             y = null;
 
-                        x = (window.innerWidth / 2 - e.alpha * speed) * scale;
-                        y = (window.innerHeight / 2 - e.beta * speed) * scale;
+                        x = (window.innerWidth / 2 - e.gamma * speed) * scale;
+                        y = (window.innerHeight / 2 - e.beta + 180 * speed) * scale;
 
                         element.style.transform = `translateX(${-x}px) translateY(${-y}px)`;
                         if (item.options.direction === 'normal') {
@@ -94,7 +94,7 @@ export default function Parrallax({ container, parrallaxRefs }: any) {
         let parentElement: HTMLElement | null;
         if (container === null) {
             window.addEventListener('mousemove', handleParrallax);
-            window.addEventListener('deviceorientation', handleParrallaxMobile);
+            // window.addEventListener('deviceorientation', handleParrallaxMobile);
         } else {
             parentElement = container.current;
             if (parentElement && parrallaxRefs) {
