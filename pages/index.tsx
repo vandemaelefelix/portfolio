@@ -1,7 +1,7 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import { useTheme } from 'next-themes';
-import { useEffect, useRef, useState } from 'react';
+import React, { MutableRefObject, useEffect, useRef, useState } from 'react';
 import Navbar from '../components/Navbar';
 import CustomCursor from '../components/CustomCursor';
 import useIsMobile from '../hooks/useIsMobile';
@@ -9,30 +9,40 @@ import useIsMobile from '../hooks/useIsMobile';
 import styles from '../styles/pages/Home.module.css';
 import Image from 'next/image';
 import homeImage from '../public/images/image.jpg';
+import aboutImage from '../public/images/image.jpg';
 import Spotlight from '../components/Spotlight';
 import ColorPicker from '../components/ColorPicker';
 import { gsap } from 'gsap';
+import Menu from '../components/Menu';
+import About from '../components/About';
+import Parrallax from '../components/Parrallax';
+
+interface MenuHandle {
+    openMenu: () => void;
+}
 
 const Home: NextPage = () => {
     const [isCursorVisible, setIsCursorVisible] = useState(true);
 
-    // const { theme, setTheme, themes } = useTheme();
-    const parent = useRef(null);
+    const parent = useRef<HTMLDivElement>(null);
     const isMobile = useIsMobile();
+    const menuRef = useRef<MenuHandle>(null);
 
-    // const iconRef = useRef(null);
+    const parrallaxRefs = useRef<any[]>([]);
 
-    // useEffect(() => {
-    //     while (iconRef === null) {
-    //         setTimeout(() => {}, 200);
-    //     }
-    //     gsap.to(iconRef.current, { rotation: '+=360' });
+    const toggleMenu = () => {
+        if (menuRef.current) {
+            menuRef.current.openMenu();
+        }
+    };
 
-    //     return () => {};
-    // }, []);
+    useEffect(() => {
+        // TODO: Set scrolltrigger to draw arrow
+        return () => {};
+    }, []);
 
     return (
-        <div ref={parent}>
+        <div>
             {isMobile ? (
                 <></>
             ) : (
@@ -44,11 +54,24 @@ const Home: NextPage = () => {
                 <link rel="icon" href="" />
             </Head>
 
-            <Navbar parent={parent}></Navbar>
+            <Navbar toggleMenu={toggleMenu} parent={parent}></Navbar>
 
-            <main className={styles.content}>
+            <Menu ref={menuRef}></Menu>
+
+            <Parrallax container={null} parrallaxRefs={parrallaxRefs}></Parrallax>
+            <main ref={parent} className={styles.content}>
                 <section className={styles.section1}>
-                    <div className={styles.titleHello}>
+                    <div
+                        ref={(element) => {
+                            if (parrallaxRefs.current) {
+                                parrallaxRefs.current[3] = {
+                                    element: element,
+                                    options: { speed: 0.012, direction: 'invert' },
+                                };
+                            }
+                        }}
+                        className={styles.titleHello}
+                    >
                         <p>
                             hello,
                             <br />
@@ -80,6 +103,14 @@ const Home: NextPage = () => {
 
                     <div className={styles.imageContainer}>
                         <svg
+                            ref={(element) => {
+                                if (parrallaxRefs.current) {
+                                    parrallaxRefs.current[1] = {
+                                        element: element,
+                                        options: { speed: 0.012, direction: 'normal' },
+                                    };
+                                }
+                            }}
                             className={`
                                 ${styles.imageIcon}
                                 ${styles.top}
@@ -106,6 +137,14 @@ const Home: NextPage = () => {
 
                         <div className={styles.imageOverlay}></div>
                         <svg
+                            ref={(element) => {
+                                if (parrallaxRefs.current) {
+                                    parrallaxRefs.current[2] = {
+                                        element: element,
+                                        options: { speed: 0.012, direction: 'invert' },
+                                    };
+                                }
+                            }}
                             className={`
                                 ${styles.imageIcon}
                                 ${styles.bottom}
@@ -131,6 +170,8 @@ const Home: NextPage = () => {
                         </svg>
                     </div>
                 </section>
+
+                <About></About>
 
                 <Spotlight></Spotlight>
             </main>

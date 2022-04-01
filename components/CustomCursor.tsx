@@ -32,6 +32,7 @@ export default function CustomCursor({ fade, dotSpeed, circleSpeed, isVisible }:
     const [isClickDown, setIsClickDown] = useState(false);
     const [isFaded, setIsFaded] = useState(false);
     const [isScroll, setIsScroll] = useState(false);
+    const [isInverted, setIsInverted] = useState(false);
 
     const handleClickUp = (): void => {
         setIsClickDown(false);
@@ -133,9 +134,15 @@ export default function CustomCursor({ fade, dotSpeed, circleSpeed, isVisible }:
                         setIsScroll(true);
                         fadeOutMouse();
                         break;
+                    case 'inverted':
+                        // console.log('scroll mouse');
+                        setIsInverted(true);
+                        fadeInMouse();
+                        break;
 
                     default:
                         setIsScroll(false);
+                        setIsInverted(false);
                         // console.log('default mouse');
                         fadeInMouse();
                         break;
@@ -201,6 +208,7 @@ export default function CustomCursor({ fade, dotSpeed, circleSpeed, isVisible }:
                     ${styles.outerCircle} 
                     ${isClickDown ? styles.click : ''} 
                     ${isFaded ? styles.faded : ''}
+                    ${isInverted ? styles.inverted : ''}
                 `}
             ></span>
             <span
@@ -209,6 +217,7 @@ export default function CustomCursor({ fade, dotSpeed, circleSpeed, isVisible }:
                     ${styles.innerCircle} 
                     ${isClickDown ? styles.click : ''}
                     ${isFaded ? styles.faded : ''}
+                    ${isInverted ? styles.inverted : ''}
                 `}
             ></span>
             <span
