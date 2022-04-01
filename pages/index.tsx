@@ -16,6 +16,7 @@ import { gsap } from 'gsap';
 import Menu from '../components/Menu';
 import About from '../components/About';
 import Parrallax from '../components/Parrallax';
+import TechnologiesMobile from '../components/TechnologiesMobile';
 
 interface MenuHandle {
     openMenu: () => void;
@@ -172,8 +173,7 @@ const Home: NextPage = () => {
                 </section>
 
                 <About></About>
-
-                <Spotlight></Spotlight>
+                {isMobile ? <TechnologiesMobile></TechnologiesMobile> : <Spotlight></Spotlight>}
             </main>
 
             <ColorPicker></ColorPicker>
