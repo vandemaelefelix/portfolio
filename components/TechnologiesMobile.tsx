@@ -38,42 +38,42 @@ export default function TechnologiesMobile() {
             let Mouse = Matter.Mouse;
             let MouseConstraint = Matter.MouseConstraint;
 
-            let engine = Engine.create({});
+            let engine = Engine.create();
 
             let render = Render.create({
                 element: sceneContainerRef.current,
                 engine: engine,
                 canvas: sceneRef.current,
                 options: {
-                    background: 'rgba(255, 0, 0, 0.5)',
+                    background: 'rgba(0, 0, 0, 0)',
                     wireframes: false,
                 },
             });
 
             const floor = Bodies.rectangle(0, 0, 0, STATIC_DENSITY, {
                 isStatic: true,
-                render: {
-                    fillStyle: 'blue',
-                },
+                // render: {
+                //     fillStyle: 'blue',
+                // },
             });
 
             const leftWall = Bodies.rectangle(0, 0, 0, STATIC_DENSITY, {
                 isStatic: true,
-                render: {
-                    fillStyle: 'blue',
-                },
+                // render: {
+                //     fillStyle: 'blue',
+                // },
             });
             const rightWall = Bodies.rectangle(0, 0, 0, STATIC_DENSITY, {
                 isStatic: true,
-                render: {
-                    fillStyle: 'blue',
-                },
+                // render: {
+                //     fillStyle: 'blue',
+                // },
             });
             const roof = Bodies.rectangle(0, 0, 0, STATIC_DENSITY, {
                 isStatic: true,
-                render: {
-                    fillStyle: 'blue',
-                },
+                // render: {
+                //     fillStyle: 'blue',
+                // },
             });
 
             const icons: any = [];
@@ -102,7 +102,17 @@ export default function TechnologiesMobile() {
                         render: {
                             visible: false,
                         },
-                    },
+
+                        // bodyA: icons[0],
+                        // bodyB: icons[0],
+                        // label: '',
+                        // damping: 0,
+                        // id: 1,
+                        // pointA: { x: 0, y: 0 },
+                        // pointB: { x: 0, y: 0 },
+                        // length: 0,
+                        // type: 'constraint',
+                    } as Matter.Constraint,
                 });
 
             Matter.Events.on(mouseConstraint, 'mousedown', function (event: any) {
