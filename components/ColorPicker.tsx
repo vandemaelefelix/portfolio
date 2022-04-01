@@ -50,39 +50,6 @@ export default function ColorPicker() {
         },
     ]);
 
-    // const colors: Theme[] = [
-    //     {
-    //         name: 'beige',
-    //         mainColor: 'hsl(60, 33%, 91%)',
-    //         accentColor: 'hsl(222, 79%, 21%)',
-    //     },
-    //     {
-    //         name: 'green',
-    //         mainColor: 'hsl(130, 69%, 23%)',
-    //         accentColor: 'hsl(61, 80%, 63%)',
-    //     },
-    //     {
-    //         name: 'lightblue',
-    //         mainColor: 'hsl(166, 61%, 67%)',
-    //         accentColor: 'hsl(302, 68%, 50%)',
-    //     },
-    //     {
-    //         name: 'yellow',
-    //         mainColor: 'hsl(37, 82%, 57%)',
-    //         accentColor: 'hsl(11, 76%, 42%)',
-    //     },
-    //     {
-    //         name: 'palegreen',
-    //         mainColor: 'hsl(178, 63%, 39%)',
-    //         accentColor: 'hsl(22, 66%, 94%)',
-    //     },
-    //     {
-    //         name: 'black',
-    //         mainColor: 'hsl(0, 0%, 0%)',
-    //         accentColor: 'hsl(123, 100%, 50%)',
-    //     },
-    // ];
-
     const getTheme = (themeName: string): Theme => {
         const selectedTheme = colors.filter((filterTheme: any) => {
             return String(filterTheme.name) == String(themeName);
@@ -90,18 +57,20 @@ export default function ColorPicker() {
         return selectedTheme[0];
     };
 
-    useEffect(() => {
-        console.log(getTheme(theme));
-    });
-
     return (
         <div
             className={`${styles.colorpicker} ${isOpen ? styles.show : ''}`}
             data-mouse={'scroll'}
-            onMouseOver={() => {
+            onMouseEnter={() => {
                 if (!isMobile) {
                     if (!isClosing) {
+                        // setIsOpen(true);
+
+                        setIsClosing(true);
                         setIsOpen(true);
+                        setTimeout(() => {
+                            setIsClosing(false);
+                        }, 750);
                     }
                 }
             }}
@@ -135,7 +104,7 @@ export default function ColorPicker() {
                     style={{ backgroundColor: getTheme(theme) ? getTheme(theme).accentColor : '' }}
                 ></div>
             </div>
-            <div className={styles.colorsContainer}>
+            <div className={`${styles.colorsContainer} ${isClosing ? styles.closing : ''}`}>
                 {themes.map((currentTheme: string) => {
                     return (
                         <div
@@ -155,6 +124,7 @@ export default function ColorPicker() {
                             style={{
                                 backgroundColor: getTheme(currentTheme).mainColor,
                                 borderColor: getTheme(currentTheme).accentColor,
+                                pointerEvents: isClosing ? 'none' : 'all',
                             }}
                             className={styles.colorCircle}
                         >
