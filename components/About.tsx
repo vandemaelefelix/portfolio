@@ -27,7 +27,7 @@ export default function About() {
     return (
         <>
             <Parrallax container={null} parrallaxRefs={parrallaxRefs}></Parrallax>
-            <section ref={sectionRef} className={styles.about}>
+            <section id={'aboutSection'} ref={sectionRef} className={styles.about}>
                 <div className={styles.content}>
                     <div className={styles.imageContainer}>
                         <svg

@@ -5,6 +5,7 @@
     background-color: var(--main-color);
     z-index: 100;
     scroll-snap-align: start;
+    scroll-snap-stop: normal;
 }
 
 .container .sceneContainer {
@@ -42,4 +43,47 @@
     /* order: 1; */
     text-align: center;
     margin-top: 2rem;
+}
+
+/* ----------------------------- */
+.menuIcon {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+}
+
+.menuIcon > span {
+    position: absolute;
+    display: block;
+    width: 1rem;
+    height: 1rem;
+
+    background-color: var(--accent-color);
+    border-radius: 50%;
+    transition: transform var(--theme-transition) ease-in-out, background-color var(--theme-transition) ease-in-out;
+}
+
+.menuIcon > p {
+    font-family: var(--main-font);
+    transform: translateX(-1rem);
+    opacity: 0;
+    transition: transform var(--theme-transition) ease-in-out, opacity var(--theme-transition) ease-in-out,
+        color var(--theme-transition) ease-in-out;
+    color: var(--accent-color);
+}
+
+[data-device='desktop'] .menuIcon:hover > p,
+[data-device='mobile'] .menuIcon > p {
+    transform: translateX(-2rem);
+    opacity: 1;
+}
+
+[data-device='desktop'] .menuIcon:hover > span,
+[data-device='mobile'] .menuIcon > span {
+    transform: scale(1.25) translateX(0.5rem);
 }

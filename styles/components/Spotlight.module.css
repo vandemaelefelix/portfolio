@@ -1,5 +1,6 @@
 .section2 {
     scroll-snap-align: start;
+    scroll-snap-stop: normal;
     width: 100vw;
     height: 100vh;
     background: var(--accent-color);
