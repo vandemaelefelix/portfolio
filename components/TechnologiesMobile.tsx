@@ -12,10 +12,7 @@ interface Icon {
 }
 
 export default function TechnologiesMobile() {
-    const [selectedIcon, setSelectedIcon] = useState<Icon>({
-        name: 'test',
-        path: '',
-    });
+    const [selectedIcon, setSelectedIcon] = useState<Icon | null>(null);
 
     const sceneContainerRef = useRef<HTMLDivElement>(null);
     const sceneRef = useRef<HTMLCanvasElement>(null);
@@ -29,7 +26,7 @@ export default function TechnologiesMobile() {
         }
     };
 
-    useEffect(() => {
+    const setupScene = () => {
         if (sceneContainerRef.current && sceneRef.current) {
             let Engine = Matter.Engine;
             let Render = Matter.Render;
@@ -52,28 +49,16 @@ export default function TechnologiesMobile() {
 
             const floor = Bodies.rectangle(0, 0, 0, STATIC_DENSITY, {
                 isStatic: true,
-                // render: {
-                //     fillStyle: 'blue',
-                // },
             });
 
             const leftWall = Bodies.rectangle(0, 0, 0, STATIC_DENSITY, {
                 isStatic: true,
-                // render: {
-                //     fillStyle: 'blue',
-                // },
             });
             const rightWall = Bodies.rectangle(0, 0, 0, STATIC_DENSITY, {
                 isStatic: true,
-                // render: {
-                //     fillStyle: 'blue',
-                // },
             });
             const roof = Bodies.rectangle(0, 0, 0, STATIC_DENSITY, {
                 isStatic: true,
-                // render: {
-                //     fillStyle: 'blue',
-                // },
             });
 
             const icons: any = [];
@@ -102,16 +87,6 @@ export default function TechnologiesMobile() {
                         render: {
                             visible: false,
                         },
-
-                        // bodyA: icons[0],
-                        // bodyB: icons[0],
-                        // label: '',
-                        // damping: 0,
-                        // id: 1,
-                        // pointA: { x: 0, y: 0 },
-                        // pointB: { x: 0, y: 0 },
-                        // length: 0,
-                        // type: 'constraint',
                     } as Matter.Constraint,
                 });
 
@@ -136,6 +111,95 @@ export default function TechnologiesMobile() {
 
             window.addEventListener('resize', handleResize);
         }
+    };
+
+    useEffect(() => {
+        // if (sceneContainerRef.current && sceneRef.current) {
+        //     let Engine = Matter.Engine;
+        //     let Render = Matter.Render;
+        //     let World = Matter.World;
+        //     let Bodies = Matter.Bodies;
+        //     let Mouse = Matter.Mouse;
+        //     let MouseConstraint = Matter.MouseConstraint;
+
+        //     let engine = Engine.create();
+
+        //     let render = Render.create({
+        //         element: sceneContainerRef.current,
+        //         engine: engine,
+        //         canvas: sceneRef.current,
+        //         options: {
+        //             background: 'rgba(0, 0, 0, 0)',
+        //             wireframes: false,
+        //         },
+        //     });
+
+        //     const floor = Bodies.rectangle(0, 0, 0, STATIC_DENSITY, {
+        //         isStatic: true,
+        //     });
+
+        //     const leftWall = Bodies.rectangle(0, 0, 0, STATIC_DENSITY, {
+        //         isStatic: true,
+        //     });
+        //     const rightWall = Bodies.rectangle(0, 0, 0, STATIC_DENSITY, {
+        //         isStatic: true,
+        //     });
+        //     const roof = Bodies.rectangle(0, 0, 0, STATIC_DENSITY, {
+        //         isStatic: true,
+        //     });
+
+        //     const icons: any = [];
+
+        //     technologies.forEach((tech: Icon) => {
+        //         const ball = Bodies.circle(150, 0, 50, {
+        //             label: JSON.stringify(tech),
+        //             restitution: 0.3,
+        //             render: {
+        //                 sprite: {
+        //                     texture: `/images/technologies/${tech.path}`,
+        //                     xScale: 0.5,
+        //                     yScale: 0.5,
+        //                 },
+        //                 fillStyle: 'yellow',
+        //             },
+        //         });
+        //         icons.push(ball);
+        //     });
+
+        //     var mouse = Mouse.create(render.canvas),
+        //         mouseConstraint = MouseConstraint.create(engine, {
+        //             mouse: mouse,
+        //             constraint: {
+        //                 stiffness: 0.3,
+        //                 render: {
+        //                     visible: false,
+        //                 },
+        //             } as Matter.Constraint,
+        //         });
+
+        //     Matter.Events.on(mouseConstraint, 'mousedown', function (event: any) {
+        //         if (mouseConstraint.body) {
+        //             const label: Icon = JSON.parse(mouseConstraint.body.label);
+        //             console.log(mouseConstraint.body);
+        //             setSelectedIcon(label);
+        //         }
+        //     });
+
+        //     World.add(engine.world, mouseConstraint);
+
+        //     World.add(engine.world, [floor, leftWall, rightWall, roof]);
+        //     World.add(engine.world, icons);
+
+        //     Engine.run(engine);
+        //     Render.run(render);
+
+        //     setContraints(sceneContainerRef.current.getBoundingClientRect());
+        //     setScene(render);
+
+        //     window.addEventListener('resize', handleResize);
+        // }
+
+        setupScene();
 
         return () => {
             window.removeEventListener('resize', handleResize);
@@ -213,22 +277,40 @@ export default function TechnologiesMobile() {
     }, [scene, constraints]);
 
     return (
-        <section className={`${styles.container}`}>
+        <section id={'spotlightSection'} className={`${styles.container}`}>
+            <div
+                onClick={() => {
+                    setSelectedIcon(null);
+                    setupScene();
+                }}
+                className={`${styles.menuIcon}`}
+                data-mouse="hide"
+            >
+                <p data-mouse="hide" className={styles.menuIconText}>
+                    reset
+                </p>
+                <span data-mouse="hide" className={styles.menuIconDot}></span>
+            </div>
+
             <div className={`${styles.sceneContainer}`} ref={sceneContainerRef}>
                 <canvas className={`${styles.scene}`} ref={sceneRef}></canvas>
             </div>
-            <div className={`${styles.details}`}>
-                <h1 className={`${styles.name}`}>{selectedIcon.name}</h1>
-                <div className={styles.imageWrapper}>
-                    <Image
-                        className={styles.image}
-                        alt={selectedIcon.name}
-                        src={`/images/technologies/${selectedIcon.path}`}
-                        width={100}
-                        height={100}
-                    ></Image>
+            {selectedIcon ? (
+                <div className={`${styles.details}`}>
+                    <h1 className={`${styles.name}`}>{selectedIcon.name}</h1>
+                    <div className={styles.imageWrapper}>
+                        <Image
+                            className={styles.image}
+                            alt={selectedIcon.name}
+                            src={`/images/technologies/${selectedIcon.path}`}
+                            width={100}
+                            height={100}
+                        ></Image>
+                    </div>
                 </div>
-            </div>
+            ) : (
+                <></>
+            )}
         </section>
     );
 }

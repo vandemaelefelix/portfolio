@@ -1,5 +1,6 @@
 .about {
     scroll-snap-align: start;
+    scroll-snap-stop: normal;
     min-height: 100vh;
     width: 100vw;
 }
@@ -72,10 +73,10 @@
 
 .imageArrow {
     position: absolute;
+    pointer-events: none;
     top: -5rem;
     left: -5rem;
     width: 10rem;
-    /* fill: var(--accent-color); */
     stroke: var(--accent-color);
     z-index: 40;
 }
@@ -84,7 +85,6 @@
     font-size: 1.2rem;
     font-family: var(--main-font);
     color: var(--accent-color);
-    /* filter: brightness(2); */
     line-height: 1.75rem;
     text-align: justify;
 }

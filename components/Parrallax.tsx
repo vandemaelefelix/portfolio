@@ -1,6 +1,8 @@
 import { useEffect } from 'react';
+import useIsMobile from '../hooks/useIsMobile';
 
 export default function Parrallax({ container, parrallaxRefs }: any) {
+    const isMobile = useIsMobile();
     useEffect(() => {
         window.addEventListener('deviceorientation', (e: any) => {
             console.log(e);
@@ -93,8 +95,11 @@ export default function Parrallax({ container, parrallaxRefs }: any) {
 
         let parentElement: HTMLElement | null;
         if (container === null) {
-            window.addEventListener('mousemove', handleParrallax);
-            // window.addEventListener('deviceorientation', handleParrallaxMobile);
+            if (!isMobile) {
+                window.addEventListener('mousemove', handleParrallax);
+            } else {
+                // window.addEventListener('deviceorientation', handleParrallaxMobile);
+            }
         } else {
             parentElement = container.current;
             if (parentElement && parrallaxRefs) {
@@ -111,7 +116,7 @@ export default function Parrallax({ container, parrallaxRefs }: any) {
                 }
             }
         };
-    }, [container, parrallaxRefs]);
+    }, [container, parrallaxRefs, isMobile]);
 
     return <></>;
 }

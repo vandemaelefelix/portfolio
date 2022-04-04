@@ -18,6 +18,11 @@ import About from '../components/About';
 import Parrallax from '../components/Parrallax';
 import TechnologiesMobile from '../components/TechnologiesMobile';
 
+import { ScrollToPlugin } from 'gsap/dist/ScrollToPlugin';
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
+gsap.registerPlugin(ScrollToPlugin);
+gsap.registerPlugin(ScrollTrigger);
+
 interface MenuHandle {
     openMenu: () => void;
 }
@@ -25,7 +30,7 @@ interface MenuHandle {
 const Home: NextPage = () => {
     const [isCursorVisible, setIsCursorVisible] = useState(true);
 
-    const parent = useRef<HTMLDivElement>(null);
+    const parentRef = useRef<HTMLDivElement>(null);
     const isMobile = useIsMobile();
     const menuRef = useRef<MenuHandle>(null);
 
@@ -37,13 +42,18 @@ const Home: NextPage = () => {
         }
     };
 
+    const scrollDown = () => {
+        console.log('Scrolling down');
+        gsap.to(parentRef.current, { duration: 0.75, scrollTo: { y: '#aboutSection' } });
+    };
+
     useEffect(() => {
         // TODO: Set scrolltrigger to draw arrow
         return () => {};
     }, []);
 
     return (
-        <div>
+        <>
             {isMobile ? (
                 <></>
             ) : (
@@ -55,13 +65,13 @@ const Home: NextPage = () => {
                 <link rel="icon" href="" />
             </Head>
 
-            <Navbar toggleMenu={toggleMenu} parent={parent}></Navbar>
+            <Navbar toggleMenu={toggleMenu} parent={parentRef}></Navbar>
 
-            <Menu ref={menuRef}></Menu>
+            <Menu parent={parentRef} ref={menuRef}></Menu>
 
             <Parrallax container={null} parrallaxRefs={parrallaxRefs}></Parrallax>
-            <main ref={parent} className={styles.content}>
-                <section className={styles.section1}>
+            <main id={'mainSection'} ref={parentRef} className={styles.content}>
+                <section id="firstSection" className={styles.section1}>
                     <div
                         ref={(element) => {
                             if (parrallaxRefs.current) {
@@ -160,15 +170,17 @@ const Home: NextPage = () => {
                     </div>
 
                     <div data-mouse="scroll" className={styles.scrollDown}>
-                        <p>scroll down</p>
-                        <svg className={styles.scrollDownIcon} viewBox="0 0 20.55 12.458">
-                            <path
-                                d="M7868.459,3382.714a1.819,1.819,0,0,1-1.268-.512l-8.091-7.808a1.825,1.825,0,0,1,2.535-2.627l6.8,6.563,6.54-6.54a1.825,1.825,0,1,1,2.581,2.581l-7.807,7.808A1.821,1.821,0,0,1,7868.459,3382.714Z"
-                                transform="translate(-7858.042 -3370.756)"
-                                strokeLinecap="round"
-                                strokeWidth="1"
-                            />
-                        </svg>
+                        <div onClick={scrollDown} data-mouse="scroll">
+                            <p>scroll down</p>
+                            <svg className={styles.scrollDownIcon} viewBox="0 0 20.55 12.458">
+                                <path
+                                    d="M7868.459,3382.714a1.819,1.819,0,0,1-1.268-.512l-8.091-7.808a1.825,1.825,0,0,1,2.535-2.627l6.8,6.563,6.54-6.54a1.825,1.825,0,1,1,2.581,2.581l-7.807,7.808A1.821,1.821,0,0,1,7868.459,3382.714Z"
+                                    transform="translate(-7858.042 -3370.756)"
+                                    strokeLinecap="round"
+                                    strokeWidth="1"
+                                />
+                            </svg>
+                        </div>
                     </div>
                 </section>
 
@@ -177,7 +189,7 @@ const Home: NextPage = () => {
             </main>
 
             <ColorPicker></ColorPicker>
-        </div>
+        </>
     );
 };
 

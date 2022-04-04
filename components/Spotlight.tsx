@@ -165,28 +165,25 @@ export default function Spotlight() {
     };
 
     return (
-        <section className={`${styles.section2} ${isDark ? 'styles.dark' : ''}`} id={'section2'}>
+        <section id={'spotlightSection'} className={`${styles.section2} ${isDark ? 'styles.dark' : ''}`}>
             <div
                 data-mouse="hide"
                 onMouseMove={handleMouseMove}
-                onTouchStart={() => {
-                    clearTimeout(touchTimeout);
-                    touchTimeout = setTimeout(() => {
-                        setActivateSpotlightMobile(true);
-                        disableScroll();
-                    }, 500);
-                }}
-                onTouchEnd={() => {
-                    clearTimeout(touchTimeout);
-                    enableScroll();
-                    setActivateSpotlightMobile(false);
-                }}
-                onTouchMoveCapture={handleTouchMove}
+                // onTouchStart={() => {
+                //     clearTimeout(touchTimeout);
+                //     touchTimeout = setTimeout(() => {
+                //         setActivateSpotlightMobile(true);
+                //         disableScroll();
+                //     }, 500);
+                // }}
+                // onTouchEnd={() => {
+                //     clearTimeout(touchTimeout);
+                //     enableScroll();
+                //     setActivateSpotlightMobile(false);
+                // }}
+                // onTouchMoveCapture={handleTouchMove}
                 className={styles.spotlightWrapper}
                 onClick={() => {
-                    // console.log('click');
-                    // setIsShrinking(true);
-                    // toggleShrinkSpotlight();
                     if (!isExpanding) {
                         setIsExpanding(true);
                         toggleSpotlight();

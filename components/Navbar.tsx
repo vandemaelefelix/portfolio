@@ -1,11 +1,16 @@
 import { useEffect, useRef, useState } from 'react';
 import styles from '../styles/components/Navbar.module.css';
+
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
+import { ScrollToPlugin } from 'gsap/dist/ScrollToPlugin';
 gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollToPlugin);
 
 export default function Navbar({ parent, toggleMenu }: any) {
-    const moveToTop = () => {};
+    const moveToTop = () => {
+        gsap.to(parent.current, { duration: 0.75, scrollTo: { y: 0 } });
+    };
     const [menuIsOpen, setMenuIsOpen] = useState(false);
 
     const iconRef = useRef(null);
@@ -18,14 +23,15 @@ export default function Navbar({ parent, toggleMenu }: any) {
         var rotate = gsap
             .timeline({
                 scrollTrigger: {
-                    trigger: parent.current,
-                    scrub: 0,
+                    scroller: '#mainSection',
+                    trigger: '#mainSection',
+                    scrub: 0.2,
                     start: 'top top',
                     end: '+=10000',
                 },
             })
             .to(iconRef.current, {
-                rotation: 360 * 20,
+                rotation: 360 * 10,
                 ease: 'none',
             });
 

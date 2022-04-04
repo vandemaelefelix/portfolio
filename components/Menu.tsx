@@ -1,10 +1,20 @@
 import { forwardRef, useImperativeHandle, useState } from 'react';
 import styles from '../styles/components/Menu.module.css';
+import { gsap } from 'gsap';
 
-const Menu = forwardRef((props, ref) => {
+import { ScrollToPlugin } from 'gsap/dist/ScrollToPlugin';
+gsap.registerPlugin(ScrollToPlugin);
+
+const Menu = forwardRef(({ parent }: any, ref) => {
     const [isOpen, setIsOpen] = useState<boolean>(false);
     const [isOpening, setIsOpening] = useState<boolean>(false);
-    const [pages, setPages] = useState(['home', 'about me', 'my technologies', 'contact me']);
+    const [pages, setPages] = useState([
+        { name: 'home', id: 'firstSection' },
+        { name: 'about me', id: 'aboutSection' },
+        { name: 'my technologies', id: 'spotlightSection' },
+        { name: 'contact me', id: 'contactSection' },
+    ]);
+    // const [pages, setPages] = useState(['home', 'about me', 'my technologies', 'contact me']);
 
     const openMenu = () => {
         if (!isOpening) {
@@ -30,9 +40,13 @@ const Menu = forwardRef((props, ref) => {
         }
     };
 
-    const goTo = (page: string) => {
-        console.log(page);
+    const goTo = (page: any) => {
+        console.log(page.name);
+        console.log(page.id);
         closeMenu();
+        setTimeout(() => {
+            gsap.to(parent.current, { duration: 1, scrollTo: { y: `#${page.id}` } });
+        }, 250);
     };
 
     useImperativeHandle(ref, () => ({
@@ -70,12 +84,12 @@ const Menu = forwardRef((props, ref) => {
             </div>
             <div data-mouse="inverted" className={`${styles.menuContent}`}>
                 <ul data-mouse="inverted">
-                    {pages.map((page: string) => (
+                    {pages.map((page: any) => (
                         <li
                             onClick={() => {
                                 goTo(page);
                             }}
-                            key={page}
+                            key={page.id}
                             data-mouse="inverted"
                             className={`${isOpening ? styles.closing : ''}`}
                         >
@@ -95,7 +109,10 @@ const Menu = forwardRef((props, ref) => {
                                 </svg>
                             </span>
                             {'  '}
-                            <p>{page}</p>
+                            <p>{page.name}</p>
+                            {/* <Link href={`#${page.id}`} scroll={false}>
+                                <a>{page.name}</a>
+                            </Link> */}
                             {'  '}
                             <span>
                                 <svg viewBox="0 0 37.833 37.833">
