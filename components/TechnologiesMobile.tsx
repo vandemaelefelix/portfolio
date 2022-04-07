@@ -1,10 +1,11 @@
 import styles from '../styles/components/TechnologiesMobile.module.css';
 import Matter from 'matter-js';
 import { useEffect, useRef, useState } from 'react';
-import technologies from '../public/images/technologies/technologies';
+// import technologies from '../public/images/technologies/technologies';
+import tools from '../utils/tools';
 import Image from 'next/image';
 
-const STATIC_DENSITY = 50;
+const STATIC_DENSITY = 80;
 
 interface Icon {
     name: string;
@@ -63,15 +64,16 @@ export default function TechnologiesMobile() {
 
             const icons: any = [];
 
-            technologies.forEach((tech: Icon) => {
-                const ball = Bodies.circle(150, 0, 50, {
+            tools.forEach((tech: Icon) => {
+                const ball = Bodies.circle(Math.random() * 150, 0, 40, {
                     label: JSON.stringify(tech),
-                    restitution: 0.3,
+                    restitution: 0.1,
                     render: {
                         sprite: {
-                            texture: `/images/technologies/${tech.path}`,
-                            xScale: 0.5,
-                            yScale: 0.5,
+                            texture: `/images/tools/${tech.path}`,
+                            // texture: `/images/technologies/${tech.path}`,
+                            xScale: 0.4,
+                            yScale: 0.4,
                         },
                         fillStyle: 'yellow',
                     },
@@ -302,7 +304,7 @@ export default function TechnologiesMobile() {
                         <Image
                             className={styles.image}
                             alt={selectedIcon.name}
-                            src={`/images/technologies/${selectedIcon.path}`}
+                            src={`/images/tools/${selectedIcon.path}`}
                             width={100}
                             height={100}
                         ></Image>

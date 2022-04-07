@@ -9,7 +9,6 @@ export default function About() {
     const parrallaxRefs = useRef<any[]>([]);
     const arrowPath = useRef<SVGPathElement | null>(null);
     useEffect(() => {
-        console.log(arrowPath.current);
         if (arrowPath.current) {
             const path = arrowPath.current;
             document.documentElement.style.setProperty('--arrow-length', path.getTotalLength().toString());
