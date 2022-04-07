@@ -4,9 +4,9 @@ import useIsMobile from '../hooks/useIsMobile';
 export default function Parrallax({ container, parrallaxRefs }: any) {
     const isMobile = useIsMobile();
     useEffect(() => {
-        window.addEventListener('deviceorientation', (e: any) => {
-            console.log(e);
-        });
+        // window.addEventListener('deviceorientation', (e: any) => {
+        //     console.log(e);
+        // });
 
         const checkTransitions = (transitionString: string) => {
             const transitions = transitionString.split(',');

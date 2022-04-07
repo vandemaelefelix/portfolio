@@ -48,6 +48,10 @@ const technologies = [
         path: 'html5.svg',
     },
     {
+        name: 'Adobe Illustrator',
+        path: 'illustrator.svg',
+    },
+    {
         name: 'javascript',
         path: 'javascript.svg',
     },
@@ -97,7 +101,7 @@ const technologies = [
     },
     {
         name: 'raspberry pi',
-        path: 'raspberry-pi.svg',
+        path: 'raspberry.svg',
     },
     {
         name: 'react',
@@ -108,8 +112,16 @@ const technologies = [
         path: 'redux.svg',
     },
     {
+        name: 'sass',
+        path: 'sass.svg',
+    },
+    {
         name: 'socket io',
         path: 'socketio.svg',
+    },
+    {
+        name: 'tailwind css',
+        path: 'tailwind.svg',
     },
     {
         name: 'tensorflow',

@@ -16,12 +16,16 @@ import { gsap } from 'gsap';
 import Menu from '../components/Menu';
 import About from '../components/About';
 import Parrallax from '../components/Parrallax';
-import TechnologiesMobile from '../components/TechnologiesMobile';
+// import TechnologiesMobile from '../components/TechnologiesMobile';
 
 import { ScrollToPlugin } from 'gsap/dist/ScrollToPlugin';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 gsap.registerPlugin(ScrollToPlugin);
 gsap.registerPlugin(ScrollTrigger);
+
+import dynamic from 'next/dynamic';
+
+const DynamicTechnologiesMobile = dynamic(() => import('../components/TechnologiesMobile'));
 
 interface MenuHandle {
     openMenu: () => void;
@@ -185,7 +189,8 @@ const Home: NextPage = () => {
                 </section>
 
                 <About></About>
-                {isMobile ? <TechnologiesMobile></TechnologiesMobile> : <Spotlight></Spotlight>}
+                {isMobile ? <DynamicTechnologiesMobile></DynamicTechnologiesMobile> : <Spotlight></Spotlight>}
+                {/* {isMobile ? <TechnologiesMobile></TechnologiesMobile> : <Spotlight></Spotlight>} */}
             </main>
 
             <ColorPicker></ColorPicker>
