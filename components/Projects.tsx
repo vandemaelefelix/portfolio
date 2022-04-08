@@ -146,25 +146,29 @@ export default function Projects({ isMobile }: any) {
                                     />
                                 </svg>
                             </div>
-                            <div className={`${styles.link}`}>
-                                <a
-                                    data-mouse={'hide'}
-                                    // className={`${styles.link}`}
-                                    target="_blank"
-                                    rel="noreferrer"
-                                    href={project.link}
-                                >
-                                    see more
-                                    <span data-mouse={'hide'} className={`${styles.arrow}`}>
-                                        <svg viewBox="0 0 330.001 180">
-                                            <path
-                                                d="M100.606,100.606,150,51.212V315a15,15,0,0,0,30,0V51.212l49.394,49.394a15,15,0,0,0,21.212-21.213l-75-75a15,15,0,0,0-21.213,0l-75,75a15,15,0,0,0,21.213,21.213Z"
-                                                transform="translate(330 -74.999) rotate(90)"
-                                            />
-                                        </svg>
-                                    </span>
-                                </a>
-                            </div>
+                            {project.link != '' ? (
+                                <div className={`${styles.link}`}>
+                                    <a
+                                        data-mouse={'hide'}
+                                        // className={`${styles.link}`}
+                                        target="_blank"
+                                        rel="noreferrer"
+                                        href={project.link}
+                                    >
+                                        see more
+                                        <span data-mouse={'hide'} className={`${styles.arrow}`}>
+                                            <svg viewBox="0 0 330.001 180">
+                                                <path
+                                                    d="M100.606,100.606,150,51.212V315a15,15,0,0,0,30,0V51.212l49.394,49.394a15,15,0,0,0,21.212-21.213l-75-75a15,15,0,0,0-21.213,0l-75,75a15,15,0,0,0,21.213,21.213Z"
+                                                    transform="translate(330 -74.999) rotate(90)"
+                                                />
+                                            </svg>
+                                        </span>
+                                    </a>
+                                </div>
+                            ) : (
+                                <></>
+                            )}
                         </div>
                     </div>
                 </>
