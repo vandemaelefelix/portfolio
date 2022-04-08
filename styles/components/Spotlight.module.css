@@ -28,8 +28,8 @@
 
 .section2Overlay {
     position: absolute;
-    top: 0;
-    left: 0;
+    top: -50;
+    left: -50;
     transform: translate(-50%, -50%);
     width: 200%;
     height: 200%;
@@ -135,8 +135,15 @@
 .toolsItem {
     width: 20%;
     min-width: 20%;
-    /* height: 5rem; */
     flex: 0.1;
+
+    user-drag: none;
+    -webkit-user-drag: none;
+
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
 }
 .toolsItem > * {
     pointer-events: none;

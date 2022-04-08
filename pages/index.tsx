@@ -24,6 +24,7 @@ gsap.registerPlugin(ScrollToPlugin);
 gsap.registerPlugin(ScrollTrigger);
 
 import dynamic from 'next/dynamic';
+import Projects from '../components/Projects';
 
 const DynamicTechnologiesMobile = dynamic(() => import('../components/TechnologiesMobile'));
 
@@ -189,6 +190,9 @@ const Home: NextPage = () => {
                 </section>
 
                 <About></About>
+
+                <Projects></Projects>
+
                 {isMobile ? <DynamicTechnologiesMobile></DynamicTechnologiesMobile> : <Spotlight></Spotlight>}
                 {/* {isMobile ? <TechnologiesMobile></TechnologiesMobile> : <Spotlight></Spotlight>} */}
             </main>

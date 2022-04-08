@@ -244,7 +244,9 @@ export default function Spotlight() {
                     }
                 }}
             >
-                <div className={`${styles.content}`}>{loadContent()}</div>
+                <div className={`${styles.content}`} data-mouse={'hide'}>
+                    {loadContent()}
+                </div>
                 <div ref={spotlight} className={`${styles.section2Overlay} ${hideSpotlight ? styles.hide : ''}`}></div>
                 <div ref={spotlightText} className={`${styles.spotlightText} ${!showSpotlightText ? styles.hide : ''}`}>
                     <p>click to reveal</p>
