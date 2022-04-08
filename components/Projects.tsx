@@ -11,21 +11,26 @@ import Parrallax from './Parrallax';
 
 gsap.registerPlugin(ScrollTrigger);
 
-export default function Projects() {
-    const isMobile = useIsMobile();
+export default function Projects({ isMobile }: any) {
+    // const isMobile = useIsMobile();
     const sectionRef = useRef();
     const parrallaxRefs = useRef<any[]>([]);
 
     useEffect(() => {
-        if (!isMobile) {
+        let horizontalScroll: any;
+
+        const setupHorizontalScroll = (): void => {
+            // killHorizontalScroll();
+
             ScrollTrigger.defaults({
                 markers: false,
             });
 
-            let horizontalScroll = gsap.to('#horizontalSection', {
+            horizontalScroll = gsap.to('#horizontalSection', {
                 xPercent: () => -100 * (projects.length - 1),
                 ease: 'ease',
                 scrollTrigger: {
+                    id: 'horizontalScroll',
                     scroller: '#mainSection',
                     trigger: '#projectsSection',
                     start: 'top+200 top+200',
@@ -41,27 +46,46 @@ export default function Projects() {
                     // },
                 },
             });
+        };
 
-            // projects.forEach((project: any) => {
-            //     let projectAnimation = gsap.to(`#section${project.id}`, {
-            //         opacity: 0,
-            //         y: 100,
-            //         ease: 'ease',
+        const killHorizontalScroll = () => {
+            if (horizontalScroll) {
+                horizontalScroll.kill(true);
+                ScrollTrigger.getById('horizontalScroll').kill(true);
+            }
+        };
 
-            //         scrollTrigger: {
-            //             markers: true,
-            //             scroller: '#projectsSection',
-            //             trigger: `#section${project.id}`,
-            //             scrub: 2,
-            //             start: 'top top',
-            //             end: '+=400vh',
-            //         },
-            //     });
-            // });
+        if (!isMobile) {
+            let mediaQuery = window.matchMedia('(min-width: 1000px)');
+
+            if (mediaQuery.matches) {
+                /* the viewport is less than or exactly 500 pixels wide */
+                console.log(window.innerWidth);
+                setupHorizontalScroll();
+            } else {
+                console.log(window.innerWidth);
+                /* the viewport is more than 500 pixels wide */
+            }
+
+            mediaQuery.addEventListener('change', () => {
+                if (mediaQuery.matches) {
+                    setupHorizontalScroll();
+                } else {
+                    killHorizontalScroll();
+                }
+            });
+        } else {
+            killHorizontalScroll();
         }
 
-        return () => {};
-    }, []);
+        return () => {
+            // if (horizontalScroll) {
+            //     horizontalScroll.kill(true);
+            //     ScrollTrigger.getById('horizontalScroll').kill(true);
+            // }
+            killHorizontalScroll();
+        };
+    }, [isMobile]);
 
     const loadProjects = (): JSX.Element[] => {
         const projectsContent: JSX.Element[] = [];
