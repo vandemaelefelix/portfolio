@@ -1,11 +1,12 @@
 .projectsSection {
     width: 100vw;
-    height: 100vh;
+    height: fit-content;
     overflow-x: auto;
     overflow-y: hidden;
     padding: 0;
     margin: 0;
     scroll-behavior: smooth;
+    padding-top: 3rem;
 }
 
 .projectsContainer {
@@ -39,8 +40,9 @@
 
 .projectContainer {
     min-width: 100vw;
-    height: 100vh;
-    padding-top: 7rem;
+    height: fit-content;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -55,20 +57,33 @@
     align-items: center;
     flex-direction: column;
     /* padding-top: 7rem; */
-    background-color: var(--main-color);
+    /* background-color: var(--main-color); */
 }
 
 [data-device='mobile'] .projectContainer {
     height: fit-content;
 }
 
-/* .project:nth-child(odd) {
+.projectContainer:nth-child(odd) {
     background-color: var(--main-color);
+    color: var(--accent-color);
 }
 
-.project:nth-child(even) {
+.projectContainer:nth-child(even) {
     background-color: var(--accent-color);
-} */
+    color: var(--main-color);
+}
+.projectContainer:nth-child(odd) * {
+    color: var(--accent-color);
+    fill: var(--accent-color);
+    border-color: var(--accent-color);
+}
+
+.projectContainer:nth-child(even) * {
+    color: var(--main-color);
+    fill: var(--main-color);
+    border-color: var(--main-color);
+}
 
 /* ----------------- */
 /* ----- Image ----- */
@@ -171,7 +186,7 @@
     order: 3;
     width: 80%;
     color: var(--accent-color);
-    font-family: var(--main-font);
+    font-family: var(--secondary-font);
     line-height: 1.5rem;
     font-size: 1.25rem;
     margin-bottom: 2rem;
@@ -262,12 +277,20 @@
 }
 
 @media only screen and (min-width: 1000px) {
-    .projectContainer {
+    [data-device='desktop'] .projectsContainer {
         padding-top: 0;
         flex-direction: row;
     }
 
-    .projectsSection {
+    [data-device='desktop'] .projectsSection {
+        height: 100vh;
+        margin: 0;
+        padding-top: 0;
+    }
+
+    [data-device='desktop'] .projectContainer {
+        height: 100vh;
+        padding: 0;
     }
 
     .project {

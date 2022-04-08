@@ -29,6 +29,7 @@ export default function Parrallax({ container, parrallaxRefs }: any) {
             if (parrallaxRefs) {
                 parrallaxRefs.current.forEach((item: any, index: number) => {
                     const element = item.element;
+                    if (element == null || element == undefined) return;
                     let speed: number;
                     if (element.hasAttribute('data-speed')) {
                         speed = parseInt(element.getAttribute('data-speed') || '0');
