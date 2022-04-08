@@ -191,7 +191,7 @@ const Home: NextPage = () => {
 
                 <About></About>
 
-                <Projects></Projects>
+                <Projects isMobile={isMobile}></Projects>
 
                 {isMobile ? <DynamicTechnologiesMobile></DynamicTechnologiesMobile> : <Spotlight></Spotlight>}
                 {/* {isMobile ? <TechnologiesMobile></TechnologiesMobile> : <Spotlight></Spotlight>} */}
