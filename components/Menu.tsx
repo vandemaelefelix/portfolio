@@ -12,7 +12,7 @@ const Menu = forwardRef(({ parent }: any, ref) => {
         { name: 'home', id: 'firstSection' },
         { name: 'about me', id: 'aboutSection' },
         { name: 'my projects', id: 'projectsSection' },
-        { name: 'my technologies', id: 'spotlightSection' },
+        { name: 'my tools', id: 'spotlightSection' },
         { name: 'contact me', id: 'contactSection' },
     ]);
     // const [pages, setPages] = useState(['home', 'about me', 'my technologies', 'contact me']);

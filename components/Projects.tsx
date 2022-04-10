@@ -88,7 +88,7 @@ export default function Projects({ isMobile }: any) {
 
         projects.forEach((project) => {
             projectsContent.push(
-                <>
+                <div key={project.id}>
                     <div key={project.id} id={`section${project.id}`} className={`${styles.projectContainer}`}>
                         <div className={`${styles.project}`}>
                             <h1 className={`${styles.title}`}>{project.name}</h1>
@@ -171,7 +171,7 @@ export default function Projects({ isMobile }: any) {
                             )}
                         </div>
                     </div>
-                </>
+                </div>
             );
         });
 
