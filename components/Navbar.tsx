@@ -23,7 +23,7 @@ export default function Navbar({ parent, toggleMenu }: any) {
         var rotate = gsap
             .timeline({
                 scrollTrigger: {
-                    scroller: '#mainSection',
+                    scroller: 'body',
                     trigger: '#mainSection',
                     scrub: 0.2,
                     start: 'top top',
