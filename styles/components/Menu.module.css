@@ -115,6 +115,7 @@
     justify-content: center;
     opacity: 0;
     z-index: 10;
+    padding: 0rem 0 2rem 2rem;
     user-select: none;
 }
 
@@ -167,7 +168,7 @@
 @media only screen and (min-width: 1000px) {
     .menuContent li {
         font-size: 5rem;
-        padding: 4rem 0;
+        padding: 2.5rem 0;
         justify-content: start;
     }
     .menuContent li > span > svg {

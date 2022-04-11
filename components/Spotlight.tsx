@@ -3,7 +3,8 @@ import Image from 'next/image';
 import useIsMobile from '../hooks/useIsMobile';
 import styles from '../styles/components/Spotlight.module.css';
 
-import technologies from '../public/images/technologies/technologies';
+// import technologies from '../public/images/technologies/technologies';
+import tools from '../utils/tools';
 
 export default function Spotlight() {
     const [isDark, setIsDark] = useState(false);
@@ -23,6 +24,8 @@ export default function Spotlight() {
     const spotlight = useRef(null);
     const spotlightText = useRef(null);
     let touchTimeout: any;
+
+    const [shuffledTools, setShuffledTools] = useState(tools);
 
     const toggleSpotlight = () => {
         console.log(hideSpotlight);
@@ -107,6 +110,8 @@ export default function Spotlight() {
         if (document.elementFromPoint(e.clientX, e.clientY)?.id == 'title') {
             setShowTitle(false);
             rect = e.target.parentElement.getBoundingClientRect();
+        } else if (document.elementFromPoint(e.clientX, e.clientY)?.id.split('-')[0] == 'tool') {
+            rect = e.target.parentElement.getBoundingClientRect();
         } else if (document.elementFromPoint(e.clientX, e.clientY)?.id == 'toggleSpotlightButton') {
             rect = e.target.parentElement.parentElement.getBoundingClientRect();
         } else {
@@ -164,35 +169,84 @@ export default function Spotlight() {
         window.onscroll = function () {};
     };
 
+    useEffect(() => {
+        console.log('shuffled tools');
+        setShuffledTools(shuffle(tools));
+    }, []);
+
+    function shuffle(array: any) {
+        let currentIndex = array.length,
+            randomIndex;
+
+        // While there remain elements to shuffle...
+        while (currentIndex != 0) {
+            // Pick a remaining element...
+            randomIndex = Math.floor(Math.random() * currentIndex);
+            currentIndex--;
+
+            // And swap it with the current element.
+            [array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]];
+        }
+
+        return array;
+    }
+
+    const loadContent = () => {
+        let content: JSX.Element[] = [];
+
+        shuffledTools.forEach(({ name, path, importance }: any) => {
+            // console.log({ name, path, importance });
+            content.push(
+                <div
+                    id={`tool-${path}`}
+                    onMouseEnter={() => {
+                        console.log(name);
+                    }}
+                    onClick={() => {
+                        console.log(name);
+                    }}
+                    className={`${styles.toolsItem}`}
+                    key={name}
+                    data-importance={importance}
+                    data-mouse={'hide'}
+                    style={{
+                        width: `calc(3rem * ${1 + importance / 2})`,
+                        height: `calc(3rem * ${1 + importance / 2})`,
+                    }}
+                >
+                    <div className={`${styles.imageWrapper}`}>
+                        <Image
+                            className={styles.toolImage}
+                            alt={name}
+                            src={`/images/tools/${path}`}
+                            layout={'fill'}
+                            objectFit={'contain'}
+                            loading={'lazy'}
+                        ></Image>
+                    </div>
+                </div>
+            );
+        });
+
+        return content;
+    };
+
     return (
-        <section className={`${styles.section2} ${isDark ? 'styles.dark' : ''}`} id={'section2'}>
+        <section id={'spotlightSection'} className={`${styles.section2} ${isDark ? 'styles.dark' : ''}`}>
             <div
                 data-mouse="hide"
                 onMouseMove={handleMouseMove}
-                onTouchStart={() => {
-                    clearTimeout(touchTimeout);
-                    touchTimeout = setTimeout(() => {
-                        setActivateSpotlightMobile(true);
-                        disableScroll();
-                    }, 500);
-                }}
-                onTouchEnd={() => {
-                    clearTimeout(touchTimeout);
-                    enableScroll();
-                    setActivateSpotlightMobile(false);
-                }}
-                onTouchMoveCapture={handleTouchMove}
                 className={styles.spotlightWrapper}
                 onClick={() => {
-                    // console.log('click');
-                    // setIsShrinking(true);
-                    // toggleShrinkSpotlight();
                     if (!isExpanding) {
                         setIsExpanding(true);
                         toggleSpotlight();
                     }
                 }}
             >
+                <div className={`${styles.content}`} data-mouse={'hide'}>
+                    {loadContent()}
+                </div>
                 <div ref={spotlight} className={`${styles.section2Overlay} ${hideSpotlight ? styles.hide : ''}`}></div>
                 <div ref={spotlightText} className={`${styles.spotlightText} ${!showSpotlightText ? styles.hide : ''}`}>
                     <p>click to reveal</p>
@@ -205,21 +259,6 @@ export default function Spotlight() {
                 >
                     <h1 className={styles.title}>Technologies I have used</h1>
                 </div>
-                {/* 
-                <div className={styles.toggleSpotlight}>
-                    <button
-                        onClick={() => {
-                            if (!isExpanding) {
-                                setIsExpanding(true);
-                                toggleSpotlight();
-                            }
-                        }}
-                        id={'toggleSpotlightButton'}
-                        data-mouse={'hide'}
-                    >
-                        {hideSpotlight ? 'Turn off light' : 'Turn on light'}
-                    </button>
-                </div> */}
             </div>
         </section>
     );

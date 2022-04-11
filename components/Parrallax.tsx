@@ -1,10 +1,12 @@
 import { useEffect } from 'react';
+import useIsMobile from '../hooks/useIsMobile';
 
 export default function Parrallax({ container, parrallaxRefs }: any) {
+    const isMobile = useIsMobile();
     useEffect(() => {
-        window.addEventListener('deviceorientation', (e: any) => {
-            console.log(e);
-        });
+        // window.addEventListener('deviceorientation', (e: any) => {
+        //     console.log(e);
+        // });
 
         const checkTransitions = (transitionString: string) => {
             const transitions = transitionString.split(',');
@@ -27,6 +29,7 @@ export default function Parrallax({ container, parrallaxRefs }: any) {
             if (parrallaxRefs) {
                 parrallaxRefs.current.forEach((item: any, index: number) => {
                     const element = item.element;
+                    if (element == null || element == undefined) return;
                     let speed: number;
                     if (element.hasAttribute('data-speed')) {
                         speed = parseInt(element.getAttribute('data-speed') || '0');
@@ -41,8 +44,8 @@ export default function Parrallax({ container, parrallaxRefs }: any) {
                         let x = null,
                             y = null;
 
-                        x = (window.innerWidth / 2 - e.pageX * speed) * scale;
-                        y = (window.innerHeight / 2 - e.pageY * speed) * scale;
+                        x = (window.innerWidth / 2 - e.clientX * speed) * scale;
+                        y = (window.innerHeight / 2 - e.clientY * speed) * scale;
 
                         element.style.transform = `translateX(${-x}px) translateY(${-y}px)`;
                         if (item.options.direction === 'normal') {
@@ -93,8 +96,11 @@ export default function Parrallax({ container, parrallaxRefs }: any) {
 
         let parentElement: HTMLElement | null;
         if (container === null) {
-            window.addEventListener('mousemove', handleParrallax);
-            // window.addEventListener('deviceorientation', handleParrallaxMobile);
+            if (!isMobile) {
+                window.addEventListener('mousemove', handleParrallax);
+            } else {
+                // window.addEventListener('deviceorientation', handleParrallaxMobile);
+            }
         } else {
             parentElement = container.current;
             if (parentElement && parrallaxRefs) {
@@ -111,7 +117,7 @@ export default function Parrallax({ container, parrallaxRefs }: any) {
                 }
             }
         };
-    }, [container, parrallaxRefs]);
+    }, [container, parrallaxRefs, isMobile]);
 
     return <></>;
 }

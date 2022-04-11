@@ -45,8 +45,8 @@ export default function ColorPicker() {
         },
         {
             name: 'black',
-            mainColor: 'hsl(0, 0%, 0%)',
-            accentColor: 'hsl(123, 100%, 50%)',
+            mainColor: 'hsl(273, 100%, 50%)',
+            accentColor: 'hsl(22, 100%, 50%)',
         },
     ]);
 
