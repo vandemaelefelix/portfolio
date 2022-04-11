@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="92.308" height="100" viewBox="0 0 92.308 100">
+  <g id="css3" transform="translate(0 -10.433)">
+    <g id="Group_15" data-name="Group 15" transform="translate(0 10.433)">
+      <path id="Path_49" data-name="Path 49" d="M92.308,15H0l7.692,88.462L46.154,115l38.462-11.538L92.308,15" transform="translate(0 -15)" fill="#1572b6" fill-rule="evenodd"/>
+      <path id="Path_50" data-name="Path 50" d="M63.445,70l.669-7.692,1-11.538,1-11.538,1-11.538L67.792,20H30v84.615l23.352-7.006,7.9-2.369,1.031-11.848,1.031-11.848Z" transform="translate(16.154 -12.308)" fill="#33a9dc" fill-rule="evenodd"/>
+      <path id="Path_52" data-name="Path 52" d="M32.505,88.046l-3.949-1.185L15.919,83.071,14.888,71.223l-.34-3.915H26.856l.671,7.706L31.476,76.2,40.3,78.846V90.385ZM11.873,36.538H40.3V25H10.87Z" transform="translate(5.853 -9.615)" fill="#ebebeb" fill-rule="evenodd"/>
+      <path id="Path_53" data-name="Path 53" d="M30,78.846l12.775-3.832.669-7.706.669-7.692H30V48.077H45.117l1-11.538H30V25H59.431l-1,11.538-1,11.538-1,11.538-.669,7.692-.34,3.915L54.382,83.071,41.745,86.862,30,90.385Z" transform="translate(16.154 -9.615)" fill="#fff" fill-rule="evenodd"/>
+      <path id="Path_54" data-name="Path 54" d="M33.945,51.538H23.677L22.674,40H33.945Z" transform="translate(12.209 -1.538)" fill="#ebebeb" fill-rule="evenodd"/>
+    </g>
+  </g>
+</svg>
