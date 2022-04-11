@@ -44,8 +44,8 @@ export default function Parrallax({ container, parrallaxRefs }: any) {
                         let x = null,
                             y = null;
 
-                        x = (window.innerWidth / 2 - e.pageX * speed) * scale;
-                        y = (window.innerHeight / 2 - e.pageY * speed) * scale;
+                        x = (window.innerWidth / 2 - e.clientX * speed) * scale;
+                        y = (window.innerHeight / 2 - e.clientY * speed) * scale;
 
                         element.style.transform = `translateX(${-x}px) translateY(${-y}px)`;
                         if (item.options.direction === 'normal') {

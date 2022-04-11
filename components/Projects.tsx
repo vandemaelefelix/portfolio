@@ -31,7 +31,7 @@ export default function Projects({ isMobile }: any) {
                 ease: 'linear',
                 scrollTrigger: {
                     id: 'horizontalScroll',
-                    scroller: '#mainSection',
+                    scroller: 'body',
                     trigger: '#projectsSection',
                     start: 'top+200 top+200',
                     end: () => window.innerHeight * ((projects.length - 1) * 3),
