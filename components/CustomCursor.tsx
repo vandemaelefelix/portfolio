@@ -33,6 +33,7 @@ export default function CustomCursor({ fade, dotSpeed, circleSpeed, isVisible }:
     const [isFaded, setIsFaded] = useState(false);
     const [isScroll, setIsScroll] = useState(false);
     const [isInverted, setIsInverted] = useState(false);
+    const [isHorizontal, setIsHorizontal] = useState(false);
 
     const handleClickUp = (): void => {
         setIsClickDown(false);
@@ -70,11 +71,12 @@ export default function CustomCursor({ fade, dotSpeed, circleSpeed, isVisible }:
             let distY: number = mousePos.y - circlePos.y;
 
             //Progressive reduction of distance
-            circlePos.x += distX / circleSpeed;
-            circlePos.y += distY / circleSpeed;
+            // console.log(isHorizontal);
+            circlePos.x += distX / (isHorizontal ? 1 : circleSpeed);
+            circlePos.y += distY / (isHorizontal ? 1 : circleSpeed);
 
-            dotPos.x += (mousePos.x - dotPos.x) / dotSpeed;
-            dotPos.y += (mousePos.y - dotPos.y) / dotSpeed;
+            dotPos.x += (mousePos.x - dotPos.x) / (isHorizontal ? 1 : dotSpeed);
+            dotPos.y += (mousePos.y - dotPos.y) / (isHorizontal ? 1 : dotSpeed);
 
             circle.style.left = circlePos.x + 'px';
             circle.style.top = circlePos.y + 'px';
@@ -124,6 +126,7 @@ export default function CustomCursor({ fade, dotSpeed, circleSpeed, isVisible }:
             // console.log((e as any).path[0]);
             if ((e as any).path[0]) {
                 const mouseType = (e as any).path[0].getAttribute('data-mouse');
+                // console.log(mouseType);
                 switch (mouseType) {
                     case 'hide':
                         fadeOutMouse();
@@ -139,11 +142,16 @@ export default function CustomCursor({ fade, dotSpeed, circleSpeed, isVisible }:
                         setIsInverted(true);
                         fadeInMouse();
                         break;
+                    case 'horizontal':
+                        // console.log('horizontal');
+                        fadeInMouse();
+                        setIsHorizontal(true);
+                        break;
 
                     default:
                         setIsScroll(false);
                         setIsInverted(false);
-                        // console.log('default mouse');
+                        setIsHorizontal(false);
                         fadeInMouse();
                         break;
                 }
@@ -170,6 +178,7 @@ export default function CustomCursor({ fade, dotSpeed, circleSpeed, isVisible }:
     const scrollHandler = () => scrollGetMouse();
 
     useEffect(() => {
+        console.log('Ishorizontal changed: ' + isHorizontal);
         document.addEventListener('touchmove', mouseMoveHandler);
         document.addEventListener('mousemove', mouseMoveHandler);
         document.addEventListener('scroll', scrollHandler);
@@ -190,7 +199,7 @@ export default function CustomCursor({ fade, dotSpeed, circleSpeed, isVisible }:
 
             document.removeEventListener('scroll', scrollHandler);
         };
-    }, []);
+    }, [isHorizontal]);
 
     useEffect(() => {
         if (isVisible) {

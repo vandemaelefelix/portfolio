@@ -5,7 +5,7 @@
     --theme-transition: 0.3s;
     --color-picker-transition: 0.75s;
     --main-font: ITCBenguiat, 'Times New Roman', Times, serif;
-    --secondary-font: ITCBenguiat, 'Times New Roman', Times, serif;
+    --secondary-font: 'Montserrat', arial, sans-serif;
     --spotlight-size: 5%;
     --spotlight-size2: calc(var(--spotlight-size) * 1.5);
     --spotlight-text-position: 10%;

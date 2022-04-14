@@ -88,12 +88,21 @@ export default function Projects({ isMobile }: any) {
 
         projects.forEach((project) => {
             projectsContent.push(
-                <div key={project.id}>
-                    <div key={project.id} id={`section${project.id}`} className={`${styles.projectContainer}`}>
-                        <div className={`${styles.project}`}>
-                            <h1 className={`${styles.title}`}>{project.name}</h1>
-                            <p className={`${styles.description}`}>{project.description}</p>
-                            <div className={`${styles.imageContainer}`}>
+                <div data-mouse={'horizontal'} key={project.id}>
+                    <div
+                        data-mouse={'horizontal'}
+                        key={project.id}
+                        id={`section${project.id}`}
+                        className={`${styles.projectContainer}`}
+                    >
+                        <div data-mouse={'horizontal'} className={`${styles.project}`}>
+                            <h1 data-mouse={'horizontal'} className={`${styles.title}`}>
+                                {project.name}
+                            </h1>
+                            <p data-mouse={'horizontal'} className={`${styles.description}`}>
+                                {project.description}
+                            </p>
+                            <div data-mouse={'horizontal'} className={`${styles.imageContainer}`}>
                                 <svg
                                     ref={(element) => {
                                         if (parrallaxRefs.current) {
@@ -103,6 +112,7 @@ export default function Projects({ isMobile }: any) {
                                             };
                                         }
                                     }}
+                                    data-mouse={'horizontal'}
                                     className={`
                                     ${styles.imageIcon}
                                     ${styles.top}
@@ -114,7 +124,7 @@ export default function Projects({ isMobile }: any) {
                                         transform="translate(67.707) rotate(45)"
                                     />
                                 </svg>
-                                <div className={`${styles.imageWrapper}`}>
+                                <div data-mouse={'horizontal'} className={`${styles.imageWrapper}`}>
                                     <Image
                                         className={styles.image}
                                         alt={project.name}
@@ -122,9 +132,11 @@ export default function Projects({ isMobile }: any) {
                                         layout={'fill'}
                                         objectFit={'cover'}
                                         loading={'lazy'}
+                                        data-mouse={'horizontal'}
+                                        // placeholder={'blur'}
                                     ></Image>
                                 </div>
-                                <div className={styles.imageOverlay}></div>
+                                <div data-mouse={'horizontal'} className={styles.imageOverlay}></div>
                                 <svg
                                     ref={(element) => {
                                         if (parrallaxRefs.current) {
@@ -134,6 +146,7 @@ export default function Projects({ isMobile }: any) {
                                             };
                                         }
                                     }}
+                                    data-mouse={'horizontal'}
                                     className={`
                                     ${styles.imageIcon}
                                     ${styles.bottom}
@@ -147,7 +160,7 @@ export default function Projects({ isMobile }: any) {
                                 </svg>
                             </div>
                             {project.link != '' ? (
-                                <div className={`${styles.link}`}>
+                                <div data-mouse={'horizontal'} className={`${styles.link}`}>
                                     <a
                                         data-mouse={'hide'}
                                         // className={`${styles.link}`}
