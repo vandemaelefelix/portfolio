@@ -46,7 +46,7 @@ const Menu = forwardRef(({ parent }: any, ref) => {
         console.log(page.id);
         closeMenu();
         setTimeout(() => {
-            gsap.to(parent.current, { duration: 1, scrollTo: { y: `#${page.id}` } });
+            gsap.to(window, { duration: 1, scrollTo: { y: `#${page.id}` } });
         }, 250);
     };
 

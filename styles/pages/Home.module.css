@@ -54,7 +54,7 @@
 
 .image {
     filter: grayscale(1);
-    transition: filter var(--theme-transition) ease-in-out;
+    transition: filter var(--theme-transition) ease-in-out, transform 0.5s ease-in-out;
     object-fit: cover;
     object-position: 42% 50%;
 
@@ -83,11 +83,14 @@
 }
 .imageContainer:hover .imageOverlay {
     opacity: 0;
-    /* display: none; */
 }
 
 .imageContainer:hover .imageWrapper {
     opacity: 1;
+}
+.imageContainer:hover .imageWrapper .image {
+    /* opacity: 1; */
+    transform: scale(1.1);
 }
 
 .imageIcon {
@@ -131,7 +134,8 @@
     user-select: none;
 }
 .titleSub {
-    font-family: var(--main-font);
+    font-family: var(--secondary-font);
+    /* font-family: var(--main-font); */
     color: var(--accent-color);
     font-size: 1.5rem;
     transition: color var(--theme-transition) ease-in-out;
@@ -177,7 +181,8 @@
 
 .scrollDown p {
     color: var(--accent-color);
-    font-family: var(--main-font);
+    font-family: var(--secondary-font);
+    /* font-family: var(--main-font); */
     font-size: 1.25rem;
     font-weight: bold;
     pointer-events: none;

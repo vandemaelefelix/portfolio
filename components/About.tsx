@@ -78,6 +78,8 @@ export default function About() {
                                 src={aboutImage}
                                 layout={'fill'}
                                 objectFit={'cover'}
+                                placeholder={'blur'}
+                                loading={'lazy'}
                             ></Image>
                         </div>
                         <div className={styles.imageOverlay}></div>

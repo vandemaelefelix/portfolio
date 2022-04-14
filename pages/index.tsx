@@ -25,6 +25,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 import dynamic from 'next/dynamic';
 import Projects from '../components/Projects';
+import Contact from '../components/Contact';
 
 const DynamicTechnologiesMobile = dynamic(() => import('../components/TechnologiesMobile'));
 
@@ -49,13 +50,8 @@ const Home: NextPage = () => {
 
     const scrollDown = () => {
         console.log('Scrolling down');
-        gsap.to(parentRef.current, { duration: 0.75, scrollTo: { y: '#aboutSection' } });
+        gsap.to(window, { duration: 0.75, scrollTo: { y: '#aboutSection' } });
     };
-
-    useEffect(() => {
-        // TODO: Set scrolltrigger to draw arrow
-        return () => {};
-    }, []);
 
     return (
         <>
@@ -156,6 +152,7 @@ const Home: NextPage = () => {
                                     ${styles.top}
                                 `}
                                 placeholder={'blur'}
+                                loading={'lazy'}
                             ></Image>
                         </div>
 
@@ -203,6 +200,8 @@ const Home: NextPage = () => {
 
                 {isMobile ? <DynamicTechnologiesMobile></DynamicTechnologiesMobile> : <Spotlight></Spotlight>}
                 {/* {isMobile ? <TechnologiesMobile></TechnologiesMobile> : <Spotlight></Spotlight>} */}
+
+                <Contact></Contact>
             </main>
 
             <ColorPicker></ColorPicker>
