@@ -11,8 +11,11 @@ import Parrallax from './Parrallax';
 
 gsap.registerPlugin(ScrollTrigger);
 
-export default function Projects({ isMobile }: any) {
-    // const isMobile = useIsMobile();
+interface Props {
+    isMobile?: boolean;
+}
+
+export default function Projects({ isMobile }: Props) {
     const sectionRef = useRef();
     const parrallaxRefs = useRef<any[]>([]);
 

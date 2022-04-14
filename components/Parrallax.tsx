@@ -1,7 +1,12 @@
-import { useEffect } from 'react';
+import { MutableRefObject, useEffect } from 'react';
 import useIsMobile from '../hooks/useIsMobile';
 
-export default function Parrallax({ container, parrallaxRefs }: any) {
+interface Props {
+    container: MutableRefObject<any> | null;
+    parrallaxRefs: MutableRefObject<any[]>;
+}
+
+export default function Parrallax({ container, parrallaxRefs }: Props) {
     const isMobile = useIsMobile();
     useEffect(() => {
         // window.addEventListener('deviceorientation', (e: any) => {
