@@ -102,7 +102,6 @@ export default function CustomCursor({ fade, dotSpeed, circleSpeed, isVisible }:
     };
 
     const getMouse = (e: MouseEvent | TouchEvent) => {
-        // console.log(e.path[0]);
         if (fade) {
             if (!isMoving) {
                 isMoving = true;
