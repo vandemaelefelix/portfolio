@@ -58,7 +58,7 @@ const Home: NextPage = () => {
             {isMobile ? (
                 <></>
             ) : (
-                <CustomCursor isVisible={isCursorVisible} fade={false} dotSpeed={2} circleSpeed={20}></CustomCursor>
+                <CustomCursor isVisible={isCursorVisible} fade={false} dotSpeed={1} circleSpeed={15}></CustomCursor>
             )}
             <Head>
                 <title>Felix</title>

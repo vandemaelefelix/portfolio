@@ -1,5 +1,210 @@
 .contactSection {
+    position: relative;
     width: 100%;
     height: 100vh;
+    z-index: 60;
+    background-color: var(--main-color);
+    transition: background-color var(--theme-transition) ease-in-out;
+}
+
+.bottomBanner {
+    position: absolute;
+    bottom: 0;
+}
+
+.content {
+    height: 100%;
+    width: 100%;
+    /* padding: 2.5rem; */
+
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+}
+
+.titleContainer {
+    /* padding-top: 2.5rem;
+    padding-left: 2.5rem; */
+    width: 100%;
+    padding-inline: 1rem;
+}
+.title {
+    font-family: var(--main-font);
+    color: var(--accent-color);
+    font-size: 2rem;
+    user-select: none;
+    /* width: fit-content; */
+    text-align: center;
+    margin-bottom: 2rem;
+}
+.subTitle {
+    font-family: var(--main-font);
+    color: var(--accent-color);
+    font-size: 3.5rem;
+    user-select: none;
+    text-align: center;
+}
+
+.infoContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.emailContainer {
     background-color: var(--accent-color);
+    width: fit-content;
+    /* padding: 1rem 1rem; */
+    cursor: pointer;
+    overflow: hidden;
+    height: 3rem;
+}
+
+.email,
+.copiedEmailText {
+    font-family: var(--secondary-font);
+    font-size: 1rem;
+    font-weight: bold;
+    line-height: 1rem;
+    height: 3rem;
+    text-transform: uppercase;
+    color: var(--main-color);
+    user-select: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem 1rem;
+    transition: transform var(--theme-transition) ease-in-out, opacity var(--theme-transition) ease-in-out;
+}
+.email > span > svg {
+    fill: var(--main-color);
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-left: 1rem;
+}
+.emailContainer > * {
+    pointer-events: none;
+}
+.emailContainer .copiedEmailText {
+    transform: translateY(0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.emailContainer.copied .copiedEmailText {
+    transform: translateY(-100%);
+    opacity: 1;
+}
+
+.emailContainer.copied .email {
+    transform: translateY(-100%);
+    opacity: 0;
+}
+
+.phoneContainer {
+    position: relative;
+    background-color: var(--main-color);
+    width: 100%;
+    cursor: pointer;
+    border: 2px solid var(--accent-color);
+    border-top: none;
+
+    text-align: center;
+    font-family: var(--secondary-font);
+    color: var(--accent-color);
+    font-weight: bold;
+    font-size: 1.5rem;
+    height: 3rem;
+    overflow: hidden;
+    user-select: none;
+}
+.phoneContainer .copiedPhoneText {
+    pointer-events: none;
+    opacity: 0;
+    transform: translateY(0);
+    transition: transform var(--theme-transition) ease-in-out, opacity var(--theme-transition) ease-in-out;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+    height: 3rem;
+}
+
+.phoneContainer.copied .copiedPhoneText {
+    transform: translateY(-100%);
+    opacity: 1;
+}
+
+.phoneContainer.copied .phone {
+    transform: translateY(-100%);
+    opacity: 0;
+}
+
+.phone {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+    height: 3rem;
+
+    transition: transform var(--theme-transition) ease-in-out, opacity var(--theme-transition) ease-in-out;
+}
+
+.phone > span > svg {
+    fill: var(--accent-color);
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-left: 1rem;
+}
+
+.socials {
+    padding: 0.5rem;
+    border: 2px dashed var(--accent-color);
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 5rem;
+    user-select: none;
+}
+
+.socialsItem {
+    padding: 1rem;
+    border-right: 2px dashed var(--accent-color);
+    cursor: pointer;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+}
+.socialsItem > * {
+    pointer-events: none;
+}
+.socialsItem:hover {
+    background-color: var(--accent-color);
+}
+.socialsItem:hover p,
+.socialsItem:hover svg {
+    color: var(--main-color);
+    fill: var(--main-color);
+}
+.socialsItem p {
+    font-family: var(--secondary-font);
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: var(--accent-color);
+}
+
+.socialsItem svg {
+    width: 2rem;
+    height: 2rem;
+    fill: var(--accent-color);
+    transition: fill var(--theme-transition) ease-in-out;
+    margin-bottom: 1rem;
+}
+
+.socialsItem:last-of-type {
+    border: none;
 }
