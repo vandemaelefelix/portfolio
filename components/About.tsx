@@ -12,13 +12,6 @@ export default function About() {
         if (arrowPath.current) {
             const path = arrowPath.current;
             document.documentElement.style.setProperty('--arrow-length', path.getTotalLength().toString());
-            // path.style.strokeDasharray = path.getTotalLength().toString();
-            // path.style.strokeDashoffset = path.getTotalLength().toString();
-
-            // path.setAttribute(
-            //     'style',
-            //     'stroke-dasharray:' + path.getTotalLength() + ';stroke-dashoffset:' + path.getTotalLength()
-            // );
         }
         return () => {};
     }, []);
