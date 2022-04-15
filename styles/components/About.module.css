@@ -1,0 +1,203 @@
+.about {
+    scroll-snap-align: start;
+    scroll-snap-stop: normal;
+    min-height: 100vh;
+    width: 100vw;
+}
+
+.content {
+    padding-top: 8rem;
+    padding-bottom: 5rem;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.imageContainer {
+    order: 2;
+    position: relative;
+    width: 70%;
+    height: 30rem;
+    margin-bottom: 5rem;
+}
+
+.imageOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--accent-color);
+    opacity: var(--image-overlay-opacity);
+    pointer-events: none;
+
+    transition: opacity var(--theme-transition) ease-in-out, background-color var(--theme-transition) ease-in-out;
+}
+
+.imageWrapper {
+    position: relative;
+    opacity: 0.5;
+    height: 100%;
+}
+
+.imageWrapper .image {
+    filter: grayscale(1);
+
+    user-drag: none;
+    -webkit-user-drag: none;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    transition: filter var(--theme-transition) ease-in-out, transform 0.5s ease-in-out;
+}
+.imageContainer:hover .image {
+    filter: grayscale(0);
+}
+.imageContainer:hover .imageOverlay {
+    opacity: 0;
+}
+
+.imageContainer:hover .imageWrapper {
+    opacity: 1;
+}
+.imageContainer:hover .imageWrapper .image {
+    transform: scale(1.1);
+}
+.textContainer {
+    order: 1;
+    width: 90%;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    margin-bottom: 10rem;
+}
+
+.imageArrow {
+    position: absolute;
+    pointer-events: none;
+    top: -5rem;
+    left: -5rem;
+    width: 10rem;
+    stroke: var(--accent-color);
+    z-index: 40;
+}
+
+.text {
+    font-size: 1.2rem;
+    font-family: var(--secondary-font);
+    color: var(--accent-color);
+    line-height: 1.75rem;
+    text-align: justify;
+}
+
+.title {
+    font-size: 3.5rem;
+    font-family: var(--main-font);
+    color: var(--accent-color);
+    margin-bottom: 2rem;
+    text-align: center;
+    text-transform: capitalize;
+}
+
+.imageIcon {
+    position: absolute;
+    z-index: 20;
+    fill: var(--accent-color);
+    transition: fill var(--theme-transition) ease-in-out;
+}
+
+.imageIcon.top {
+    top: -2.5rem;
+    right: -2.5rem;
+    width: 5rem;
+    height: 5rem;
+}
+.imageIcon.bottom {
+    bottom: -4rem;
+    left: -4rem;
+    width: 8rem;
+    height: 8rem;
+}
+.imageContainer svg path {
+    stroke-dasharray: var(--arrow-length);
+    stroke-dashoffset: var(--arrow-length);
+    transition: stroke-dashoffset 1s ease-in-out;
+}
+.imageContainer:hover svg path {
+    stroke-dashoffset: 0;
+}
+
+/* .textContainer h2 {
+    position: relative;
+}
+
+.textContainer h2 span {
+    position: absolute;
+    top: -50%;
+    left: 0;
+    width: 40%;
+}
+
+.textContainer h2 svg {
+    stroke-dasharray: 2087.1015625;
+    stroke-dashoffset: 2087.1015625;
+    transition: stroke-dashoffset 1s ease-in-out;
+    stroke: var(--accent-color);
+    stroke-width: 1.5;
+    fill: transparent;
+    opacity: 0.5;
+}
+
+.textContainer h2:hover svg {
+    stroke-dashoffset: 0;
+} */
+
+@keyframes arrowAnimation {
+    from {
+        stroke-dashoffset: 2087.1;
+    }
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+@media only screen and (min-width: 1000px) {
+    .content {
+        justify-content: space-around;
+        align-items: center;
+        flex-direction: row;
+        height: 100vh;
+        padding-top: 0rem;
+    }
+    .imageContainer {
+        order: 1;
+        width: 30%;
+        margin-bottom: 0rem;
+    }
+    .textContainer {
+        order: 2;
+        width: 50%;
+        margin-bottom: 0;
+    }
+    .textContainer h2,
+    .textContainer p {
+        text-align: left;
+    }
+
+    .title {
+        font-size: 5rem;
+    }
+}
+
+@media only screen and (min-width: 1250px) {
+    .about {
+        display: flex;
+        justify-content: center;
+    }
+    .content {
+        width: 80%;
+    }
+}

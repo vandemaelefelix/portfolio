@@ -1,0 +1,76 @@
+.colorpicker {
+    position: fixed;
+    bottom: 2rem;
+    left: 2rem;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    border-top-left-radius: 50px;
+    border-bottom-left-radius: 50px;
+    width: 2rem;
+    transition: width var(--color-picker-transition) ease-in-out;
+    z-index: 100;
+}
+.colorpicker.show {
+    width: 17rem;
+    transition: none;
+}
+
+.colorsContainer {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    transform: translateX(calc(-100% - 3rem));
+    overflow: hidden;
+    transition: transform var(--color-picker-transition) ease-in-out,
+        pointer-events var(--color-picker-transition) var(--color-picker-transition) ease-in-out;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.colorsContainer.closing {
+    pointer-events: none;
+}
+
+.colorpicker.show .colorsContainer {
+    transform: translateX(0rem);
+    pointer-events: all;
+}
+
+.colorCircle {
+    position: relative;
+    width: 2rem;
+    height: 2rem;
+    cursor: pointer;
+    border-radius: 50px;
+    border: 2px solid var(--accent-color);
+    background-color: var(--main-color);
+    overflow: hidden;
+    transition: background-color var(--theme-transition) ease-in-out, border var(--theme-transition) ease-in-out,
+        opacity 0.3s ease-in-out;
+}
+
+.firstCircle {
+    opacity: 1;
+    pointer-events: all;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.colorpicker.show .firstCircle {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.innerCircle {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    background-color: var(--accent-color);
+    pointer-events: none;
+    transition: background-color var(--theme-transition) ease-in-out;
+}
