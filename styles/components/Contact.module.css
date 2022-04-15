@@ -62,6 +62,10 @@
     height: 3rem;
 }
 
+.email {
+    transform: scale(1);
+}
+
 .email,
 .copiedEmailText {
     font-family: var(--secondary-font);
@@ -76,31 +80,44 @@
     align-items: center;
     justify-content: center;
     padding: 0.5rem 1rem;
-    transition: transform var(--theme-transition) ease-in-out, opacity var(--theme-transition) ease-in-out;
+    transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out, color var(--theme-transition) ease-in-out;
+}
+.emailContainer:hover .email {
+    transform: scale(1.05);
+}
+.copiedEmailText > span > svg {
+    fill: transparent;
+    stroke: var(--main-color);
+    width: 1rem;
+    height: 1rem;
+    margin-left: 1rem;
+    transition: fill var(--theme-transition) ease-in-out;
 }
 .email > span > svg {
     fill: var(--main-color);
     width: 1.5rem;
     height: 1.5rem;
     margin-left: 1rem;
+    transition: fill var(--theme-transition) ease-in-out;
 }
 .emailContainer > * {
     pointer-events: none;
 }
 .emailContainer .copiedEmailText {
-    transform: translateY(0);
+    transform: translateY(0) scale(0.9);
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 .emailContainer.copied .copiedEmailText {
-    transform: translateY(-100%);
+    transform: translateY(-100%) scale(1);
     opacity: 1;
+    transition: transform 0.2s 0.1s ease-in-out, opacity 0.2s 0.1s ease-in-out;
 }
 
 .emailContainer.copied .email {
-    transform: translateY(-100%);
+    transform: translateY(-100%) scale(0.9);
     opacity: 0;
 }
 
@@ -121,11 +138,15 @@
     overflow: hidden;
     user-select: none;
 }
+.phoneContainer:hover .phone {
+    transform: scale(1.05);
+}
+
 .phoneContainer .copiedPhoneText {
     pointer-events: none;
     opacity: 0;
-    transform: translateY(0);
-    transition: transform var(--theme-transition) ease-in-out, opacity var(--theme-transition) ease-in-out;
+    transform: translateY(0) scale(0.9);
+    transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out;
 
     display: flex;
     align-items: center;
@@ -135,12 +156,22 @@
 }
 
 .phoneContainer.copied .copiedPhoneText {
-    transform: translateY(-100%);
+    transform: translateY(-100%) scale(1);
     opacity: 1;
+    transition: transform 0.2s 0.1s ease-in-out, opacity 0.2s 0.1s ease-in-out;
+}
+
+.copiedPhoneText > span > svg {
+    fill: transparent;
+    stroke: var(--accent-color);
+    width: 1rem;
+    height: 1rem;
+    margin-left: 1rem;
+    transition: stroke var(--theme-transition) ease-in-out;
 }
 
 .phoneContainer.copied .phone {
-    transform: translateY(-100%);
+    transform: translateY(-100%) scale(0.9);
     opacity: 0;
 }
 
@@ -151,7 +182,9 @@
     padding: 0.5rem;
     height: 3rem;
 
-    transition: transform var(--theme-transition) ease-in-out, opacity var(--theme-transition) ease-in-out;
+    transform: scale(1);
+
+    transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out;
 }
 
 .phone > span > svg {
@@ -159,6 +192,8 @@
     width: 1.5rem;
     height: 1.5rem;
     margin-left: 1rem;
+
+    transition: fill var(--theme-transition) ease-in-out;
 }
 
 .socials {
@@ -166,29 +201,25 @@
     border: 2px dashed var(--accent-color);
     display: flex;
     flex-direction: row;
-    margin-bottom: 5rem;
+    margin-bottom: 10rem;
     user-select: none;
 }
 
-.socialsItem {
+.socialsItem div {
     padding: 1rem;
-    border-right: 2px dashed var(--accent-color);
     cursor: pointer;
     display: flex;
     justify-content: space-around;
     align-items: center;
     flex-direction: column;
+    transition: transform 0.2s ease-in-out;
 }
-.socialsItem > * {
+.socialsItem div > * {
     pointer-events: none;
 }
-.socialsItem:hover {
-    background-color: var(--accent-color);
-}
-.socialsItem:hover p,
-.socialsItem:hover svg {
-    color: var(--main-color);
-    fill: var(--main-color);
+.socialsItem:hover div {
+    /* background-color: var(--accent-color); */
+    transform: scale(0.9);
 }
 .socialsItem p {
     font-family: var(--secondary-font);
@@ -205,6 +236,119 @@
     margin-bottom: 1rem;
 }
 
-.socialsItem:last-of-type {
+.socialsItem:nth-of-type(2) {
     border: none;
+    border-right: 2px dashed var(--accent-color);
+    border-left: 2px dashed var(--accent-color);
+}
+
+.hireButton {
+    width: 8rem;
+    height: 8rem;
+    border: 2px solid var(--accent-color);
+    border-radius: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    overflow: hidden;
+    pointer-events: none;
+    user-select: none;
+}
+
+.hireButtonContainer {
+    cursor: pointer;
+    border-radius: 100%;
+    transform: scale(1);
+    transition: transform var(--theme-transition) ease-in-out;
+}
+.hireButtonContainer:hover {
+    transform: scale(0.9);
+}
+
+.hireButtonContainer:focus svg {
+    animation: send 1s ease-in-out;
+}
+
+.hireButton > p {
+    color: var(--accent-color);
+    font-family: var(--secondary-font);
+    font-weight: bold;
+    font-size: 1rem;
+    text-align: center;
+    pointer-events: none;
+    transition: color var(--theme-transition) ease-in-out;
+    display: flex;
+    flex-direction: column;
+}
+
+.hireButton > p > span > svg {
+    fill: var(--accent-color);
+    width: 1.5rem;
+    height: 1.5rem;
+    transition: fill var(--theme-transition) ease-in-out, transform 0.5s ease-in-out;
+    margin-top: 1rem;
+
+    transform-origin: 50% 500%;
+    /* transform: rotate(10deg); */
+}
+
+@keyframes send {
+    0% {
+        transform: rotate(0deg);
+    }
+    10% {
+        transform: rotate(-15deg);
+    }
+    99% {
+        transform: rotate(360deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .content {
+        align-items: flex-start;
+        padding-left: 4rem;
+    }
+
+    .title {
+        font-size: 3rem;
+        margin-bottom: 2rem;
+        text-align: left;
+    }
+    .subTitle {
+        font-size: 5rem;
+        text-align: left;
+    }
+
+    .hireButtonContainer {
+        position: absolute;
+        left: calc(75% - 4rem);
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+    .hireButtonContainer:hover {
+        transform: scale(0.9) translate(-50%, -50%);
+    }
+    .socialsItem svg {
+        margin-bottom: 0;
+        margin-right: 1rem;
+    }
+    .socialsItem div {
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .hireButton {
+        width: 10rem;
+        height: 10rem;
+    }
+    .hireButton > p {
+        font-size: 1.5rem;
+    }
 }
