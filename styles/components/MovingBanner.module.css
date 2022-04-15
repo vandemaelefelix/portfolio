@@ -9,8 +9,8 @@
     padding-inline: 1rem;
     /* flex-direction: row; */
     /* align-items: center; */
-    transition: background-color var(--theme-transition) ease-in-out;
-    pointer-events: none;
+    transition: background-color var(--theme-transition) ease-in-out, border-color var(--theme-transition) ease-in-out;
+    /* pointer-events: none; */
     user-select: none;
 }
 
@@ -25,19 +25,19 @@
 
 .bannerContent:nth-of-type(1) {
     /* background-color: red; */
-    animation: banner 10s linear infinite;
+    animation: banner var(--banner-speed) linear infinite;
 }
 .bannerContent:nth-of-type(2) {
     /* background-color: blue; */
-    animation: banner 10s linear infinite;
+    animation: banner var(--banner-speed) linear infinite;
 }
 .bannerContent.inverted:nth-of-type(1) {
     /* background-color: red; */
-    animation: bannerInverted 10s linear infinite;
+    animation: bannerInverted var(--banner-speed) linear infinite;
 }
 .bannerContent.inverted:nth-of-type(2) {
     /* background-color: blue; */
-    animation: bannerInverted 10s linear infinite;
+    animation: bannerInverted var(--banner-speed) linear infinite;
 }
 
 .bannerText {
