@@ -7,13 +7,13 @@ interface Coordinates {
 }
 
 interface Props {
-    fade: boolean;
-    dotSpeed: number;
-    circleSpeed: number;
     isVisible: boolean;
+    fade?: boolean;
+    dotSpeed?: number;
+    circleSpeed?: number;
 }
 
-export default function CustomCursor({ fade, dotSpeed, circleSpeed, isVisible }: Props) {
+export default function CustomCursor({ fade = false, dotSpeed = 2, circleSpeed = 20, isVisible }: Props) {
     const circlePos: Coordinates = { x: 0, y: 0 };
     const dotPos: Coordinates = { x: 0, y: 0 };
     const mousePos: Coordinates = { x: 0, y: 0 };
