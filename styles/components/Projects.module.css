@@ -64,6 +64,10 @@
     height: fit-content;
 }
 
+/* .projectContainer {
+    background-color: var(--accent-color);
+} */
+
 .projectContainer:nth-child(odd) {
     background-color: var(--main-color);
     color: var(--accent-color);
@@ -148,19 +152,6 @@
     fill: var(--accent-color);
     transition: fill var(--theme-transition) ease-in-out;
 }
-
-/* .imageIcon.top {
-    top: -2.5rem;
-    right: -2.5rem;
-    width: 5rem;
-    height: 5rem;
-}
-.imageIcon.bottom {
-    bottom: -4rem;
-    left: -4rem;
-    width: 8rem;
-    height: 8rem;
-} */
 
 .imageIcon.top {
     top: -1.5rem;
