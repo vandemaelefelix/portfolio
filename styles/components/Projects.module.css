@@ -9,6 +9,16 @@
     padding-top: 3rem;
 }
 
+.sectionTitle {
+    font-size: 3rem;
+    font-family: var(--main-font);
+    color: var(--accent-color);
+    text-align: center;
+    /* border-bottom : 2px solid var(--accent-color); */
+    padding: 1rem;
+    font-weight: bold;
+}
+
 .projectsContainer {
     height: 100%;
     padding: 0;
@@ -273,6 +283,9 @@
 }
 
 @media only screen and (min-width: 1000px) {
+    .sectionTitle {
+        display: none;
+    }
     [data-device='desktop'] .projectsContainer {
         padding-top: 0;
         flex-direction: row;
