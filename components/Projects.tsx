@@ -198,6 +198,7 @@ export default function Projects({ isMobile }: Props) {
         <>
             <Parrallax container={null} parrallaxRefs={parrallaxRefs}></Parrallax>
             <section id={'projectsSection'} className={`${styles.projectsSection}`}>
+                <h1 className={styles.sectionTitle}>Projects</h1>
                 <div id={'horizontalSection'} className={`${styles.projectsContainer}`}>
                     {loadProjects()}
                 </div>
