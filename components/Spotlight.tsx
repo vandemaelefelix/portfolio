@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { MouseEvent, useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import useIsMobile from '../hooks/useIsMobile';
 import styles from '../styles/components/Spotlight.module.css';
@@ -24,8 +24,11 @@ export default function Spotlight() {
     const spotlight = useRef(null);
     const spotlightText = useRef(null);
     let touchTimeout: any;
+    const [hoveredItem, setHoveredItem] = useState<string>('');
 
     const [shuffledTools, setShuffledTools] = useState(tools);
+
+    const titleContainerRef = useRef(null);
 
     const toggleSpotlight = () => {
         console.log(hideSpotlight);
@@ -105,20 +108,29 @@ export default function Spotlight() {
         }
     };
 
-    const handleMouseMove = (e: any) => {
-        let rect;
-        if (document.elementFromPoint(e.clientX, e.clientY)?.id == 'title') {
-            setShowTitle(false);
-            rect = e.target.parentElement.getBoundingClientRect();
-        } else if (document.elementFromPoint(e.clientX, e.clientY)?.id.split('-')[0] == 'tool') {
-            rect = e.target.parentElement.getBoundingClientRect();
-        } else if (document.elementFromPoint(e.clientX, e.clientY)?.id == 'toggleSpotlightButton') {
-            rect = e.target.parentElement.parentElement.getBoundingClientRect();
-        } else {
-            if (!isExpanding && !hideSpotlight) {
-                setShowTitle(true);
+    const handleMouseMove = (e: MouseEvent) => {
+        if (titleContainerRef.current) {
+            const bounds: DOMRect = (titleContainerRef.current as HTMLElement).getBoundingClientRect();
+            if (
+                e.clientX >= bounds.left &&
+                e.clientX < bounds.left + bounds.width &&
+                e.clientY >= bounds.top &&
+                e.clientY < bounds.top + bounds.height
+            ) {
+                setShowTitle(false);
+            } else {
+                if (!hideSpotlight && !isExpanding) {
+                    setShowTitle(true);
+                }
             }
-            rect = e.target.getBoundingClientRect();
+        }
+
+        let rect;
+        if (document.elementFromPoint(e.clientX, e.clientY)?.id.split('-')[0] == 'tool') {
+            rect = (e.target as any).parentElement.getBoundingClientRect();
+            e.target;
+        } else {
+            rect = (e.target as any).getBoundingClientRect();
         }
 
         const x = e.clientX - rect.left;
@@ -129,9 +141,19 @@ export default function Spotlight() {
         (spotlight.current as HTMLElement).style.top = `${y}px`;
 
         if (spotlightText.current === null) return;
-        // console.log(`left: ${x} pixels | top: ${y} pixels`);
         (spotlightText.current as HTMLElement).style.left = `${x}px`;
-        (spotlightText.current as HTMLElement).style.top = `calc(${y}px + var(--spotlight-text-position))`;
+
+        let distance;
+        if (hideSpotlight || isExpanding) {
+            distance = '5rem';
+        } else {
+            distance = 'var(--spotlight-text-position)';
+        }
+        if (e.clientY > (e.target as any).parentElement.offsetHeight / 2) {
+            (spotlightText.current as HTMLElement).style.top = `calc(${y}px - ${distance})`;
+        } else {
+            (spotlightText.current as HTMLElement).style.top = `calc(${y}px + ${distance})`;
+        }
     };
 
     const handleTouchMove = (e: any) => {
@@ -195,15 +217,11 @@ export default function Spotlight() {
         let content: JSX.Element[] = [];
 
         shuffledTools.forEach(({ name, path, importance }: any) => {
-            // console.log({ name, path, importance });
             content.push(
                 <div
                     id={`tool-${path}`}
                     onMouseEnter={() => {
-                        console.log(name);
-                    }}
-                    onClick={() => {
-                        console.log(name);
+                        setHoveredItem(name);
                     }}
                     className={`${styles.toolsItem}`}
                     key={name}
@@ -244,20 +262,23 @@ export default function Spotlight() {
                     }
                 }}
             >
+                {/* {hoveredItem && hideSpotlight ? <div className={styles.hoveredItem}>{hoveredItem}</div> : <></>} */}
                 <div className={`${styles.content}`} data-mouse={'hide'}>
                     {loadContent()}
                 </div>
                 <div ref={spotlight} className={`${styles.section2Overlay} ${hideSpotlight ? styles.hide : ''}`}></div>
                 <div ref={spotlightText} className={`${styles.spotlightText} ${!showSpotlightText ? styles.hide : ''}`}>
-                    <p>click to reveal</p>
+                    {hoveredItem === '' ? <p>click to reveal</p> : <p>{hoveredItem}</p>}
                 </div>
 
                 <div
                     className={`${styles.titleContainer} ${!showTitle ? styles.hide : ''}`}
                     id={'title'}
                     data-mouse={'hide'}
+                    ref={titleContainerRef}
                 >
-                    <h1 className={styles.title}>Technologies I have used</h1>
+                    <h1 className={styles.title}>Tools I have used</h1>
+                    <h2 className={styles.subTitle}>(click to reveal all)</h2>
                 </div>
             </div>
         </section>
