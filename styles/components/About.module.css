@@ -20,7 +20,7 @@
     order: 2;
     position: relative;
     width: 70%;
-    height: 30rem;
+    height: 20rem;
     margin-bottom: 5rem;
 }
 
@@ -110,17 +110,18 @@
 }
 
 .imageIcon.top {
-    top: -2.5rem;
-    right: -2.5rem;
+    top: -1.5rem;
+    right: -1.5rem;
+    width: 3rem;
+    height: 3rem;
+}
+.imageIcon.bottom {
+    bottom: -2.5rem;
+    left: -2.5rem;
     width: 5rem;
     height: 5rem;
 }
-.imageIcon.bottom {
-    bottom: -4rem;
-    left: -4rem;
-    width: 8rem;
-    height: 8rem;
-}
+
 .imageContainer svg path {
     stroke-dasharray: var(--arrow-length);
     stroke-dashoffset: var(--arrow-length);
@@ -129,31 +130,6 @@
 .imageContainer:hover svg path {
     stroke-dashoffset: 0;
 }
-
-/* .textContainer h2 {
-    position: relative;
-}
-
-.textContainer h2 span {
-    position: absolute;
-    top: -50%;
-    left: 0;
-    width: 40%;
-}
-
-.textContainer h2 svg {
-    stroke-dasharray: 2087.1015625;
-    stroke-dashoffset: 2087.1015625;
-    transition: stroke-dashoffset 1s ease-in-out;
-    stroke: var(--accent-color);
-    stroke-width: 1.5;
-    fill: transparent;
-    opacity: 0.5;
-}
-
-.textContainer h2:hover svg {
-    stroke-dashoffset: 0;
-} */
 
 @keyframes arrowAnimation {
     from {
