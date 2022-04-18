@@ -81,13 +81,15 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    /* pointer-events: none; */
     transition: opacity var(--theme-transition) ease-in-out;
     opacity: 1;
+    padding: 10rem 3rem;
+    pointer-events: none;
 }
 .titleContainer.hide {
     opacity: 0;
     pointer-events: none;
+    /* display: none; */
 }
 .titleContainer .title {
     font-family: var(--main-font);
@@ -97,7 +99,15 @@
     transition: color var(--theme-transition) ease-in-out;
     pointer-events: none;
     user-select: none;
-    padding: 5rem;
+    /* padding: 5rem; */
+}
+
+.titleContainer .subTitle {
+    font-size: 1rem;
+    color: var(--accent-color);
+    text-align: center;
+    pointer-events: none;
+    user-select: none;
 }
 
 .spotlightText {
@@ -108,18 +118,18 @@
     pointer-events: none;
     opacity: 1;
     transition: color var(--theme-transition) ease-in-out, opacity var(--theme-transition) ease-in-out;
-    /* background-color: orangered; */
 }
 .spotlightText p {
     color: var(--accent-color);
     font-family: var(--main-font);
     font-size: 2rem;
     width: max-content;
+    text-transform: capitalize;
     user-select: none;
 }
 
-.spotlightText.hide {
-    opacity: 0;
+.spotlightText.hide p {
+    color: var(--main-color);
 }
 
 .content {
@@ -144,6 +154,10 @@
     -moz-user-select: none;
     -webkit-user-select: none;
     -ms-user-select: none;
+    transition: transform 0.3s ease;
+}
+.toolsItem:hover {
+    transform: scale(1.1);
 }
 .toolsItem > * {
     pointer-events: none;
@@ -160,12 +174,25 @@
     position: relative;
 }
 
-@media only screen and (min-width: 950px) {
+@media only screen and (min-width: 1000px) {
+    .spotlightText {
+        --spotlight-text-position: 12%;
+    }
+}
+@media only screen and (min-width: 1100px) {
+    .spotlightText {
+        --spotlight-text-position: 13%;
+    }
+}
+@media only screen and (min-width: 1200px) {
     .spotlightText {
         --spotlight-text-position: 15%;
     }
     .titleContainer .title {
         font-size: 5rem;
+    }
+    .titleContainer .subTitle {
+        font-size: 2rem;
     }
 }
 

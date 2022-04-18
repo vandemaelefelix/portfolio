@@ -135,7 +135,6 @@
 }
 .titleSub {
     font-family: var(--secondary-font);
-    /* font-family: var(--main-font); */
     color: var(--accent-color);
     font-size: 1.5rem;
     transition: color var(--theme-transition) ease-in-out;
