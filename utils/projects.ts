@@ -30,6 +30,17 @@ const projects = [
         image: 'projects/back-pi.png',
         link: '',
     },
+
+    {
+        id: 4,
+        name: 'Interactive playground',
+        description: `
+            This was a group project. We had to create an interactive playground based on a Microsoft Kinect and a projector
+        `,
+        image: 'projects/back-pi.png',
+        link: '',
+        video: 'https://www.youtube.com/watch?v=0VM1NRTfQqc',
+    },
 ];
 
 export default projects;

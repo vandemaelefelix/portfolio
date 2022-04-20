@@ -36,10 +36,10 @@
     --main-color: hsl(273, 100%, 50%);
     --accent-color: hsl(22, 100%, 50%);
 }
-/* [data-theme='black'] {
-    --main-color: hsl(0, 0%, 0%);
-    --accent-color: hsl(123, 100%, 50%);
-} */
+[data-theme='black'] {
+    --main-color: hsl(66, 100%, 50%);
+    --accent-color: hsl(0, 0%, 0%);
+}
 
 /* Fonts */
 @font-face {
