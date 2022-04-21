@@ -42,8 +42,7 @@ const projects = [
         id: 4,
         name: 'Interactive playground',
         description: `
-            This was a group project. We had to create an interactive playground based on a Microsoft Kinect and a projector
-            
+            This was a group project. We had to create an interactive playground based on a Microsoft Kinect and a projector            
             The interactive playground was a project for the sports department of Howest. They wanted us to create a similar product as the interactive playground of Lü.
 
         `,

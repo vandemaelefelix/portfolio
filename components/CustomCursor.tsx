@@ -75,8 +75,8 @@ export default function CustomCursor({ fade = false, dotSpeed = 2, circleSpeed =
             circlePos.x += distX / circleSpeed;
             circlePos.y += distY / circleSpeed;
 
-            dotPos.x += (mousePos.x - dotPos.x) / dotSpeed;
-            dotPos.y += (mousePos.y - dotPos.y) / dotSpeed;
+            dotPos.x += (mousePos.x - dotPos.x) / (isHorizontal ? 1 : dotSpeed);
+            dotPos.y += (mousePos.y - dotPos.y) / (isHorizontal ? 1 : dotSpeed);
 
             circle.style.left = circlePos.x + 'px';
             circle.style.top = circlePos.y + 'px';
@@ -120,6 +120,7 @@ export default function CustomCursor({ fade = false, dotSpeed = 2, circleSpeed =
         } else {
             if ((e as any).path[0]) {
                 const mouseType = (e as any).path[0].getAttribute('data-mouse');
+                // console.log(mouseType);
                 switch (mouseType) {
                     case 'hide':
                         fadeOutMouse();
@@ -171,6 +172,7 @@ export default function CustomCursor({ fade = false, dotSpeed = 2, circleSpeed =
 
     useEffect(() => {
         // document.addEventListener('touchmove', mouseMoveHandler);
+
         document.addEventListener('mousemove', mouseMoveHandler);
         document.addEventListener('scroll', scrollHandler);
 
@@ -189,7 +191,7 @@ export default function CustomCursor({ fade = false, dotSpeed = 2, circleSpeed =
             document.removeEventListener('mousemove', mouseMoveHandler);
             document.removeEventListener('scroll', scrollHandler);
         };
-    }, []);
+    }, [isHorizontal]);
 
     useEffect(() => {
         if (isVisible) {
