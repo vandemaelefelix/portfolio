@@ -9,6 +9,8 @@ const projects = [
         `,
         image: 'projects/selfdriving-car.png',
         link: 'https://drive.google.com/file/d/1Se7thaTL9O-rFyRB0GHqsoj-M2OMcF_e/view?usp=sharing',
+        video: 'self-driving-car.mp4',
+        tools: ['python', 'tensorflow', 'raspberry-pi', 'opencv'],
     },
     {
         id: 2,
@@ -19,6 +21,7 @@ const projects = [
         `,
         image: 'projects/mother-project.png',
         link: '',
+        tools: ['vue', 'javascript', 'firebase', 'tensorflow', 'python'],
     },
     {
         id: 3,
@@ -40,6 +43,7 @@ const projects = [
         image: 'projects/back-pi.png',
         link: '',
         video: 'https://www.youtube.com/watch?v=0VM1NRTfQqc',
+        tools: ['c#', 'opencv', 'python', 'javascript'],
     },
 ];
 

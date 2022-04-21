@@ -72,11 +72,11 @@ export default function CustomCursor({ fade = false, dotSpeed = 2, circleSpeed =
 
             //Progressive reduction of distance
             // console.log(isHorizontal);
-            circlePos.x += distX / (isHorizontal ? 1 : circleSpeed);
-            circlePos.y += distY / (isHorizontal ? 1 : circleSpeed);
+            circlePos.x += distX / circleSpeed;
+            circlePos.y += distY / circleSpeed;
 
-            dotPos.x += (mousePos.x - dotPos.x) / (isHorizontal ? 1 : dotSpeed);
-            dotPos.y += (mousePos.y - dotPos.y) / (isHorizontal ? 1 : dotSpeed);
+            dotPos.x += (mousePos.x - dotPos.x) / dotSpeed;
+            dotPos.y += (mousePos.y - dotPos.y) / dotSpeed;
 
             circle.style.left = circlePos.x + 'px';
             circle.style.top = circlePos.y + 'px';
@@ -95,10 +95,6 @@ export default function CustomCursor({ fade = false, dotSpeed = 2, circleSpeed =
         }
 
         requestAnimationFrame(() => followMouse());
-    };
-
-    const handleScrollMouse = () => {
-        setIsScroll(true);
     };
 
     const getMouse = (e: MouseEvent | TouchEvent) => {
@@ -122,27 +118,22 @@ export default function CustomCursor({ fade = false, dotSpeed = 2, circleSpeed =
             mousePos.x = touch.pageX;
             mousePos.y = touch.pageY;
         } else {
-            // console.log((e as any).path[0]);
             if ((e as any).path[0]) {
                 const mouseType = (e as any).path[0].getAttribute('data-mouse');
-                // console.log(mouseType);
                 switch (mouseType) {
                     case 'hide':
                         fadeOutMouse();
                         setIsScroll(false);
                         break;
                     case 'scroll':
-                        // console.log('scroll mouse');
                         setIsScroll(true);
                         fadeOutMouse();
                         break;
                     case 'inverted':
-                        // console.log('scroll mouse');
                         setIsInverted(true);
                         fadeInMouse();
                         break;
                     case 'horizontal':
-                        // console.log('horizontal');
                         fadeInMouse();
                         setIsHorizontal(true);
                         break;
@@ -171,34 +162,34 @@ export default function CustomCursor({ fade = false, dotSpeed = 2, circleSpeed =
         prevScrollPosition = window.scrollY;
     };
 
-    const mouseMoveHandler = (e: TouchEvent | MouseEvent) => getMouse(e);
+    const mouseMoveHandler = (e: TouchEvent | MouseEvent) => {
+        getMouse(e);
+    };
     const clickUpHandler = (e: TouchEvent | PointerEvent) => handleClickUp();
     const clickDownHandler = (e: TouchEvent | PointerEvent) => handleClickDown();
     const scrollHandler = () => scrollGetMouse();
 
     useEffect(() => {
-        console.log('Ishorizontal changed: ' + isHorizontal);
-        document.addEventListener('touchmove', mouseMoveHandler);
+        // document.addEventListener('touchmove', mouseMoveHandler);
         document.addEventListener('mousemove', mouseMoveHandler);
         document.addEventListener('scroll', scrollHandler);
 
-        document.addEventListener('touchend', clickUpHandler);
+        // document.addEventListener('touchend', clickUpHandler);
         document.addEventListener('pointerdown', clickDownHandler);
         document.addEventListener('pointerup', clickUpHandler);
 
         followMouse();
 
         return () => {
-            document.removeEventListener('touchend', clickUpHandler);
+            // document.removeEventListener('touchend', clickUpHandler);
             document.removeEventListener('pointerdown', clickDownHandler);
             document.removeEventListener('pointerup', clickUpHandler);
 
-            document.removeEventListener('touchmove', mouseMoveHandler);
+            // document.removeEventListener('touchmove', mouseMoveHandler);
             document.removeEventListener('mousemove', mouseMoveHandler);
-
             document.removeEventListener('scroll', scrollHandler);
         };
-    }, [isHorizontal]);
+    }, []);
 
     useEffect(() => {
         if (isVisible) {
