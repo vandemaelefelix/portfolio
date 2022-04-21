@@ -102,8 +102,12 @@ export default function Projects({ isMobile }: Props) {
                         <h1 data-test={'nothing'} className={`${styles.title}`}>
                             {project.name}
                         </h1>
-                        <p data-test={'nothing'} className={`${styles.description}`}>
-                            {project.description}
+                        <p
+                            data-test={'nothing'}
+                            dangerouslySetInnerHTML={{ __html: project.description }}
+                            className={`${styles.description}`}
+                        >
+                            {/* {project.description} */}
                         </p>
                         <ProjectImage project={project}></ProjectImage>
                         {project.link != '' ? (
