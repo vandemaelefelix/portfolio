@@ -1,0 +1,141 @@
+/* ----------------- */
+/* ----- Video ----- */
+/* ----------------- */
+
+.videoWrapper.hover {
+    /* display: flex; */
+    opacity: 1;
+    transform: scale(1);
+}
+
+.videoWrapper.hover > .video {
+    opacity: 1;
+    transform: scale(1);
+    transition: opacity 1s ease, transform var(--theme-transition) ease-in-out;
+}
+
+.videoWrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    /* display: none; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    /* transition: opacity 1s 0.5s ease, transform var(--theme-transition) ease-in-out; */
+    /* transform: scale(0.5); */
+}
+.video {
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transform: scale(0.5);
+    transition: opacity 1s ease, transform var(--theme-transition) ease-in-out;
+}
+
+/* ----------------- */
+/* ----- Image ----- */
+/* ----------------- */
+
+.imageWrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    opacity: 0.5;
+}
+
+.imageContainer {
+    order: 2;
+    position: relative;
+    width: 70%;
+    height: 50vw;
+    margin-bottom: 5rem;
+    cursor: pointer;
+}
+
+.imageOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--accent-color);
+    opacity: var(--image-overlay-opacity);
+    pointer-events: none;
+
+    transition: opacity var(--theme-transition) ease-in-out, background-color var(--theme-transition) ease-in-out;
+}
+
+.imageWrapper .image {
+    filter: grayscale(1);
+
+    user-drag: none;
+    -webkit-user-drag: none;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+
+    transition: filter var(--theme-transition) ease-in-out, transform 0.5s ease-in-out;
+}
+.imageContainer:hover .image {
+    filter: grayscale(0);
+}
+.imageContainer:hover .imageOverlay {
+    opacity: 0;
+}
+
+.imageContainer:hover .imageWrapper {
+    opacity: 1;
+}
+.imageContainer:hover .imageWrapper .image {
+    transform: scale(1.1);
+}
+
+.imageIcon {
+    position: absolute;
+    z-index: 20;
+    fill: var(--accent-color);
+    transition: fill var(--theme-transition) ease-in-out;
+}
+
+.imageIcon.top {
+    top: -1.5rem;
+    right: -1.5rem;
+    width: 3rem;
+    height: 3rem;
+}
+.imageIcon.bottom {
+    bottom: -2.5rem;
+    left: -2.5rem;
+    width: 5rem;
+    height: 5rem;
+}
+
+@media only screen and (min-width: 600px) {
+    .imageContainer {
+        width: 70%;
+        height: 20rem;
+    }
+}
+
+@media only screen and (min-width: 1000px) {
+    .imageContainer {
+        order: 1;
+        grid-row: 1/6;
+        width: 100%;
+        height: 25rem;
+        margin-bottom: 0;
+        margin-right: 2rem;
+    }
+}
+
+@media only screen and (min-width: 1400px) {
+    .imageContainer {
+        width: 80%;
+    }
+}

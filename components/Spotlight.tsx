@@ -109,23 +109,8 @@ export default function Spotlight() {
     };
 
     const handleMouseMove = (e: MouseEvent) => {
-        if (titleContainerRef.current) {
-            const bounds: DOMRect = (titleContainerRef.current as HTMLElement).getBoundingClientRect();
-            if (
-                e.clientX >= bounds.left &&
-                e.clientX < bounds.left + bounds.width &&
-                e.clientY >= bounds.top &&
-                e.clientY < bounds.top + bounds.height
-            ) {
-                setShowTitle(false);
-            } else {
-                if (!hideSpotlight && !isExpanding) {
-                    setShowTitle(true);
-                }
-            }
-        }
-
         let rect;
+        //? Check if item hovered is a tool item, if so set BoundingClientRect to that of the parent
         if (document.elementFromPoint(e.clientX, e.clientY)?.id.split('-')[0] == 'tool') {
             rect = (e.target as any).parentElement.getBoundingClientRect();
             e.target;
@@ -133,12 +118,9 @@ export default function Spotlight() {
             rect = (e.target as any).getBoundingClientRect();
         }
 
+        // ? set X and Y to
         const x = e.clientX - rect.left;
         const y = e.clientY - rect.top;
-
-        if (spotlight.current === null) return;
-        (spotlight.current as HTMLElement).style.left = `${x}px`;
-        (spotlight.current as HTMLElement).style.top = `${y}px`;
 
         if (spotlightText.current === null) return;
         (spotlightText.current as HTMLElement).style.left = `${x}px`;
@@ -153,6 +135,28 @@ export default function Spotlight() {
             (spotlightText.current as HTMLElement).style.top = `calc(${y}px - ${distance})`;
         } else {
             (spotlightText.current as HTMLElement).style.top = `calc(${y}px + ${distance})`;
+        }
+
+        if (!hideSpotlight) {
+            if (spotlight.current === null) return;
+            (spotlight.current as HTMLElement).style.left = `${x}px`;
+            (spotlight.current as HTMLElement).style.top = `${y}px`;
+
+            if (titleContainerRef.current) {
+                const bounds: DOMRect = (titleContainerRef.current as HTMLElement).getBoundingClientRect();
+                if (
+                    e.clientX >= bounds.left &&
+                    e.clientX < bounds.left + bounds.width &&
+                    e.clientY >= bounds.top &&
+                    e.clientY < bounds.top + bounds.height
+                ) {
+                    setShowTitle(false);
+                } else {
+                    if (!hideSpotlight && !isExpanding) {
+                        setShowTitle(true);
+                    }
+                }
+            }
         }
     };
 

@@ -100,8 +100,33 @@
 }
 
 /* ----------------- */
+/* ----- Video ----- */
+/* ----------------- */
+
+.imageContainer:hover .videoWrapper {
+    display: flex;
+}
+
+.videoWrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+.video {
+    height: 100%;
+    object-fit: cover;
+}
+
+/* ----------------- */
 /* ----- Image ----- */
 /* ----------------- */
+
 .imageWrapper {
     position: relative;
     width: 100%;
