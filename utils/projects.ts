@@ -16,10 +16,14 @@ const projects = [
         id: 2,
         name: 'plant recognition',
         description: `
-        This was a group project I made for the company Mother. They wanted an app that can take a picture of a plant and recognize it.
-        We used Vue Native as frontend framework and firebase to create a backend. The app isn't currently available as it runned on the companies' servers.
+        The company Mother asked us to develop a section inside their already existing app to scan plants.
+        The app had to be able to identify the type of plant and the state of health, only by taking a picture of it.
+        The frontend of the app was made with Vue Native and the backend was made with Google Firebase. 
+        We created a Neural Network with Tensorflow to predict the type of plant in the picture.
         `,
-        image: 'projects/mother-project.png',
+        image: 'projects/mother.png',
+        image2: 'projects/mother-scan-app.png',
+        image2_mobile: 'projects/mother-scan-app-mobile.png',
         link: '',
         tools: ['vue', 'javascript', 'firebase', 'tensorflow', 'python'],
     },
@@ -39,10 +43,13 @@ const projects = [
         name: 'Interactive playground',
         description: `
             This was a group project. We had to create an interactive playground based on a Microsoft Kinect and a projector
+            
+            The interactive playground was a project for the sports department of Howest. They wanted us to create a similar product as the interactive playground of Lü.
+
         `,
-        image: 'projects/back-pi.png',
+        image: 'projects/interactive-playground2.png',
         link: '',
-        video: 'https://www.youtube.com/watch?v=0VM1NRTfQqc',
+        video: 'interactive-playground.mp4',
         tools: ['c#', 'opencv', 'python', 'javascript'],
     },
 ];

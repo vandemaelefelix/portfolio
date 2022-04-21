@@ -8,6 +8,7 @@ interface Project {
     name: string;
     description: string;
     image: string;
+    image2?: string;
     link?: string;
     video?: string;
     tools?: string[];
@@ -20,6 +21,7 @@ interface Props {
 export default function ProjectImage({ project }: Props) {
     const parrallaxRefs = useRef<any[]>([]);
     const [isHover, setIsHover] = useState<boolean>(false);
+    const [isPlaying, setIsPlaying] = useState(false);
     const [hoverTimeout, setHoverTimeout] = useState<NodeJS.Timeout>(setTimeout(() => {}));
 
     const videoRef = useRef<HTMLVideoElement | null>(null);
@@ -48,20 +50,31 @@ export default function ProjectImage({ project }: Props) {
         <div
             className={`${styles.imageContainer}`}
             onMouseEnter={() => {
-                console.log('test');
-                clearTimeout(hoverTimeout);
-                setHoverTimeout(
-                    setTimeout(() => {
-                        play();
-                        setIsHover(true);
-                        console.log('hover');
-                    }, 200)
-                );
+                // console.log('test');
+                // clearTimeout(hoverTimeout);
+                // setHoverTimeout(
+                //     setTimeout(() => {
+                //         play();
+                //         setIsHover(true);
+                //         console.log('hover');
+                //     }, 500)
+                // );
             }}
             onMouseLeave={() => {
-                clearTimeout(hoverTimeout);
-                setIsHover(false);
-                pause();
+                // clearTimeout(hoverTimeout);
+                // setIsHover(false);
+                // pause();
+            }}
+            onClick={() => {
+                if (isPlaying) {
+                    pause();
+                    setIsHover(false);
+                    setIsPlaying(false);
+                } else {
+                    play();
+                    setIsHover(true);
+                    setIsPlaying(true);
+                }
             }}
         >
             <svg
@@ -105,6 +118,20 @@ export default function ProjectImage({ project }: Props) {
                         src={`/videos/${project.video}`}
                         ref={videoRef}
                     ></video>
+                </div>
+            ) : (
+                <></>
+            )}
+            {project.image2 ? (
+                <div className={`${styles.videoWrapper} ${isHover ? styles.hover : ''}`}>
+                    <Image
+                        className={styles.image}
+                        alt={project.name}
+                        src={`/images/${project.image2}`}
+                        layout={'fill'}
+                        objectFit={'cover'}
+                        loading={'lazy'}
+                    ></Image>
                 </div>
             ) : (
                 <></>
