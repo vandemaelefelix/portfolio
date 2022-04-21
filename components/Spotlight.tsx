@@ -110,6 +110,7 @@ export default function Spotlight() {
 
     const handleMouseMove = (e: MouseEvent) => {
         let rect;
+        //? Check if item hovered is a tool item, if so set BoundingClientRect to that of the parent
         if (document.elementFromPoint(e.clientX, e.clientY)?.id.split('-')[0] == 'tool') {
             rect = (e.target as any).parentElement.getBoundingClientRect();
             e.target;
@@ -117,6 +118,7 @@ export default function Spotlight() {
             rect = (e.target as any).getBoundingClientRect();
         }
 
+        // ? set X and Y to
         const x = e.clientX - rect.left;
         const y = e.clientY - rect.top;
 
