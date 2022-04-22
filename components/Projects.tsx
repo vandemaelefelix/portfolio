@@ -9,11 +9,18 @@ import projects from '../utils/projects';
 import useIsMobile from '../hooks/useIsMobile';
 import Parrallax from './Parrallax';
 import ProjectImage from './ProjectImage';
+import tools from '../utils/tools';
 
 gsap.registerPlugin(ScrollTrigger);
 
 interface Props {
     isMobile?: boolean;
+}
+
+interface Tool {
+    name: string;
+    path: string;
+    importance: number;
 }
 
 export default function Projects({ isMobile }: Props) {
@@ -87,54 +94,85 @@ export default function Projects({ isMobile }: Props) {
         };
     }, [isMobile]);
 
+    const loadLinks = (links: { name: string; url: string }[]): JSX.Element[] => {
+        const linksContent: JSX.Element[] = [];
+
+        links.forEach(({ name, url }: { name: string; url: string }) => {
+            linksContent.push(
+                <div key={url} className={`${styles.link}`}>
+                    <a data-mouse={'hide'} target="_blank" rel="noreferrer" href={url}>
+                        {name}
+                        <span data-mouse={'hide'} className={`${styles.arrow}`}>
+                            <svg viewBox="0 0 330.001 180">
+                                <path
+                                    d="M100.606,100.606,150,51.212V315a15,15,0,0,0,30,0V51.212l49.394,49.394a15,15,0,0,0,21.212-21.213l-75-75a15,15,0,0,0-21.213,0l-75,75a15,15,0,0,0,21.213,21.213Z"
+                                    transform="translate(330 -74.999) rotate(90)"
+                                />
+                            </svg>
+                        </span>
+                    </a>
+                </div>
+            );
+        });
+
+        return linksContent;
+    };
+
+    const getTool = (name: string): { name: string; path: string; importance: number } => {
+        return tools.filter((tool) => tool.name === name)[0];
+    };
+
+    const loadTools = (usedTools: string[]): JSX.Element[] => {
+        if (usedTools.length <= 0) return [<></>];
+
+        const toolsContent: JSX.Element[] = [];
+
+        console.log(usedTools);
+
+        usedTools.forEach((tool: string) => {
+            const toolDetails: Tool = getTool(tool);
+            console.log(toolDetails);
+            toolsContent.push(
+                <div key={toolDetails.name} className={`${styles.tool}`}>
+                    <div className={`${styles.toolWrapper}`}>
+                        <Image
+                            className={styles.image}
+                            alt={toolDetails.name}
+                            src={`/images/tools/${toolDetails.path}`}
+                            layout={'fill'}
+                            objectFit={'contain'}
+                            loading={'lazy'}
+                        ></Image>
+                    </div>
+                </div>
+            );
+        });
+
+        return toolsContent;
+    };
+
     const loadProjects = (): JSX.Element[] => {
+        console.log('Loading projects');
         const projectsContent: JSX.Element[] = [];
 
         projects.forEach((project) => {
             projectsContent.push(
-                <div
-                    data-test={'nothing'}
-                    key={project.id}
-                    id={`section${project.id}`}
-                    className={`${styles.projectContainer}`}
-                >
-                    <div data-test={'nothing'} className={`${styles.project}`}>
-                        <h1 data-test={'nothing'} className={`${styles.title}`}>
-                            {project.name}
-                        </h1>
+                <div key={project.id} id={`section${project.id}`} className={`${styles.projectContainer}`}>
+                    <div className={`${styles.project}`}>
+                        <div className={`${styles.projectImage}`}>
+                            <h1 className={`${styles.titleMobile}`}>{project.name}</h1>
+                            <ProjectImage project={project}></ProjectImage>
+                        </div>
 
-                        <p
-                            data-test={'nothing'}
-                            dangerouslySetInnerHTML={{ __html: project.description }}
-                            className={`${styles.description}`}
-                        >
-                            {/* {project.description} */}
-                        </p>
-                        <ProjectImage project={project}></ProjectImage>
-
-                        {project.link != '' ? (
-                            <div data-test={'nothing'} className={`${styles.link}`}>
-                                <a
-                                    data-mouse={'hide'}
-                                    // className={`${styles.link}`}
-                                    target="_blank"
-                                    rel="noreferrer"
-                                    href={project.link}
-                                >
-                                    see more
-                                    <span data-mouse={'hide'} className={`${styles.arrow}`}>
-                                        <svg viewBox="0 0 330.001 180">
-                                            <path
-                                                d="M100.606,100.606,150,51.212V315a15,15,0,0,0,30,0V51.212l49.394,49.394a15,15,0,0,0,21.212-21.213l-75-75a15,15,0,0,0-21.213,0l-75,75a15,15,0,0,0,21.213,21.213Z"
-                                                transform="translate(330 -74.999) rotate(90)"
-                                            />
-                                        </svg>
-                                    </span>
-                                </a>
-                            </div>
-                        ) : (
-                            <></>
-                        )}
+                        <div className={`${styles.projectContent}`}>
+                            <h1 className={`${styles.title}`}>{project.name}</h1>
+                            <p
+                                dangerouslySetInnerHTML={{ __html: project.description }}
+                                className={`${styles.description}`}
+                            ></p>
+                            <div className={`${styles.toolsContainer}`}>{loadTools(project.tools)}</div>
+                            <div className={`${styles.linksContainer}`}>{loadLinks(project.links)}</div>
+                        </div>
                     </div>
                 </div>
             );
