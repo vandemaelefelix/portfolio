@@ -83,7 +83,7 @@
     transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out, color var(--theme-transition) ease-in-out;
 }
 .emailContainer:hover .email {
-    transform: scale(1.05);
+    transform: scale(0.95);
 }
 .copiedEmailText > span > svg {
     fill: transparent;
@@ -139,7 +139,7 @@
     user-select: none;
 }
 .phoneContainer:hover .phone {
-    transform: scale(1.05);
+    transform: scale(0.95);
 }
 
 .phoneContainer .copiedPhoneText {
