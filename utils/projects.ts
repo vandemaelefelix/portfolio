@@ -9,7 +9,7 @@ const projects = [
         `,
         image: 'projects/selfdriving-car.png',
         link: 'https://drive.google.com/file/d/1Se7thaTL9O-rFyRB0GHqsoj-M2OMcF_e/view?usp=sharing',
-        video: 'self-driving-car.mp4',
+        video: 'https://firebasestorage.googleapis.com/v0/b/portfolio-232b3.appspot.com/o/self-driving-car.mp4?alt=media&token=d5718933-dcf4-425b-9a35-34dbc69b3df0',
         tools: ['python', 'tensorflow', 'raspberry-pi', 'opencv'],
     },
     {
@@ -47,8 +47,9 @@ const projects = [
 
         `,
         image: 'projects/interactive-playground2.png',
-        link: '',
-        video: 'interactive-playground.mp4',
+        link: 'https://keen-pavlova-376c8c.netlify.app',
+        link2: 'https://unrivaled-treacle-eca9ac.netlify.app',
+        video: 'https://firebasestorage.googleapis.com/v0/b/portfolio-232b3.appspot.com/o/interactive-playground.mp4?alt=media&token=8a4593f3-918f-4852-b920-54a9d69f4ee2',
         tools: ['c#', 'opencv', 'python', 'javascript'],
     },
 ];
