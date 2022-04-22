@@ -115,7 +115,8 @@ export default function ProjectImage({ project }: Props) {
                         autoPlay
                         muted
                         loop
-                        src={`/videos/${project.video}`}
+                        // src={`/videos/${project.video}`}
+                        src={project.video}
                         ref={videoRef}
                     ></video>
                 </div>
