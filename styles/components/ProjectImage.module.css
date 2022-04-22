@@ -126,11 +126,12 @@
 @media only screen and (min-width: 1000px) {
     .imageContainer {
         order: 1;
-        grid-row: 1/6;
+        grid-row: 2/ 12;
         width: 100%;
         height: 25rem;
         margin-bottom: 0;
         margin-right: 2rem;
+        /* grid-area: 'image'; */
     }
 }
 

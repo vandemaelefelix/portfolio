@@ -10,12 +10,12 @@
 }
 
 .sectionTitle {
-    font-size: 3rem;
+    font-size: 4rem;
     font-family: var(--main-font);
     color: var(--accent-color);
     text-align: center;
     padding: 1rem;
-    font-weight: bold;
+    font-weight: medium;
 }
 
 .projectsContainer {
@@ -39,7 +39,6 @@
 .projectsSection::-webkit-scrollbar {
     display: none;
 }
-
 /* Hide scrollbar for IE, Edge and Firefox */
 .projectsSection {
     -ms-overflow-style: none; /* IE and Edge */
@@ -57,15 +56,11 @@
 }
 
 .project {
-    /* min-width: 100vw;
-    height: 100vh; */
     width: 100%;
     height: 100%;
     display: flex;
     align-items: center;
     flex-direction: column;
-    /* padding-top: 7rem; */
-    /* background-color: var(--main-color); */
 }
 
 [data-device='mobile'] .projectContainer {
@@ -91,8 +86,31 @@
     border-color: var(--main-color);
 }
 
+.projectImage {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.projectContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.titleMobile {
+    font-family: var(--main-font);
+    font-size: 2.5rem;
+    text-transform: capitalize;
+    color: var(--accent-color);
+    text-align: center;
+    width: 80%;
+    margin-bottom: 3rem;
+}
+
 .title {
-    order: 1;
+    display: none;
     font-family: var(--main-font);
     font-size: 2.5rem;
     text-transform: capitalize;
@@ -102,7 +120,6 @@
     margin-bottom: 3rem;
 }
 .description {
-    order: 3;
     width: 80%;
     color: var(--accent-color);
     font-family: var(--secondary-font);
@@ -111,12 +128,17 @@
     margin-bottom: 2rem;
 }
 
-.link {
-    /* max-width: fit-content; */
-    justify-self: end;
-    /* align-self: center; */
+.linksContainer {
     width: 80%;
-    order: 4;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 1.5rem;
+}
+
+.link {
+    justify-self: end;
+    width: 100%;
     opacity: 0.5;
     padding-bottom: 2px;
     user-select: none;
@@ -158,6 +180,28 @@
     animation: arrowHover 0.3s ease-in-out;
 }
 
+.toolsContainer {
+    display: flex;
+    flex-direction: row;
+    height: fit-content;
+    width: 80%;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+    margin-bottom: 4rem;
+}
+.tool {
+    height: 2.5rem;
+    width: 2.5rem;
+}
+.toolWrapper {
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+
 @keyframes arrowHover {
     0% {
         transform: translateX(0);
@@ -174,13 +218,18 @@
 }
 
 @media only screen and (min-width: 600px) {
+    .toolsContainer {
+        width: 70%;
+        gap: 2.5rem;
+    }
+
     .description {
         width: 70%;
     }
     .title {
         width: 70%;
     }
-    .link {
+    .linksContainer {
         width: 70%;
     }
 }
@@ -189,15 +238,18 @@
     .title {
         font-size: 4rem;
     }
+    .tool {
+        height: 3rem;
+        width: 3rem;
+    }
 }
 
 @media only screen and (min-width: 1000px) {
     .sectionTitle {
         display: none;
     }
-    [data-device='desktop'] .projectsContainer {
-        padding-top: 0;
-        flex-direction: row;
+    .titleMobile {
+        display: none;
     }
 
     [data-device='desktop'] .projectsSection {
@@ -206,31 +258,63 @@
         padding-top: 0;
     }
 
+    [data-device='desktop'] .projectsContainer {
+        padding-top: 0;
+        flex-direction: row;
+    }
+
     [data-device='desktop'] .projectContainer {
         height: 100vh;
         padding: 0;
     }
 
-    .project {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: repeat(5, 1fr);
-        width: 80%;
-        column-gap: 5rem;
+    [data-device='mobile'] .projectContainer {
+        height: 100vh;
     }
+
+    .projectContainer {
+        height: 100vh;
+    }
+
+    .project {
+        width: 80%;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        flex-direction: row;
+        gap: 3rem;
+    }
+
+    .projectImage {
+        width: 50%;
+    }
+
+    .projectContent {
+        width: 50%;
+        gap: 2.5rem;
+    }
+
+    .toolsContainer {
+        width: 100%;
+        margin-bottom: 0;
+        margin-top: 0;
+        justify-content: flex-start;
+    }
+
     .title {
-        order: 2;
         margin: 0;
         text-align: left;
-        grid-row: 2;
         width: 100%;
+        display: block;
     }
     .description {
-        grid-row: 3;
         width: 100%;
+        margin-bottom: 0;
     }
     .link {
         width: 100%;
-        grid-row: 4;
+    }
+    .linksContainer {
+        width: 100%;
     }
 }
