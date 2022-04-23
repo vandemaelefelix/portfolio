@@ -55,7 +55,7 @@ export default function Projects({ isMobile }: Props) {
                         // delay: 0.02,
                         ease: 'power1.inOut',
                         inertia: true,
-                        directional: true,
+                        directional: false,
                     },
                 },
             });
