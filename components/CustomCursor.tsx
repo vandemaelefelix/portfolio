@@ -71,7 +71,6 @@ export default function CustomCursor({ fade = false, dotSpeed = 2, circleSpeed =
             let distY: number = mousePos.y - circlePos.y;
 
             //Progressive reduction of distance
-            // console.log(isHorizontal);
             circlePos.x += distX / circleSpeed;
             circlePos.y += distY / circleSpeed;
 
@@ -122,7 +121,6 @@ export default function CustomCursor({ fade = false, dotSpeed = 2, circleSpeed =
             }
             clearTimeout(timeout);
             timeout = setTimeout(() => {
-                console.log('Timeout started');
                 fadeOutMouse();
                 isMoving = false;
             }, 2000);
@@ -135,7 +133,6 @@ export default function CustomCursor({ fade = false, dotSpeed = 2, circleSpeed =
             mousePos.x = touch.pageX;
             mousePos.y = touch.pageY;
         } else {
-            console.log((e as any).path);
             if ((e as any).path[0]) {
                 const mouseType = getMouseType((e as any).path);
                 switch (mouseType) {

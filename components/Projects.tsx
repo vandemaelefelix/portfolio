@@ -64,7 +64,10 @@ export default function Projects({ isMobile }: Props) {
         const killHorizontalScroll = () => {
             if (horizontalScroll) {
                 horizontalScroll.kill(true);
-                ScrollTrigger.getById('horizontalScroll').kill(true);
+                const trigger = ScrollTrigger.getById('horizontalScroll');
+                if (trigger) {
+                    trigger.kill(true);
+                }
             }
         };
 
@@ -73,10 +76,10 @@ export default function Projects({ isMobile }: Props) {
 
             if (mediaQuery.matches) {
                 /* the viewport is less than or exactly 500 pixels wide */
-                console.log(window.innerWidth);
+                // console.log(window.innerWidth);
                 setupHorizontalScroll();
             } else {
-                console.log(window.innerWidth);
+                // console.log(window.innerWidth);
                 /* the viewport is more than 500 pixels wide */
             }
 
