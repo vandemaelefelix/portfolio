@@ -9,13 +9,14 @@ gsap.registerPlugin(ScrollToPlugin);
 
 export default function Navbar({ parent, toggleMenu }: any) {
     const moveToTop = () => {
-        gsap.to(parent.current, { duration: 0.75, scrollTo: { y: 0 } });
+        gsap.to(window, { duration: 0.75, scrollTo: { y: 0 } });
     };
     const [menuIsOpen, setMenuIsOpen] = useState(false);
 
     const iconRef = useRef(null);
 
     useEffect(() => {
+        // TODO: Remove while and put iconRef in dependencies
         while (iconRef === null) {
             setTimeout(() => {}, 200);
         }
@@ -35,7 +36,9 @@ export default function Navbar({ parent, toggleMenu }: any) {
                 ease: 'none',
             });
 
-        return () => {};
+        return () => {
+            // TODO: Kill gsap animation
+        };
     }, []);
 
     return (

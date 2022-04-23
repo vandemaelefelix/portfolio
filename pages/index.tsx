@@ -180,7 +180,7 @@ const Home: NextPage = () => {
                     </div>
 
                     <div data-mouse="scroll" className={styles.scrollDown}>
-                        <div onClick={scrollDown} data-mouse="scroll">
+                        <div onClick={scrollDown}>
                             <p>scroll down</p>
                             <svg className={styles.scrollDownIcon} viewBox="0 0 20.55 12.458">
                                 <path

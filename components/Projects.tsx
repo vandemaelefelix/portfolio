@@ -45,7 +45,7 @@ export default function Projects({ isMobile }: Props) {
                     scroller: 'body',
                     trigger: '#projectsSection',
                     start: 'top+200 top+200',
-                    end: () => window.innerHeight * ((projects.length - 1) * 3),
+                    end: () => window.innerHeight * ((projects.length - 1) * 2),
                     pin: true,
                     scrub: 0.5,
                     anticipatePin: 0,
@@ -54,9 +54,8 @@ export default function Projects({ isMobile }: Props) {
                         duration: { min: 0.005, max: 0.5 },
                         // delay: 0.02,
                         ease: 'power1.inOut',
-
                         inertia: true,
-                        directional: true,
+                        directional: false,
                     },
                 },
             });
@@ -65,7 +64,10 @@ export default function Projects({ isMobile }: Props) {
         const killHorizontalScroll = () => {
             if (horizontalScroll) {
                 horizontalScroll.kill(true);
-                ScrollTrigger.getById('horizontalScroll').kill(true);
+                const trigger = ScrollTrigger.getById('horizontalScroll');
+                if (trigger) {
+                    trigger.kill(true);
+                }
             }
         };
 
@@ -74,10 +76,10 @@ export default function Projects({ isMobile }: Props) {
 
             if (mediaQuery.matches) {
                 /* the viewport is less than or exactly 500 pixels wide */
-                console.log(window.innerWidth);
+                // console.log(window.innerWidth);
                 setupHorizontalScroll();
             } else {
-                console.log(window.innerWidth);
+                // console.log(window.innerWidth);
                 /* the viewport is more than 500 pixels wide */
             }
 
@@ -158,9 +160,14 @@ export default function Projects({ isMobile }: Props) {
         console.log('Loading projects');
         const projectsContent: JSX.Element[] = [];
 
-        projects.forEach((project) => {
+        projects.forEach((project, index) => {
             projectsContent.push(
-                <div key={project.id} id={`section${project.id}`} className={`${styles.projectContainer}`}>
+                <div
+                    data-mouse={index % 2 > 0 ? 'inverted' : ''}
+                    key={project.id}
+                    id={`section${project.id}`}
+                    className={`${styles.projectContainer}`}
+                >
                     <div className={`${styles.project}`}>
                         <div className={`${styles.projectImage}`}>
                             <h1 className={`${styles.titleMobile}`}>{project.name}</h1>
