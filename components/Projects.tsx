@@ -39,7 +39,7 @@ export default function Projects({ isMobile }: Props) {
 
             horizontalScroll = gsap.to('#horizontalSection', {
                 xPercent: () => -100 * (projects.length - 1),
-                ease: 'linear',
+                ease: 'none',
                 scrollTrigger: {
                     id: 'horizontalScroll',
                     scroller: 'body',
@@ -47,14 +47,17 @@ export default function Projects({ isMobile }: Props) {
                     start: 'top+200 top+200',
                     end: () => window.innerHeight * ((projects.length - 1) * 3),
                     pin: true,
-                    scrub: 0,
-                    anticipatePin: 1,
-                    // snap: {
-                    //     snapTo: 1 / (projects.length - 1),
-                    //     duration: { min: 0.05, max: 0.1 },
-                    //     delay: 0,
-                    //     ease: 'ease',
-                    // },
+                    scrub: 0.5,
+                    anticipatePin: 0,
+                    snap: {
+                        snapTo: 1 / (projects.length - 1),
+                        duration: { min: 0.005, max: 0.5 },
+                        // delay: 0.02,
+                        ease: 'power1.inOut',
+
+                        inertia: true,
+                        directional: true,
+                    },
                 },
             });
         };

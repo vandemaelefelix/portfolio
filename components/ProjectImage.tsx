@@ -107,9 +107,10 @@ export default function ProjectImage({ project }: Props) {
                     loading={'lazy'}
                 ></Image>
             </div>
-            {project.video ? (
+            {/* {project.video ? (
                 <div className={`${styles.videoWrapper} ${isHover ? styles.hover : ''}`}>
                     <video
+                    loading={'lazy'}
                         className={`${styles.video}`}
                         playsInline
                         autoPlay
@@ -122,7 +123,7 @@ export default function ProjectImage({ project }: Props) {
                 </div>
             ) : (
                 <></>
-            )}
+            )} */}
             {project.image2 ? (
                 <div className={`${styles.videoWrapper} ${isHover ? styles.hover : ''}`}>
                     <Image
