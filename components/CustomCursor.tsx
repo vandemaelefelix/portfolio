@@ -97,6 +97,23 @@ export default function CustomCursor({ fade = false, dotSpeed = 2, circleSpeed =
         requestAnimationFrame(() => followMouse());
     };
 
+    const getMouseType = (path: any[]) => {
+        let mouseType: string | null = null;
+
+        for (let i = 0; i < path.length; i++) {
+            const element = path[i];
+            try {
+                mouseType = element.getAttribute('data-mouse');
+            } catch (error) {
+                mouseType = null;
+            }
+            if (mouseType) {
+                break;
+            }
+        }
+        return mouseType;
+    };
+
     const getMouse = (e: MouseEvent | TouchEvent) => {
         if (fade) {
             if (!isMoving) {
@@ -118,9 +135,9 @@ export default function CustomCursor({ fade = false, dotSpeed = 2, circleSpeed =
             mousePos.x = touch.pageX;
             mousePos.y = touch.pageY;
         } else {
+            console.log((e as any).path);
             if ((e as any).path[0]) {
-                const mouseType = (e as any).path[0].getAttribute('data-mouse');
-                // console.log(mouseType);
+                const mouseType = getMouseType((e as any).path);
                 switch (mouseType) {
                     case 'hide':
                         fadeOutMouse();
@@ -191,7 +208,7 @@ export default function CustomCursor({ fade = false, dotSpeed = 2, circleSpeed =
             document.removeEventListener('mousemove', mouseMoveHandler);
             document.removeEventListener('scroll', scrollHandler);
         };
-    }, [isHorizontal]);
+    }, []);
 
     useEffect(() => {
         if (isVisible) {

@@ -15,7 +15,7 @@
     transition-property: background-color, transform, opacity;
     transition-duration: 0.25s;
     transition-timing-function: ease;
-    z-index: 100;
+    z-index: 150;
 }
 
 .outerCircle.click {
