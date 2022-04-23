@@ -113,7 +113,6 @@ export default function Spotlight() {
         //? Check if item hovered is a tool item, if so set BoundingClientRect to that of the parent
         if (document.elementFromPoint(e.clientX, e.clientY)?.id.split('-')[0] == 'tool') {
             rect = (e.target as any).parentElement.getBoundingClientRect();
-            e.target;
         } else {
             rect = (e.target as any).getBoundingClientRect();
         }
@@ -131,7 +130,9 @@ export default function Spotlight() {
         } else {
             distance = 'var(--spotlight-text-position)';
         }
-        if (e.clientY > (e.target as any).parentElement.offsetHeight / 2) {
+
+        // Move spotlight text according to mousposition: if it is in the top half of the div move it down, if it is in the bottom half move it up.
+        if (y > rect.height / 2) {
             (spotlightText.current as HTMLElement).style.top = `calc(${y}px - ${distance})`;
         } else {
             (spotlightText.current as HTMLElement).style.top = `calc(${y}px + ${distance})`;
