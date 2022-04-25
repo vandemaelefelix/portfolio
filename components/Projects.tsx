@@ -10,6 +10,7 @@ import useIsMobile from '../hooks/useIsMobile';
 import Parrallax from './Parrallax';
 import ProjectImage from './ProjectImage';
 import tools from '../utils/tools';
+import YouTube from 'react-youtube';
 
 gsap.registerPlugin(ScrollTrigger);
 
