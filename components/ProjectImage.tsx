@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
+import YouTube, { YouTubeProps } from 'react-youtube';
 import styles from '../styles/components/ProjectImage.module.css';
 import Parrallax from './Parrallax';
 
@@ -45,6 +46,14 @@ export default function ProjectImage({ project }: Props) {
 
         return () => {};
     }, [videoRef]);
+
+    const opts: YouTubeProps['opts'] = {
+        //   height: '390',
+        //   width: '640',
+        playerVars: {
+            autoplay: 1,
+        },
+    };
 
     return (
         <div
@@ -107,10 +116,10 @@ export default function ProjectImage({ project }: Props) {
                     loading={'lazy'}
                 ></Image>
             </div>
-            {/* {project.video ? (
+            {project.video ? (
                 <div className={`${styles.videoWrapper} ${isHover ? styles.hover : ''}`}>
                     <video
-                    loading={'lazy'}
+                        // loading={'lazy'}
                         className={`${styles.video}`}
                         playsInline
                         autoPlay
@@ -123,7 +132,8 @@ export default function ProjectImage({ project }: Props) {
                 </div>
             ) : (
                 <></>
-            )} */}
+            )}
+
             {project.image2 ? (
                 <div className={`${styles.videoWrapper} ${isHover ? styles.hover : ''}`}>
                     <Image

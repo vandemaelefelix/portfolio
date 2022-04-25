@@ -37,7 +37,7 @@
 }
 
 .nav .nameContainer {
-    flex-grow: 1;
+    /* flex-grow: 1; */
     order: 1;
 
     display: flex;
@@ -48,9 +48,10 @@
 .nav .name {
     width: fit-content;
     order: 1;
-    flex-grow: 1;
+    /* flex-grow: 1; */
     color: var(--accent-color);
     font-size: 2.5rem;
+    line-height: 2.5rem;
     text-align: center;
 
     font-family: var(--main-font);
