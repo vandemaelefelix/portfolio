@@ -1,4 +1,4 @@
-import { MutableRefObject, useEffect, useRef, useState } from 'react';
+import { MutableRefObject, useCallback, useEffect, useRef, useState } from 'react';
 import styles from '../styles/components/CustomCursor.module.css';
 
 interface Coordinates {
@@ -19,7 +19,9 @@ export default function CustomCursor({ fade = false, dotSpeed = 2, circleSpeed =
     const mousePos: Coordinates = { x: 0, y: 0 };
     let prevScrollPosition: number = 0;
     let isMoving: boolean = false;
-    let timeout: any;
+    // let timeout: any;
+
+    const timeout = useRef<number>();
 
     const outerCircleRef: MutableRefObject<null> = useRef(null);
     const innerCircleRef: MutableRefObject<null> = useRef(null);
@@ -35,11 +37,11 @@ export default function CustomCursor({ fade = false, dotSpeed = 2, circleSpeed =
     const [isInverted, setIsInverted] = useState(false);
     const [isHorizontal, setIsHorizontal] = useState(false);
 
-    const handleClickUp = (): void => {
+    const handleClickUp = useCallback(() => {
         setIsClickDown(false);
-    };
+    }, []);
 
-    const handleClickDown = (): void => {
+    const handleClickDown = useCallback(() => {
         setIsClickDown(true);
 
         if (fade) {
@@ -47,22 +49,52 @@ export default function CustomCursor({ fade = false, dotSpeed = 2, circleSpeed =
                 isMoving = true;
                 fadeInMouse();
             }
-            clearTimeout(timeout);
-            timeout = setTimeout(() => {
+            clearTimeout(timeout.current);
+            timeout.current = window.setTimeout(() => {
                 fadeOutMouse();
                 isMoving = false;
             }, 2000);
         }
-    };
+    }, [timeout]);
 
-    const fadeOutMouse = () => {
+    // const handleClickUp = (): void => {
+    //     setIsClickDown(false);
+    // };
+
+    // const handleClickDown = (): void => {
+    //     setIsClickDown(true);
+
+    //     if (fade) {
+    //         if (!isMoving) {
+    //             isMoving = true;
+    //             fadeInMouse();
+    //         }
+    //         clearTimeout(timeout);
+    //         timeout = setTimeout(() => {
+    //             fadeOutMouse();
+    //             isMoving = false;
+    //         }, 2000);
+    //     }
+    // };
+
+    const fadeOutMouse = useCallback((): void => {
         if (dot === null || circle === null) return;
         setIsFaded(true);
-    };
-    const fadeInMouse = () => {
+    }, [circle, dot]);
+
+    const fadeInMouse = useCallback((): void => {
         if (dot === null || circle === null) return;
         setIsFaded(false);
-    };
+    }, [circle, dot]);
+
+    // const fadeOutMouse = () => {
+    //     if (dot === null || circle === null) return;
+    //     setIsFaded(true);
+    // };
+    // const fadeInMouse = () => {
+    //     if (dot === null || circle === null) return;
+    //     setIsFaded(false);
+    // };
 
     const followMouse = (): void => {
         if (circle !== null && dot !== null) {
@@ -119,8 +151,10 @@ export default function CustomCursor({ fade = false, dotSpeed = 2, circleSpeed =
                 isMoving = true;
                 fadeInMouse();
             }
-            clearTimeout(timeout);
-            timeout = setTimeout(() => {
+
+            clearTimeout(timeout.current);
+            timeout.current = window.setTimeout(() => {
+                console.log('fading out mouse');
                 fadeOutMouse();
                 isMoving = false;
             }, 2000);

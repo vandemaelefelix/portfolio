@@ -73,12 +73,14 @@
 .imageWrapper .image {
     filter: grayscale(1);
 
+    -webkit-user-drag: none;
+    -moz-user-drag: none;
     user-drag: none;
     -webkit-user-drag: none;
-    user-select: none;
     -moz-user-select: none;
     -webkit-user-select: none;
     -ms-user-select: none;
+    user-select: none;
 
     transition: filter var(--theme-transition) ease-in-out, transform 0.5s ease-in-out;
 }

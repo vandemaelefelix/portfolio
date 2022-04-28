@@ -37,7 +37,7 @@
 }
 
 .nav .nameContainer {
-    /* flex-grow: 1; */
+    flex-grow: 1;
     order: 1;
 
     display: flex;
@@ -46,9 +46,11 @@
 }
 
 .nav .name {
+    width: -moz-fit-content;
+    width: -webkit-fit-content;
     width: fit-content;
     order: 1;
-    /* flex-grow: 1; */
+    flex-grow: 1;
     color: var(--accent-color);
     font-size: 2.5rem;
     line-height: 2.5rem;
@@ -57,6 +59,8 @@
     font-family: var(--main-font);
     text-transform: uppercase;
     cursor: pointer;
+    -ms-user-select: none;
+    -webkit-user-select: none;
     user-select: none;
 
     transition: color var(--theme-transition) ease-in-out;
@@ -68,6 +72,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    -ms-user-select: none;
+    -webkit-user-select: none;
     user-select: none;
     padding: 2rem 0 2rem 2rem;
 }

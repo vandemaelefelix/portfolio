@@ -50,14 +50,20 @@
     font-display: swap;
 }
 
+@font-face {
+    font-family: Montserrat;
+    src: url('../public/fonts/Montserrat/Montserrat-Regular.ttf');
+    font-style: normal;
+    font-weight: normal;
+    font-display: swap;
+}
+
 /* Resetting styles */
 html,
 body {
     padding: 0;
     margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans,
-        Helvetica Neue, sans-serif;
-    /* overflow-x: hidden; */
+    font-family: var(--secondary-font);
     height: 100vh;
     width: 100vw;
 }

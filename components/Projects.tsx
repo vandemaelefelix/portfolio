@@ -29,7 +29,8 @@ export default function Projects({ isMobile }: Props) {
     const parrallaxRefs = useRef<any[]>([]);
 
     useEffect(() => {
-        let horizontalScroll: any;
+        let horizontalScroll: gsap.core.Tween;
+        const scrollSpeed: number = 2.5;
 
         const setupHorizontalScroll = (): void => {
             // killHorizontalScroll();
@@ -45,15 +46,14 @@ export default function Projects({ isMobile }: Props) {
                     id: 'horizontalScroll',
                     scroller: 'body',
                     trigger: '#projectsSection',
-                    start: 'top+200 top+200',
-                    end: () => window.innerHeight * ((projects.length - 1) * 2),
+                    start: 'top top',
+                    end: () => window.innerHeight * ((projects.length - 1) * scrollSpeed),
                     pin: true,
                     scrub: 0.5,
                     anticipatePin: 0,
                     snap: {
                         snapTo: 1 / (projects.length - 1),
                         duration: { min: 0.005, max: 0.5 },
-                        // delay: 0.02,
                         ease: 'power1.inOut',
                         inertia: true,
                         directional: false,
@@ -64,7 +64,7 @@ export default function Projects({ isMobile }: Props) {
 
         const killHorizontalScroll = () => {
             if (horizontalScroll) {
-                horizontalScroll.kill(true);
+                horizontalScroll.kill();
                 const trigger = ScrollTrigger.getById('horizontalScroll');
                 if (trigger) {
                     trigger.kill(true);
@@ -76,12 +76,7 @@ export default function Projects({ isMobile }: Props) {
             let mediaQuery = window.matchMedia('(min-width: 1000px)');
 
             if (mediaQuery.matches) {
-                /* the viewport is less than or exactly 500 pixels wide */
-                // console.log(window.innerWidth);
                 setupHorizontalScroll();
-            } else {
-                // console.log(window.innerWidth);
-                /* the viewport is more than 500 pixels wide */
             }
 
             mediaQuery.addEventListener('change', () => {
@@ -166,7 +161,7 @@ export default function Projects({ isMobile }: Props) {
                 <div
                     data-mouse={index % 2 > 0 ? 'inverted' : ''}
                     key={project.id}
-                    id={`section${project.id}`}
+                    id={`project${project.id}`}
                     className={`${styles.projectContainer}`}
                 >
                     <div className={`${styles.project}`}>

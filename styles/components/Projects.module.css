@@ -123,7 +123,7 @@
     width: 80%;
     color: var(--accent-color);
     font-family: var(--secondary-font);
-    line-height: 1.5rem;
+    line-height: 2rem;
     font-size: 1.25rem;
     margin-bottom: 2rem;
 }
@@ -141,7 +141,10 @@
     width: 100%;
     opacity: 0.5;
     padding-bottom: 2px;
+    -ms-user-select: none;
+    -webkit-user-select: none;
     user-select: none;
+
     transition: opacity var(--theme-transition) ease-in-out;
 }
 
@@ -200,6 +203,16 @@
     position: relative;
     height: 100%;
     width: 100%;
+}
+
+.description > a {
+    line-height: 2rem;
+    font-weight: bold;
+    text-decoration: underline;
+}
+.description > span {
+    line-height: 2rem;
+    font-weight: bold;
 }
 
 @keyframes arrowHover {
@@ -310,6 +323,9 @@
     .description {
         width: 100%;
         margin-bottom: 0;
+    }
+    .description * {
+        line-height: 3rem;
     }
     .link {
         width: 100%;
