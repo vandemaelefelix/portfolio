@@ -60,10 +60,11 @@
 
     user-drag: none;
     -webkit-user-drag: none;
-    user-select: none;
+
     -moz-user-select: none;
     -webkit-user-select: none;
     -ms-user-select: none;
+    user-select: none;
 }
 .imageOverlay {
     position: absolute;
@@ -123,6 +124,8 @@
     margin-left: 3rem;
     margin-bottom: -10%;
     z-index: 10;
+    -ms-user-select: none;
+    -webkit-user-select: none;
     user-select: none;
 }
 .titleName {
@@ -131,6 +134,8 @@
     font-size: 6rem;
     transition: color var(--theme-transition) ease-in-out;
     z-index: 10;
+    -ms-user-select: none;
+    -webkit-user-select: none;
     user-select: none;
 }
 .titleSub {
@@ -138,6 +143,8 @@
     color: var(--accent-color);
     font-size: 1.5rem;
     transition: color var(--theme-transition) ease-in-out;
+    -ms-user-select: none;
+    -webkit-user-select: none;
     user-select: none;
 }
 .titleSub span {
@@ -181,10 +188,11 @@
 .scrollDown p {
     color: var(--accent-color);
     font-family: var(--secondary-font);
-    /* font-family: var(--main-font); */
     font-size: 1.25rem;
     font-weight: bold;
     pointer-events: none;
+    -ms-user-select: none;
+    -webkit-user-select: none;
     user-select: none;
 }
 

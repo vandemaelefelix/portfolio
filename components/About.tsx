@@ -100,15 +100,14 @@ export default function About() {
                     <div className={styles.textContainer}>
                         <h2 className={styles.title}>about me</h2>
                         <p className={styles.text}>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi, laboriosam. Omnis, nam
-                            quisquam! Error vero illo atque magni qui est nisi animi nam quibusdam quo odit quaerat,
-                            doloribus non similique. Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi,
-                            laboriosam. Omnis, nam quisquam! Error vero illo atque magni qui est nisi animi nam
-                            quibusdam quo odit quaerat, doloribus non similique. Lorem ipsum dolor sit amet consectetur
-                            adipisicing elit. Eligendi, laboriosam. Omnis, nam quisquam! Error vero illo atque magni qui
-                            est nisi animi nam quibusdam quo odit quaerat, doloribus non similique. Lorem ipsum dolor
-                            sit amet consectetur adipisicing elit. Eligendi, laboriosam. Omnis, nam quisquam! Error vero
-                            illo atque magni qui est nisi animi nam quibusdam quo odit quaerat, doloribus non similique.
+                            Hello I’m <span>Felix</span>, I’m a junior <span>full-stack developer</span>.<br></br> Two
+                            years ago, I graduated in <span>Multimedia & Creative Technologies</span>, more specifically{' '}
+                            <span>Smart Tech & AI Creator</span>, at Howest Kortrijk. Whitin MCT I also studied{' '}
+                            <span>Web & App Developer</span>, because I was not confident enough about my AI skills. I
+                            have a passion for programming and problem solving but I have a soft spot for
+                            frontend-development. I just love learning new technologies and frameworks. I definitely
+                            wouldn’t call myself a designer, but when I create a website or an app, I try to make it
+                            look as good as I can.
                         </p>
                     </div>
                 </div>

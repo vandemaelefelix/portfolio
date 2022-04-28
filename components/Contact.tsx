@@ -87,7 +87,7 @@ export default function Contact() {
                             if (buttonRef.current) {
                                 buttonRef.current[1] = {
                                     element: element,
-                                    options: { speed: 0.05, direction: 'normal' },
+                                    options: { speed: 0.02, direction: 'normal' },
                                 };
                             }
                         }}
