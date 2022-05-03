@@ -56,7 +56,8 @@
     filter: grayscale(1);
     transition: filter var(--theme-transition) ease-in-out, transform 0.5s ease-in-out;
     object-fit: cover;
-    object-position: 42% 50%;
+    object-position: top right;
+    /* object-position: 42% 50%; */
 
     user-drag: none;
     -webkit-user-drag: none;

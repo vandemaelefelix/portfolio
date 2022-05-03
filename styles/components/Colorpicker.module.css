@@ -3,9 +3,12 @@
     bottom: 2rem;
     left: 2rem;
     overflow: hidden;
-    display: flex;
-    flex-direction: row;
-    gap: 1rem;
+    /* display: flex; */
+    /* flex-direction: row; */
+    display: grid;
+    -ms-grid-columns: repeat(6, max-content);
+    grid-template-columns: repeat(6, max-content);
+    column-gap: 1rem;
     border-top-left-radius: 50px;
     border-bottom-left-radius: 50px;
     width: 2rem;
@@ -47,7 +50,7 @@
     border: 2px solid var(--accent-color);
     background-color: var(--main-color);
     overflow: hidden;
-    transition: background-color var(--theme-transition) ease-in-out, border var(--theme-transition) ease-in-out,
+    transition: background-color var(--theme-transition) ease-in-out, border-color var(--theme-transition) ease-in-out,
         opacity 0.3s ease-in-out;
 }
 
@@ -68,9 +71,10 @@
     position: absolute;
     top: 0;
     left: 0;
-    width: 50%;
-    height: 100%;
+    width: 1rem;
+    height: 2rem;
     background-color: var(--accent-color);
     pointer-events: none;
     transition: background-color var(--theme-transition) ease-in-out;
+    border: none;
 }

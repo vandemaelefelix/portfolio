@@ -20,7 +20,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         <ThemeProvider
             defaultTheme="beige"
             enableSystem={false}
-            themes={['beige', 'green', 'lightblue', 'yellow', 'palegreen', 'black']}
+            themes={['beige', 'green', 'yellow', 'palegreen', 'bordeaux', 'purple']} //'lightblue',
         >
             <Component {...pageProps} />
         </ThemeProvider>

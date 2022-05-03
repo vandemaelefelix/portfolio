@@ -20,8 +20,8 @@
 }
 
 [data-theme='lightblue'] {
-    --main-color: hsl(166, 61%, 67%);
-    --accent-color: hsl(302, 68%, 50%);
+    --main-color: #78dec6;
+    --accent-color: #d629d0;
 }
 [data-theme='yellow'] {
     --main-color: hsl(37, 82%, 57%);
@@ -29,19 +29,32 @@
 }
 
 [data-theme='palegreen'] {
-    --main-color: hsl(178, 63%, 39%);
-    --accent-color: hsl(22, 66%, 94%);
+    --main-color: #25a29e;
+    --accent-color: #faede6;
 }
-[data-theme='black'] {
+[data-theme='bordeaux'] {
+    --main-color: hsl(0, 100%, 16%);
+    --accent-color: hsl(0, 0%, 60%);
+}
+/* [data-theme='black'] {
     --main-color: hsl(273, 100%, 50%);
     --accent-color: hsl(22, 100%, 50%);
+} */
+[data-theme='purple'] {
+    --main-color: #f8ca3f;
+    --accent-color: #330d4a;
+}
+/* [data-theme='black'] {
+    --main-color: #37a987;
+    --accent-color: #4b3d8f;
 }
 [data-theme='black'] {
-    --main-color: hsl(66, 100%, 50%);
-    --accent-color: hsl(0, 0%, 0%);
-}
+    --main-color: #083513;
+    --accent-color: #999999;
+} */
 
 /* Fonts */
+
 @font-face {
     font-family: ITCBenguiat;
     src: url('../public/fonts/ITCBenguiat/BenguiatStd-Book.otf');
