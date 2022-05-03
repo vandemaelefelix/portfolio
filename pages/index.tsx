@@ -8,8 +8,8 @@ import useIsMobile from '../hooks/useIsMobile';
 
 import styles from '../styles/pages/Home.module.css';
 import Image from 'next/image';
-import homeImage from '../public/images/image.jpg';
-import aboutImage from '../public/images/image.jpg';
+// import homeImage from '../public/images/image.jpg';
+import homeImage from '../public/images/home-image.png';
 import Spotlight from '../components/Spotlight';
 import ColorPicker from '../components/ColorPicker';
 import { gsap } from 'gsap';

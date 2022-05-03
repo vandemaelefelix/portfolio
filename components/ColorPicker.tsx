@@ -29,11 +29,6 @@ export default function ColorPicker() {
             accentColor: 'hsl(61, 80%, 63%)',
         },
         {
-            name: 'lightblue',
-            mainColor: 'hsl(166, 61%, 67%)',
-            accentColor: 'hsl(302, 68%, 50%)',
-        },
-        {
             name: 'yellow',
             mainColor: 'hsl(37, 82%, 57%)',
             accentColor: 'hsl(11, 76%, 42%)',
@@ -44,10 +39,25 @@ export default function ColorPicker() {
             accentColor: 'hsl(22, 66%, 94%)',
         },
         {
-            name: 'black',
-            mainColor: 'hsl(273, 100%, 50%)',
-            accentColor: 'hsl(22, 100%, 50%)',
+            name: 'bordeaux',
+            mainColor: 'hsl(0, 100%, 16%)',
+            accentColor: 'hsl(0, 0%, 60%',
         },
+        {
+            name: 'purple',
+            mainColor: 'hsl(45, 93%, 61%)',
+            accentColor: 'hsl(278, 70%, 17%)',
+        },
+        // {
+        //     name: 'lightblue',
+        //     mainColor: 'hsl(166, 61%, 67%)',
+        //     accentColor: 'hsl(302, 68%, 50%)',
+        // },
+        // {
+        //     name: 'black',
+        //     mainColor: 'hsl(273, 100%, 50%)',
+        //     accentColor: 'hsl(22, 100%, 50%)',
+        // },
     ]);
 
     const getTheme = (themeName: string): Theme => {
@@ -101,7 +111,10 @@ export default function ColorPicker() {
             >
                 <div
                     className={styles.innerCircle}
-                    style={{ backgroundColor: getTheme(theme) ? getTheme(theme).accentColor : '' }}
+                    style={{
+                        backgroundColor: getTheme(theme) ? getTheme(theme).accentColor : '',
+                        borderColor: getTheme(theme) ? getTheme(theme).accentColor : '',
+                    }}
                 ></div>
             </div>
             <div className={`${styles.colorsContainer} ${isClosing ? styles.closing : ''}`}>

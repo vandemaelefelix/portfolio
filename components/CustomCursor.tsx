@@ -167,37 +167,41 @@ export default function CustomCursor({ fade = false, dotSpeed = 2, circleSpeed =
             mousePos.x = touch.pageX;
             mousePos.y = touch.pageY;
         } else {
-            if ((e as any).path[0]) {
-                const mouseType = getMouseType((e as any).path);
-                switch (mouseType) {
-                    case 'hide':
-                        fadeOutMouse();
-                        setIsScroll(false);
-                        break;
-                    case 'scroll':
-                        setIsScroll(true);
-                        fadeOutMouse();
-                        break;
-                    case 'inverted':
-                        setIsInverted(true);
-                        fadeInMouse();
-                        break;
-                    case 'horizontal':
-                        fadeInMouse();
-                        setIsHorizontal(true);
-                        break;
+            try {
+                if ((e as any).path[0]) {
+                    const mouseType = getMouseType((e as any).path);
+                    switch (mouseType) {
+                        case 'hide':
+                            fadeOutMouse();
+                            setIsScroll(false);
+                            break;
+                        case 'scroll':
+                            setIsScroll(true);
+                            fadeOutMouse();
+                            break;
+                        case 'inverted':
+                            setIsInverted(true);
+                            fadeInMouse();
+                            break;
+                        case 'horizontal':
+                            fadeInMouse();
+                            setIsHorizontal(true);
+                            break;
 
-                    default:
-                        setIsScroll(false);
-                        setIsInverted(false);
-                        setIsHorizontal(false);
-                        fadeInMouse();
-                        break;
+                        default:
+                            setIsScroll(false);
+                            setIsInverted(false);
+                            setIsHorizontal(false);
+                            fadeInMouse();
+                            break;
+                    }
                 }
-            }
 
-            mousePos.x = (e as PointerEvent).pageX;
-            mousePos.y = (e as PointerEvent).pageY;
+                mousePos.x = (e as PointerEvent).pageX;
+                mousePos.y = (e as PointerEvent).pageY;
+            } catch {
+                fadeOutMouse();
+            }
         }
     };
 

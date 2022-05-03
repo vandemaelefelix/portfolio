@@ -14,8 +14,8 @@ const projects = [
                 url: 'https://drive.google.com/file/d/1Se7thaTL9O-rFyRB0GHqsoj-M2OMcF_e/view?usp=sharing',
             },
         ],
-        video: '/videos/self-driving-car_1.mp4',
-        // video: 'https://firebasestorage.googleapis.com/v0/b/portfolio-232b3.appspot.com/o/self-driving-car.mp4?alt=media&token=d5718933-dcf4-425b-9a35-34dbc69b3df0',
+        // video: '/videos/self-driving-car_1.mp4',
+        video: 'https://firebasestorage.googleapis.com/v0/b/portfolio-232b3.appspot.com/o/self-driving-car.mp4?alt=media&token=d5718933-dcf4-425b-9a35-34dbc69b3df0',
         tools: ['python', 'tensorflow', 'raspberry pi', 'opencv'],
     },
     {
@@ -49,8 +49,8 @@ const projects = [
             // { name: 'bird shooter', url: 'https://unrivaled-treacle-eca9ac.netlify.app' },
             { name: 'games dashboard', url: 'https://main--dashing-tiramisu-245a06.netlify.app/' },
         ],
-        // video: 'https://firebasestorage.googleapis.com/v0/b/portfolio-232b3.appspot.com/o/interactive-playground.mp4?alt=media&token=8a4593f3-918f-4852-b920-54a9d69f4ee2',
-        video: '/videos/interactive-playground_1.mp4',
+        video: 'https://firebasestorage.googleapis.com/v0/b/portfolio-232b3.appspot.com/o/interactive-playground.mp4?alt=media&token=8a4593f3-918f-4852-b920-54a9d69f4ee2',
+        // video: '/videos/interactive-playground_1.mp4',
         tools: ['c#', 'opencv', 'python', 'javascript'],
     },
 ];

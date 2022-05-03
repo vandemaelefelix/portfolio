@@ -1,5 +1,6 @@
 import styles from '../styles/components/About.module.css';
-import aboutImage from '../public/images/image.jpg';
+// import aboutImage from '../public/images/image.jpg';
+import aboutImage from '../public/images/about-image.jpg';
 import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
 import Parrallax from './Parrallax';
@@ -100,14 +101,25 @@ export default function About() {
                     <div className={styles.textContainer}>
                         <h2 className={styles.title}>about me</h2>
                         <p className={styles.text}>
-                            Hello I’m <span>Felix</span>, I’m a junior <span>full-stack developer</span>.<br></br> Two
+                            {/* Hello I’m <span>Felix</span>, I’m a junior <span>full-stack developer</span>.<br></br> Two
                             years ago, I graduated in <span>Multimedia & Creative Technologies</span>, more specifically{' '}
                             <span>Smart Tech & AI Creator</span>, at Howest Kortrijk. Whitin MCT I also studied{' '}
                             <span>Web & App Developer</span>, because I was not confident enough about my AI skills. I
                             have a passion for programming and problem solving but I have a soft spot for
                             frontend-development. I just love learning new technologies and frameworks. I definitely
                             wouldn’t call myself a designer, but when I create a website or an app, I try to make it
-                            look as good as I can.
+                            look as good as I can.  */}
+                            Hello, I’m <span>Felix</span>. I’m a junior <span>full-stack developer</span>. <br></br>
+                            Since I was little, I’ve always been captivated about computers. My interest in web
+                            development really started off when I decided to create some simple HTML & CSS webpages in
+                            Notepad. It wasn’t much, but it really inspired me to learn more about it. <br></br>And so I
+                            did, I studied <span>Multimedia & Creative Technologies (MCT)</span>, more specifically{' '}
+                            <span>Smart Tech & AI Creator</span>, at Howest Kortrijk. Since I was also fascinated by
+                            another major within MCT where I could further develop my web development skills, I decided
+                            to go on studying <span>Web & App Developer</span>. <br></br>I have a passion for everything
+                            that is programming and problem solving with a soft spot for front end development. I
+                            definitely wouldn’t call myself a designer, but when I create a website or an app, I try to
+                            make it look as attractive as I can.
                         </p>
                     </div>
                 </div>
