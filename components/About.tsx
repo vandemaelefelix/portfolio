@@ -113,7 +113,7 @@ export default function About() {
                             Since I was little, I’ve always been captivated about computers. My interest in web
                             development really started off when I decided to create some simple HTML & CSS webpages in
                             Notepad. It wasn’t much, but it really inspired me to learn more about it. <br></br>And so I
-                            did, I studied Multimedia & Creative Technologies (MCT), more specifically{' '}
+                            did, I studied <span>Multimedia & Creative Technologies (MCT)</span>, more specifically{' '}
                             <span>Smart Tech & AI Creator</span>, at Howest Kortrijk. Since I was also fascinated by
                             another major within MCT where I could further develop my web development skills, I decided
                             to go on studying <span>Web & App Developer</span>. <br></br>I have a passion for everything
