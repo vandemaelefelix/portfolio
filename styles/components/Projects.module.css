@@ -86,6 +86,18 @@
     border-color: var(--main-color);
 }
 
+/* Set even projects selection color */
+.projectContainer:nth-child(even)::-moz-selection {
+    /* color: var(--accent-color); */
+    color: red;
+    background: var(--main-color);
+}
+
+.projectContainer:nth-child(even)::selection {
+    color: var(--accent-color);
+    background: var(--main-color);
+}
+
 .projectImage {
     width: 100%;
     display: flex;
@@ -118,6 +130,9 @@
     text-align: center;
     width: 80%;
     margin-bottom: 3rem;
+    -ms-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
 }
 .description {
     width: 80%;
@@ -206,6 +221,9 @@
     height: 2.5rem;
     width: 2.5rem;
     grid-row: 1;
+    -ms-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
 }
 .toolWrapper {
     position: relative;

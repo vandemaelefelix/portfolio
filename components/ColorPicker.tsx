@@ -33,10 +33,15 @@ export default function ColorPicker() {
             mainColor: 'hsl(37, 82%, 57%)',
             accentColor: 'hsl(11, 76%, 42%)',
         },
+        // {
+        //     name: 'palegreen',
+        //     mainColor: 'hsl(178, 63%, 39%)',
+        //     accentColor: 'hsl(22, 66%, 94%)',
+        // },
         {
-            name: 'palegreen',
-            mainColor: 'hsl(178, 63%, 39%)',
-            accentColor: 'hsl(22, 66%, 94%)',
+            name: 'purple',
+            mainColor: '#715d8f',
+            accentColor: '#040c18',
         },
         {
             name: 'bordeaux',
@@ -44,10 +49,15 @@ export default function ColorPicker() {
             accentColor: 'hsl(0, 0%, 60%',
         },
         {
-            name: 'purple',
-            mainColor: 'hsl(45, 93%, 61%)',
-            accentColor: 'hsl(278, 70%, 17%)',
+            name: 'darkblue',
+            mainColor: '#47d6f4',
+            accentColor: '#242d34',
         },
+        // {
+        //     name: 'purple',
+        //     mainColor: 'hsl(45, 93%, 61%)',
+        //     accentColor: 'hsl(278, 70%, 17%)',
+        // },
         // {
         //     name: 'lightblue',
         //     mainColor: 'hsl(166, 61%, 67%)',
@@ -105,15 +115,17 @@ export default function ColorPicker() {
                 key={theme}
                 style={{
                     backgroundColor: getTheme(theme) ? getTheme(theme).mainColor : '',
-                    borderColor: getTheme(theme) ? getTheme(theme).accentColor : '',
+                    border: `2px solid ${getTheme(theme) ? getTheme(theme).accentColor : ''}`,
+                    // borderColor: getTheme(theme) ? getTheme(theme).accentColor : '',
                 }}
                 className={`${styles.colorCircle} ${styles.firstCircle}`}
             >
                 <div
                     className={styles.innerCircle}
                     style={{
+                        // border: `2px solid ${getTheme(theme) ? getTheme(theme).accentColor : ''}`,
                         backgroundColor: getTheme(theme) ? getTheme(theme).accentColor : '',
-                        borderColor: getTheme(theme) ? getTheme(theme).accentColor : '',
+                        // borderColor: getTheme(theme) ? getTheme(theme).accentColor : '',
                     }}
                 ></div>
             </div>
@@ -136,7 +148,8 @@ export default function ColorPicker() {
                             }}
                             style={{
                                 backgroundColor: getTheme(currentTheme).mainColor,
-                                borderColor: getTheme(currentTheme).accentColor,
+                                border: `2px solid ${getTheme(currentTheme) ? getTheme(currentTheme).accentColor : ''}`,
+                                // borderColor: getTheme(currentTheme).accentColor,
                                 pointerEvents: isClosing ? 'none' : 'all',
                             }}
                             className={styles.colorCircle}

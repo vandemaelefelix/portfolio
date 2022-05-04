@@ -1,6 +1,6 @@
 .colorpicker {
     position: fixed;
-    bottom: 2rem;
+    bottom: 1rem;
     left: 2rem;
     overflow: hidden;
     /* display: flex; */
@@ -30,6 +30,9 @@
         pointer-events var(--color-picker-transition) var(--color-picker-transition) ease-in-out;
     z-index: -1;
     pointer-events: none;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    /* background-color: red; */
 }
 
 .colorsContainer.closing {
@@ -47,8 +50,8 @@
     height: 2rem;
     cursor: pointer;
     border-radius: 50px;
-    border: 2px solid var(--accent-color);
-    background-color: var(--main-color);
+    /* border: 2px solid var(--accent-color); */
+    /* background-color: var(--main-color); */
     overflow: hidden;
     transition: background-color var(--theme-transition) ease-in-out, border-color var(--theme-transition) ease-in-out,
         opacity 0.3s ease-in-out;
@@ -58,8 +61,11 @@
     opacity: 1;
     pointer-events: all;
     position: absolute;
-    top: 0;
+    top: 50%;
     left: 0;
+    transform: translateY(-50%);
+    /* padding-top: 1rem;
+    padding-bottom: 1rem; */
 }
 
 .colorpicker.show .firstCircle {
