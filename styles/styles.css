@@ -9,6 +9,7 @@
     --spotlight-size: 5%;
     --spotlight-size2: calc(var(--spotlight-size) * 1.5);
     --spotlight-text-position: 10%;
+    --tools-size: 2rem;
     --image-overlay-opacity: 0.2;
     --arrow-length: 0;
     --banner-speed: 10s;

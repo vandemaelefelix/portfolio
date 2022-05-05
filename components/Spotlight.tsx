@@ -197,7 +197,6 @@ export default function Spotlight() {
     };
 
     useEffect(() => {
-        console.log('shuffled tools');
         setShuffledTools(shuffle(tools));
     }, []);
 
@@ -233,8 +232,10 @@ export default function Spotlight() {
                     data-importance={importance}
                     data-mouse={'hide'}
                     style={{
-                        width: `calc(3rem * ${1 + importance / 2})`,
-                        height: `calc(3rem * ${1 + importance / 2})`,
+                        width: `calc(var(--tools-size) * ${1 + importance / 2})`,
+                        height: `calc(var(--tools-size) * ${1 + importance / 2})`,
+                        // width: `calc(3rem * ${1 + importance / 2})`,
+                        // height: `calc(3rem * ${1 + importance / 2})`,
                     }}
                 >
                     <div className={`${styles.imageWrapper}`}>

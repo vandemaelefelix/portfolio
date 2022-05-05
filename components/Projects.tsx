@@ -128,11 +128,8 @@ export default function Projects({ isMobile }: Props) {
 
         const toolsContent: JSX.Element[] = [];
 
-        console.log(usedTools);
-
         usedTools.forEach((tool: string) => {
             const toolDetails: Tool = getTool(tool);
-            console.log(toolDetails);
             toolsContent.push(
                 <div key={toolDetails.name} className={`${styles.tool}`}>
                     <div className={`${styles.toolWrapper}`}>
@@ -153,7 +150,6 @@ export default function Projects({ isMobile }: Props) {
     };
 
     const loadProjects = (): JSX.Element[] => {
-        console.log('Loading projects');
         const projectsContent: JSX.Element[] = [];
 
         projects.forEach((project, index) => {

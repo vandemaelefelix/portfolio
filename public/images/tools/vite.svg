@@ -1,0 +1,15 @@
+<svg id="vite" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="99.875" height="100" viewBox="0 0 99.875 100">
+  <defs>
+    <linearGradient id="linear-gradient" x1="-0.008" y1="0.077" x2="0.576" y2="0.784" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#41d1ff"/>
+      <stop offset="1" stop-color="#bd34fe"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-2" x1="0.434" y1="0.022" x2="0.503" y2="0.89" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#ffea83"/>
+      <stop offset="0.083" stop-color="#ffdd35"/>
+      <stop offset="1" stop-color="#ffa800"/>
+    </linearGradient>
+  </defs>
+  <path id="Path_270" data-name="Path 270" d="M99.544,31.986,52.628,115.88a2.55,2.55,0,0,1-4.441.019L.341,31.994A2.55,2.55,0,0,1,3,28.221l46.966,8.395a2.55,2.55,0,0,0,.906,0l45.984-8.381A2.55,2.55,0,0,1,99.544,31.986Z" transform="translate(0 -17.186)" fill="url(#linear-gradient)"/>
+  <path id="Path_271" data-name="Path 271" d="M126.21.025l-34.719,6.8A1.275,1.275,0,0,0,90.463,8l-2.136,36.07a1.275,1.275,0,0,0,1.559,1.318l9.666-2.231a1.275,1.275,0,0,1,1.536,1.5L98.217,58.721A1.275,1.275,0,0,0,99.836,60.2l5.971-1.814a1.275,1.275,0,0,1,1.619,1.478l-4.564,22.09a1.275,1.275,0,0,0,2.319.951l.512-.791,28.291-56.46a1.275,1.275,0,0,0-1.381-1.823l-9.95,1.92a1.275,1.275,0,0,1-1.467-1.605L127.68,1.629A1.275,1.275,0,0,0,126.21.025Z" transform="translate(-53.867 0)" fill="url(#linear-gradient-2)"/>
+</svg>

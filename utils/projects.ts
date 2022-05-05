@@ -15,6 +15,7 @@ const projects = [
             },
         ],
         // video: '/videos/self-driving-car_1.mp4',
+        // video: 'https://drive.google.com/file/d/1eLg0nPYYnqUvI0sKednHqviEvn33Q_je/view?usp=sharing',
         video: 'https://firebasestorage.googleapis.com/v0/b/portfolio-232b3.appspot.com/o/self-driving-car.mp4?alt=media&token=d5718933-dcf4-425b-9a35-34dbc69b3df0',
         tools: ['python', 'tensorflow', 'raspberry pi', 'opencv'],
     },
