@@ -170,6 +170,11 @@ const tools = [
         importance: 0.6,
     },
     {
+        name: 'vite',
+        path: 'vite.svg',
+        importance: 0.7,
+    },
+    {
         name: 'visual studio code',
         path: 'vscode.svg',
         importance: 0.7,
@@ -177,6 +182,11 @@ const tools = [
     {
         name: 'vue js',
         path: 'vuejs.svg',
+        importance: 0.8,
+    },
+    {
+        name: 'webpack',
+        path: 'webpack.svg',
         importance: 0.8,
     },
     {

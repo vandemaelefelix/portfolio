@@ -146,6 +146,11 @@
         stroke-dashoffset: 0;
     }
 }
+@media only screen and (min-width: 800px) {
+    .imageContainer {
+        height: 25rem;
+    }
+}
 
 @media only screen and (min-width: 1000px) {
     .content {

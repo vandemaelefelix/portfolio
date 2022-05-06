@@ -33,11 +33,6 @@ export default function ColorPicker() {
             mainColor: 'hsl(37, 82%, 57%)',
             accentColor: 'hsl(11, 76%, 42%)',
         },
-        // {
-        //     name: 'palegreen',
-        //     mainColor: 'hsl(178, 63%, 39%)',
-        //     accentColor: 'hsl(22, 66%, 94%)',
-        // },
         {
             name: 'purple',
             mainColor: '#715d8f',
@@ -45,29 +40,14 @@ export default function ColorPicker() {
         },
         {
             name: 'bordeaux',
-            mainColor: 'hsl(0, 100%, 16%)',
-            accentColor: 'hsl(0, 0%, 60%',
+            mainColor: 'hsl(0, 0%, 60%)',
+            accentColor: 'hsl(0, 100%, 16%)',
         },
         {
             name: 'darkblue',
             mainColor: '#47d6f4',
             accentColor: '#242d34',
         },
-        // {
-        //     name: 'purple',
-        //     mainColor: 'hsl(45, 93%, 61%)',
-        //     accentColor: 'hsl(278, 70%, 17%)',
-        // },
-        // {
-        //     name: 'lightblue',
-        //     mainColor: 'hsl(166, 61%, 67%)',
-        //     accentColor: 'hsl(302, 68%, 50%)',
-        // },
-        // {
-        //     name: 'black',
-        //     mainColor: 'hsl(273, 100%, 50%)',
-        //     accentColor: 'hsl(22, 100%, 50%)',
-        // },
     ]);
 
     const getTheme = (themeName: string): Theme => {
@@ -115,6 +95,7 @@ export default function ColorPicker() {
                 key={theme}
                 style={{
                     backgroundColor: getTheme(theme) ? getTheme(theme).mainColor : '',
+                    // border: `2px solid red`,
                     border: `2px solid ${getTheme(theme) ? getTheme(theme).accentColor : ''}`,
                     // borderColor: getTheme(theme) ? getTheme(theme).accentColor : '',
                 }}

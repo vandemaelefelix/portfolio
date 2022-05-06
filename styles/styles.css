@@ -9,6 +9,7 @@
     --spotlight-size: 5%;
     --spotlight-size2: calc(var(--spotlight-size) * 1.5);
     --spotlight-text-position: 10%;
+    --tools-size: 2rem;
     --image-overlay-opacity: 0.2;
     --arrow-length: 0;
     --banner-speed: 10s;
@@ -33,17 +34,9 @@
     --accent-color: #faede6;
 }
 [data-theme='bordeaux'] {
-    --main-color: hsl(0, 100%, 16%);
-    --accent-color: hsl(0, 0%, 60%);
+    --main-color: hsl(0, 0%, 60%);
+    --accent-color: hsl(0, 100%, 16%);
 }
-/* [data-theme='black'] {
-    --main-color: hsl(273, 100%, 50%);
-    --accent-color: hsl(22, 100%, 50%);
-} */
-/* [data-theme='purple'] {
-    --main-color: #f8ca3f;
-    --accent-color: #330d4a;
-} */
 [data-theme='darkblue'] {
     --main-color: #47d6f4;
     --accent-color: #242d34;
@@ -52,10 +45,6 @@
     --main-color: #715d8f;
     --accent-color: #040c18;
 }
-/* [data-theme='black'] {
-    --main-color: #083513;
-    --accent-color: #999999;
-} */
 
 /* Fonts */
 

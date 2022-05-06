@@ -195,6 +195,9 @@
 }
 
 @media only screen and (min-width: 1000px) {
+    .toolsItem {
+        --tools-size: 3rem;
+    }
     .spotlightText {
         --spotlight-text-position: 12%;
     }
