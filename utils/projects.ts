@@ -48,7 +48,7 @@ const projects = [
         links: [
             // { name: 'calculator game', url: 'https://keen-pavlova-376c8c.netlify.app' },
             // { name: 'bird shooter', url: 'https://unrivaled-treacle-eca9ac.netlify.app' },
-            { name: 'games dashboard', url: 'https://main--dashing-tiramisu-245a06.netlify.app/' },
+            { name: 'games dashboard', url: 'https://ballly-games-dashboard.netlify.app' },
         ],
         video: 'https://firebasestorage.googleapis.com/v0/b/portfolio-232b3.appspot.com/o/interactive-playground.mp4?alt=media&token=8a4593f3-918f-4852-b920-54a9d69f4ee2',
         // video: '/videos/interactive-playground_1.mp4',
